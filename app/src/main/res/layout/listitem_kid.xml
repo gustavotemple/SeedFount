@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp"
+    android:visibility="gone">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/kid_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:contentDescription="@string/image_description_kid_icon"
+            android:maxHeight="20dp"
+            android:maxWidth="20dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_boy" />
+
+        <TextView
+            android:id="@+id/kid_name"
+            style="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_toEndOf="@id/kid_picture"
+            android:layout_toRightOf="@id/kid_picture"
+            tools:text="Gustavo Temple" />
+
+        <TextView
+            android:id="@+id/class_room"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/kid_name"
+            android:layout_marginBottom="4dp"
+            android:layout_toEndOf="@id/kid_picture"
+            android:layout_toRightOf="@id/kid_picture"
+            android:textColor="@android:color/tertiary_text_light"
+            tools:text="N3" />
+
+        <ImageView
+            android:id="@+id/arrow_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/image_description_arrow_icon"
+            android:maxHeight="24dp"
+            android:maxWidth="24dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_arrow" />
+
+        <CheckBox
+            android:id="@+id/checkBoxP"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/class_room"
+            android:layout_alignBottom="@+id/class_room"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/class_room"
+            android:text="P" />
+
+        <CheckBox
+            android:id="@+id/checkBoxL"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/checkBoxP"
+            android:layout_alignBottom="@+id/checkBoxP"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/checkBoxP"
+            android:text="L" />
+
+        <CheckBox
+            android:id="@+id/checkBoxV"
+            style="?android:textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/checkBoxL"
+            android:layout_alignBottom="@+id/checkBoxL"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/checkBoxL"
+            android:text="V" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

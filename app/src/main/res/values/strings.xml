@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Semear</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="menu_search">Pesquisar</string>
+
+    <string name="all_rooms">Todas as Salas</string>
+    <string name="morning_rooms">Salas Manhã</string>
+    <string name="night_rooms">Salas Noite</string>
+    <string name="class_dates">Datas</string>
+    <string name="infos">Informações</string>
+    <string name="about">Sobre</string>
+    <string name="image_description_kid_icon">Criança</string>
+    <string name="image_description_arrow_icon">Registro</string>
+    <string name="no_kids">Nenhuma criança foi adicionada ainda.</string>
+    <string name="kid_added">Registro adicionado.</string>
+    <string name="kid_updated">Registro atualizado.</string>
+    <string name="kid_deleted">Registro removido.</string>
+
+    <!-- Strings related to register -->
+    <string name="title_register">Novo Registro</string>
+    <string name="title_update">Atualizar Registro</string>
+    <string name="kid_name">Nome da criança</string>
+    <string name="dad_name">Nome do pai</string>
+    <string name="mom_name">Nome da mãe</string>
+    <string name="dad_email">Email do pai</string>
+    <string name="mom_email">Email da mãe</string>
+    <string name="city_name">Cidade</string>
+    <string name="kid_address">Endereço</string>
+    <string name="class_room">Sala</string>
+    <string name="church_name">Nome da igreja</string>
+    <string name="cell_phone">Celular</string>
+    <string name="boy">Menino</string>
+    <string name="girl">Menina</string>
+    <string name="can_leave">Pode sair? </string>
+    <string name="church">Frequenta alguma igreja? </string>
+    <string name="will_return">Pretende voltar? </string>
+    <string name="birth_date">Data de aniversário</string>
+    <string name="action_register">Registrar</string>
+    <string name="action_update">Atualizar</string>
+    <string name="error_field_invalid">Verifique este campo</string>
+    <string name="error_field_required">Este campo é obrigatório</string>
+</resources>
