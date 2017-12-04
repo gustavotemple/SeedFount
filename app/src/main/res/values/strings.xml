@@ -7,8 +7,18 @@
     <string name="menu_search">Pesquisar</string>
 
     <string name="all_rooms">Todas as Salas</string>
-    <string name="morning_rooms">Salas Manhã</string>
-    <string name="night_rooms">Salas Noite</string>
+    <string name="n1_am">N1 Manhã</string>
+    <string name="n1_pm">N1 Noite</string>
+    <string name="n2_am">N2 Manhã</string>
+    <string name="n2_pm">N2 Noite</string>
+    <string name="n3_am">N3 Manhã</string>
+    <string name="n3_pm">N3 Noite</string>
+    <string name="n4_am">N4 Manhã</string>
+    <string name="n4_pm">N4 Noite</string>
+    <string name="n5_am">N5 Manhã</string>
+    <string name="n5_pm">N5 Noite</string>
+    <string name="n6_am">N6 Manhã</string>
+    <string name="n6_pm">N6 Noite</string>
     <string name="class_dates">Datas</string>
     <string name="infos">Informações</string>
     <string name="about">Sobre</string>

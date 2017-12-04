@@ -112,7 +112,8 @@ public class KidsListAdapter
 
         holder.kidName.setText(data.getKidName());
         holder.kidName.setTypeface(type);
-        holder.classRoom.setText(data.getClassRoom());
+
+        holder.classRoom.setText(FirebaseUtils.DateGenerator.formatDate(data.getClassRoom()));
         holder.classRoom.setTypeface(type);
 
         holder.checkBoxP.setTypeface(type);

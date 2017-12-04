@@ -50,16 +50,7 @@ public class ClassDateListAdapter
         final Typeface type = Typeface.createFromAsset(holder.itemView.getContext().getAssets(),
                 Constants.FONT);
 
-        String date = data.getDate();
-        if (date.contains(Constants.AM)) {
-            date = date.replaceAll(Constants.AM, "");
-            date = date.concat("Manhã");
-        } else if (date.contains(Constants.PM)) {
-            date = date.replaceAll(Constants.PM, "");
-            date = date.concat("Noite");
-        }
-
-        holder.date.setText(date);
+        holder.date.setText(FirebaseUtils.DateGenerator.formatDate(data.getDate()));
         holder.date.setTypeface(type);
 
         holder.arrowPicture.setOnClickListener(new View.OnClickListener() {

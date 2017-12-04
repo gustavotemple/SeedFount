@@ -24,6 +24,8 @@ public final class FirebaseUtils {
     private static final String TAG = FirebaseUtils.class.getSimpleName();
     private static final String KIDS = "KidRegister";
     private static final String CLASS_DATE = "ClassDate";
+    private static final String AM = "AM";
+    private static final String PM = "PM";
 
     private DatabaseReference mDatabaseKids;
     private DatabaseReference mClassDate;
@@ -179,6 +181,18 @@ public final class FirebaseUtils {
         public static String getPeriod() {
             return (String) DateFormat.format("dd/MM/yyyy a",
                     new Date());
+        }
+
+        public static String formatDate(String date) {
+            if (date.contains(AM)) {
+                date = date.replaceAll(AM, "");
+                date = date.concat("Manhã");
+            } else if (date.contains(PM)) {
+                date = date.replaceAll(PM, "");
+                date = date.concat("Noite");
+            }
+
+            return date;
         }
     }
 }

@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity
 
         FirebaseUtils.getInstance().initialize();
         FirebaseUtils.getInstance().getDatabaseKids().addListenerForSingleValueEvent(initializeKid);
+        setTitle(FirebaseUtils.DateGenerator.formatDate(FirebaseUtils.DateGenerator.getPeriod()));
 
         final Typeface type = Typeface.createFromAsset(getAssets(), Constants.FONT);
 
@@ -252,57 +253,11 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_all) {
-            fab.setVisibility(View.VISIBLE);
-
-            mClassDateListAdapter.cleanup();
-
-            mKidsListAdapter = new KidsListAdapter(null);
-            recyclerView.setAdapter(mKidsListAdapter);
-
-            // Make sure new events are visible
-            mKidsListAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-                @Override
-                public void onItemRangeChanged(int positionStart, int itemCount) {
-                    recyclerView.smoothScrollToPosition(mKidsListAdapter.getItemCount());
-                }
-            });
-        } else if (id == R.id.nav_morning) {
-            fab.setVisibility(View.VISIBLE);
-
-            mClassDateListAdapter.cleanup();
-
-            final Query query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.AM);
-            mKidsListAdapter = new KidsListAdapter(query);
-            recyclerView.setAdapter(mKidsListAdapter);
-
-            // Make sure new events are visible
-            mKidsListAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-                @Override
-                public void onItemRangeChanged(int positionStart, int itemCount) {
-                    recyclerView.smoothScrollToPosition(mKidsListAdapter.getItemCount());
-                }
-            });
-        } else if (id == R.id.nav_night) {
-            fab.setVisibility(View.VISIBLE);
-
-            mClassDateListAdapter.cleanup();
-
-            final Query query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.PM);
-            mKidsListAdapter = new KidsListAdapter(query);
-            recyclerView.setAdapter(mKidsListAdapter);
-
-            // Make sure new events are visible
-            mKidsListAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
-                @Override
-                public void onItemRangeChanged(int positionStart, int itemCount) {
-                    recyclerView.smoothScrollToPosition(mKidsListAdapter.getItemCount());
-                }
-            });
-        } else if (id == R.id.nav_about) {
+        if (id == R.id.nav_about) {
             Log.i(TAG, "nav_about");
         } else if (id == R.id.nav_dates) {
             fab.setVisibility(View.GONE);
+            setTitle(R.string.class_dates);
 
             mKidsListAdapter.cleanup();
             recyclerView.setAdapter(mClassDateListAdapter);
@@ -314,9 +269,54 @@ public class MainActivity extends AppCompatActivity
                     recyclerView.smoothScrollToPosition(mClassDateListAdapter.getItemCount());
                 }
             });
+        } else {
+            fab.setVisibility(View.VISIBLE);
+            setTitle(FirebaseUtils.DateGenerator.formatDate(FirebaseUtils.DateGenerator.getPeriod()));
+
+            mClassDateListAdapter.cleanup();
+
+            Query query = null;
+            if (id == R.id.nav_all) {
+                query = null;
+            } else if (id == R.id.nav_n1_am) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N1_AM);
+            } else if (id == R.id.nav_n1_pm) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N1_PM);
+            } else if (id == R.id.nav_n2_am) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N2_AM);
+            } else if (id == R.id.nav_n2_pm) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N2_PM);
+            } else if (id == R.id.nav_n3_am) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N3_AM);
+            } else if (id == R.id.nav_n3_pm) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N3_PM);
+            } else if (id == R.id.nav_n4_am) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N4_AM);
+            } else if (id == R.id.nav_n4_pm) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N4_PM);
+            } else if (id == R.id.nav_n5_am) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N5_AM);
+            } else if (id == R.id.nav_n5_pm) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N5_PM);
+            } else if (id == R.id.nav_n6_am) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_AM);
+            } else if (id == R.id.nav_n6_pm) {
+                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_PM);
+            }
+
+            mKidsListAdapter = new KidsListAdapter(query);
+            recyclerView.setAdapter(mKidsListAdapter);
+
+            // Make sure new events are visible
+            mKidsListAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onItemRangeChanged(int positionStart, int itemCount) {
+                    recyclerView.smoothScrollToPosition(mKidsListAdapter.getItemCount());
+                }
+            });
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        final DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

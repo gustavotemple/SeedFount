@@ -23,9 +23,29 @@ public final class Constants {
 
     public static final String HOUR = "HOUR";
 
-    public static final String AM = "AM";
+    public static final String N1_AM = "N1 AM";
 
-    public static final String PM = "PM";
+    public static final String N1_PM = "N1 PM";
+
+    public static final String N2_AM = "N2 AM";
+
+    public static final String N2_PM = "N2 PM";
+
+    public static final String N3_AM = "N3 AM";
+
+    public static final String N3_PM = "N3 PM";
+
+    public static final String N4_AM = "N4 AM";
+
+    public static final String N4_PM = "N4 PM";
+
+    public static final String N5_AM = "N5 AM";
+
+    public static final String N5_PM = "N5 PM";
+
+    public static final String N6_AM = "N6 AM";
+
+    public static final String N6_PM = "N6 PM";
 
     public static final int NO_OP = 0;
 
