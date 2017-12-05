@@ -21,6 +21,8 @@
     <string name="n6_pm">N6 Noite</string>
     <string name="class_dates">Datas</string>
     <string name="infos">Informações</string>
+    <string name="reports">Relatórios</string>
+    <string name="menu_refresh">Atualizar</string>
     <string name="about">Sobre</string>
     <string name="image_description_kid_icon">Criança</string>
     <string name="image_description_arrow_icon">Registro</string>

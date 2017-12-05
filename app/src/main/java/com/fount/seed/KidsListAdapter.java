@@ -116,6 +116,9 @@ public class KidsListAdapter
         holder.classRoom.setText(FirebaseUtils.DateGenerator.formatDate(data.getClassRoom()));
         holder.classRoom.setTypeface(type);
 
+        FirebaseUtils.getInstance().setLetter(data, Constants.P, holder.checkBoxP);
+        FirebaseUtils.getInstance().setLetter(data, Constants.L, holder.checkBoxL);
+        FirebaseUtils.getInstance().setLetter(data, Constants.V, holder.checkBoxV);
         holder.checkBoxP.setTypeface(type);
         holder.checkBoxL.setTypeface(type);
         holder.checkBoxV.setTypeface(type);

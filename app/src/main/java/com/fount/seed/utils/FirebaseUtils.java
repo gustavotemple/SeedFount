@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.widget.CheckBox;
 
 import com.fount.seed.wrappers.ClassDate;
 import com.fount.seed.wrappers.KidWrapper;
@@ -74,8 +75,8 @@ public final class FirebaseUtils {
     }
 
     private void getDateId() {
-
         if (mClassDate == null) {
+            Log.e(TAG, "ClassDate error");
             return;
         }
 
@@ -109,9 +110,45 @@ public final class FirebaseUtils {
         });
     }
 
+    public void setLetter(@NonNull final KidWrapper kid,
+                          @NonNull final String letter,
+                          @NonNull final CheckBox checkBox) {
+        if (dateId == null) {
+            Log.e(TAG, "dateId error");
+            return;
+        }
+
+        mClassDate.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                final ClassDate classDate = dataSnapshot.getValue(ClassDate.class);
+                if (classDate == null) {
+                    Log.e(TAG, "ClassDate error");
+                    return;
+                }
+
+                if (classDate.getStudentAttendance() != null
+                        && !classDate.getStudentAttendance().isEmpty()
+                        && classDate.getStudentAttendance().get(kid.getKidName()) != null
+                        && classDate.getStudentAttendance().get(kid.getKidName()).containsKey(letter)) {
+                    checkBox.setChecked(classDate.getStudentAttendance().get(kid.getKidName()).get(letter));
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
+    }
+
     public void saveStudentAttendance(@NonNull final KidWrapper kid,
                                       @NonNull final String letter,
                                       final boolean value) {
+        if (dateId == null) {
+            Log.e(TAG, "dateId error");
+            return;
+        }
 
         mClassDate.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

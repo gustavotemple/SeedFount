@@ -56,11 +56,17 @@
             android:id="@+id/nav_n6_pm"
             android:icon="@android:drawable/btn_star_big_off"
             android:title="@string/n6_pm" />
-        <item
-            android:id="@+id/nav_dates"
-            android:icon="@android:drawable/ic_menu_agenda"
-            android:title="@string/class_dates" />
+
     </group>
+
+    <item android:title="@string/reports">
+        <menu>
+            <item
+                android:id="@+id/nav_dates"
+                android:icon="@android:drawable/ic_menu_agenda"
+                android:title="@string/class_dates" />
+        </menu>
+    </item>
 
     <item android:title="@string/infos">
         <menu>
