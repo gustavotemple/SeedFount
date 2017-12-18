@@ -1,6 +1,7 @@
 package com.fount.seed;
 
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -22,15 +23,32 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class StudentAttendanceListAdapter
         extends RecyclerView.Adapter<StudentAttendanceListAdapter.ViewHolder>
         implements Filterable {
 
     private static final String TAG = StudentAttendanceListAdapter.class.getSimpleName();
-    private static List<StudentAttendance> dataSetOriginal;
-    private static List<StudentAttendance> dataSetFilter;
+    private List<StudentAttendance> dataSetOriginal;
+    private List<StudentAttendance> dataSetFilter;
+
+    StudentAttendanceListAdapter() {
+        this.dataSetOriginal = new ArrayList<>();
+        this.dataSetFilter = new ArrayList<>();
+    }
+
+    void init(@NonNull final HashMap<String, HashMap<String, Boolean>> studentAttendances) {
+        for (Map.Entry<String, HashMap<String, Boolean>> student : studentAttendances.entrySet()) {
+            StudentAttendance studentAttendance = new StudentAttendance(student.getKey());
+            studentAttendance.setLetters(student.getValue());
+            add(studentAttendance);
+        }
+
+        sort();
+    }
 
     /**
      * ViewHolder
@@ -84,7 +102,7 @@ public class StudentAttendanceListAdapter
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Typeface type = Typeface.createFromAsset(holder.itemView.getContext().getAssets(), Constants.FONT);
-        final StudentAttendance data = getDataSetFilter().get(position);
+        final StudentAttendance data = dataSetFilter.get(position);
         RelativeLayout.LayoutParams params;
 
         holder.cardView.setVisibility(View.VISIBLE);
@@ -133,59 +151,9 @@ public class StudentAttendanceListAdapter
         holder.arrowPicture.setVisibility(View.GONE);
     }
 
-    /**
-     * getDataSetOriginal
-     *
-     * @return List<StudentAttendance>
-     */
-    private static synchronized List<StudentAttendance> getDataSetOriginal() {
-        if (dataSetOriginal == null) {
-            dataSetOriginal = new ArrayList<>();
-        }
-        return dataSetOriginal;
-    }
-
-    /**
-     * getDataSetFilter
-     *
-     * @return List<StudentAttendance>
-     */
-    private static synchronized List<StudentAttendance> getDataSetFilter() {
-        if (dataSetFilter == null) {
-            dataSetFilter = new ArrayList<>();
-        }
-        return dataSetFilter;
-    }
-
-    /**
-     * setDataSetFilter
-     *
-     * @param dataSetFilter List<StudentAttendance>
-     */
-    private static synchronized void setDataSetFilter(final List<StudentAttendance> dataSetFilter) {
-        StudentAttendanceListAdapter.dataSetFilter = dataSetFilter;
-    }
-
     @Override
     public int getItemCount() {
-        return getDataSetFilter().size();
-    }
-
-    /**
-     * clear
-     */
-    void clear() {
-        Log.i(TAG, "Clear");
-
-        if (!getDataSetOriginal().isEmpty()) {
-            getDataSetOriginal().clear();
-        }
-
-        if (!getDataSetFilter().isEmpty()) {
-            getDataSetFilter().clear();
-        }
-
-        notifyDataSetChanged();
+        return dataSetFilter.size();
     }
 
     /**
@@ -193,12 +161,10 @@ public class StudentAttendanceListAdapter
      *
      * @param kid StudentAttendance
      */
-    void add(StudentAttendance kid) {
-        getDataSetOriginal().add(kid);
-        getDataSetFilter().add(kid);
-        notifyItemInserted(getDataSetFilter().size() - 1);
-
-        sort();
+    private void add(StudentAttendance kid) {
+        dataSetOriginal.add(kid);
+        dataSetFilter.add(kid);
+        notifyItemInserted(dataSetFilter.size() - 1);
     }
 
     @Override
@@ -210,9 +176,9 @@ public class StudentAttendanceListAdapter
                 final List<StudentAttendance> dataSetFilter = new ArrayList<>();
 
                 if (constraint.length() == 0) {
-                    dataSetFilter.addAll(getDataSetOriginal());
+                    dataSetFilter.addAll(dataSetOriginal);
                 } else {
-                    for (final StudentAttendance kid : getDataSetOriginal()) {
+                    for (final StudentAttendance kid : dataSetOriginal) {
                         if (StringUtils.containsIgnoreCase(kid.getKidName(),
                                 constraint.toString())) {
                             dataSetFilter.add(kid);
@@ -230,8 +196,7 @@ public class StudentAttendanceListAdapter
             protected void publishResults(final CharSequence constraint,
                                           final FilterResults results) {
                 if (results.values instanceof List) {
-                    getDataSetFilter().clear();
-                    setDataSetFilter((List<StudentAttendance>) results.values);
+                    dataSetFilter = ((List<StudentAttendance>) results.values);
                     sort();
                 }
             }
@@ -242,8 +207,11 @@ public class StudentAttendanceListAdapter
      * sort
      */
     private void sort() {
-        if (getDataSetFilter().size() > 1) {
-            Collections.sort(getDataSetFilter(), getComparator());
+        Log.i(TAG, "sort");
+
+        if (dataSetFilter != null
+                && dataSetFilter.size() > 1) {
+            Collections.sort(dataSetFilter, getComparator());
         }
 
         notifyDataSetChanged();

@@ -12,10 +12,6 @@ import android.view.MenuItem;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.ClassDate;
-import com.fount.seed.wrappers.StudentAttendance;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class StudentAttendanceActivity extends AppCompatActivity {
 
@@ -30,31 +26,23 @@ public class StudentAttendanceActivity extends AppCompatActivity {
             Thread.setDefaultUncaughtExceptionHandler(new CustomExceptionHandler(this));
         }
 
-        final Intent intent = getIntent();
-        final ClassDate classDate = intent != null ? (ClassDate) intent.getSerializableExtra(Constants.EXTRA_KEY_DATE) : null;
-
-        if (classDate != null) {
-            setTitle(classDate.getDate());
-        }
-
         final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mStudentAttendanceListAdapter = new StudentAttendanceListAdapter();
         recyclerView.setAdapter(mStudentAttendanceListAdapter);
-        mStudentAttendanceListAdapter.clear();
+
+        final Intent intent = getIntent();
+        final ClassDate classDate = intent != null ? (ClassDate) intent.getSerializableExtra(Constants.EXTRA_KEY_DATE) : null;
 
         if (classDate == null
                 || classDate.getStudentAttendance() == null) {
             return;
         }
 
-        for (Map.Entry<String, HashMap<String, Boolean>> student : classDate.getStudentAttendance().entrySet()) {
-            StudentAttendance studentAttendance = new StudentAttendance(student.getKey());
-            studentAttendance.setLetters(student.getValue());
-            mStudentAttendanceListAdapter.add(studentAttendance);
-        }
+        setTitle(classDate.getDate());
+        mStudentAttendanceListAdapter.init(classDate.getStudentAttendance());
     }
 
     @Override
