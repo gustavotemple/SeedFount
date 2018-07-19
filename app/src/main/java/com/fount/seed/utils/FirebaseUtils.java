@@ -82,7 +82,7 @@ public final class FirebaseUtils {
 
         mClassDate.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (dataSnapshot.getValue() instanceof Map) {
                     Map<String, Map<String, Object>> classDates = (Map<String, Map<String, Object>>) dataSnapshot.getValue();
@@ -104,7 +104,7 @@ public final class FirebaseUtils {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -120,7 +120,7 @@ public final class FirebaseUtils {
 
         mClassDate.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 final ClassDate classDate = dataSnapshot.getValue(ClassDate.class);
                 if (classDate == null) {
@@ -137,7 +137,7 @@ public final class FirebaseUtils {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }
@@ -152,7 +152,7 @@ public final class FirebaseUtils {
 
         mClassDate.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 final ClassDate classDate = dataSnapshot.getValue(ClassDate.class);
                 if (classDate == null) {
@@ -185,7 +185,7 @@ public final class FirebaseUtils {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
     }
@@ -201,7 +201,7 @@ public final class FirebaseUtils {
                 Log.i(TAG, "Action: " + action);
             }
 
-            if (!action.equals(Constants.HOUR)
+            if (!action.equals(Constants.INTERVAL)
                     && !action.equals(Intent.ACTION_DATE_CHANGED)
                     && !action.equals(Intent.ACTION_TIMEZONE_CHANGED)
                     && !action.equals(Intent.ACTION_TIME_CHANGED)) {

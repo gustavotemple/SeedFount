@@ -21,7 +21,7 @@ public final class Constants {
 
     public static final String V = "V";
 
-    public static final String HOUR = "HOUR";
+    public static final String INTERVAL = "INTERVAL";
 
     public static final String N1_AM = "N1 AM";
 
