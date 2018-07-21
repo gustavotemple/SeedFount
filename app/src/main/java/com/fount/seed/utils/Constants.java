@@ -13,6 +13,8 @@ public final class Constants {
 
     public static final String EXTRA_KEY_OPERATION = BuildConfig.APPLICATION_ID + ".op";
 
+    public static final String EXTRA_KEY_PARENT = BuildConfig.APPLICATION_ID + ".parent";
+
     public static final String CLASS_ROOM = "classRoom";
 
     public static final String P = "P";

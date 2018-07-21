@@ -30,14 +30,16 @@ public class KidsListAdapter
 
     private static final String TAG = KidsListAdapter.class.getSimpleName();
     private final Query query;
+    private final String parent;
     private Set<String> kids;
 
-    KidsListAdapter(final Query query) {
+    KidsListAdapter(final Query query, final String parent) {
         super(KidWrapper.class,
                 R.layout.listitem_kid,
                 ViewHolder.class,
                 FirebaseUtils.getInstance().getDatabaseKids());
         this.query = query;
+        this.parent = parent;
 
         if (query != null) {
             kids = new HashSet<>();
@@ -83,7 +85,7 @@ public class KidsListAdapter
         } else {
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         final KidWrapper kid = snapshot.getValue(KidWrapper.class);
                         if (kids != null
@@ -96,7 +98,7 @@ public class KidsListAdapter
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
+                public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
 
@@ -136,6 +138,7 @@ public class KidsListAdapter
 
                 Intent intent = new Intent(v.getContext(), RegisterActivity.class);
                 intent.putExtra(Constants.EXTRA_KEY_KID, data);
+                intent.putExtra(Constants.EXTRA_KEY_PARENT, parent);
                 v.getContext().startActivity(intent);
             }
         });

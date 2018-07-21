@@ -81,8 +81,9 @@ public class StudentAttendanceListAdapter
         }
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent,
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,
                                          int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_kid,
@@ -100,7 +101,7 @@ public class StudentAttendanceListAdapter
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Typeface type = Typeface.createFromAsset(holder.itemView.getContext().getAssets(), Constants.FONT);
         final StudentAttendance data = dataSetFilter.get(position);
         RelativeLayout.LayoutParams params;

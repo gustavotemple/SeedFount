@@ -19,6 +19,25 @@
     <string name="n5_pm">N5 Noite</string>
     <string name="n6_am">N6 Manhã</string>
     <string name="n6_pm">N6 Noite</string>
+
+    <string name="all_chalets">Todos os Chalés</string>
+    <string name="chalet3_am">Chalé 3 Manhã</string>
+    <string name="chalet3_pm">Chalé 3 Noite</string>
+    <string name="chalet4_am">Chalé 4 Manhã</string>
+    <string name="chalet4_pm">Chalé 4 Noite</string>
+    <string name="chalet5_am">Chalé 5 Manhã</string>
+    <string name="chalet5_pm">Chalé 5 Noite</string>
+    <string name="chalet6_am">Chalé 6 Manhã</string>
+    <string name="chalet6_pm">Chalé 6 Noite</string>
+    <string name="chalet7_am">Chalé 7 Manhã</string>
+    <string name="chalet7_pm">Chalé 7 Noite</string>
+    <string name="chalet8_am">Chalé 8 Manhã</string>
+    <string name="chalet8_pm">Chalé 8 Noite</string>
+    <string name="chalet9_am">Chalé 9 Manhã</string>
+    <string name="chalet9_pm">Chalé 9 Noite</string>
+    <string name="chalet10_am">Chalé 10 Manhã</string>
+    <string name="chalet10_pm">Chalé 10 Noite</string>
+
     <string name="class_dates">Datas</string>
     <string name="infos">Informações</string>
     <string name="reports">Relatórios</string>
@@ -30,6 +49,10 @@
     <string name="kid_added">Registro adicionado.</string>
     <string name="kid_updated">Registro atualizado.</string>
     <string name="kid_deleted">Registro removido.</string>
+
+    <string name="babies">Semear Bebês</string>
+    <string name="ebi_ci">EBI/CI</string>
+    <string name="management">Gestão</string>
 
     <!-- Strings related to register -->
     <string name="title_register">Novo Registro</string>

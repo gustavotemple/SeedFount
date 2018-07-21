@@ -27,6 +27,7 @@ import com.vicmikhailau.maskededittext.MaskedEditText;
 public class RegisterActivity extends AppCompatActivity {
 
     private KidWrapper kidWrapper;
+    private String parent;
 
     private TextInputEditText mKidName;
     private RadioGroup mKidGender;
@@ -86,7 +87,8 @@ public class RegisterActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent();
+                intent.setClassName(getApplicationContext(), parent);
                 intent.putExtra(Constants.EXTRA_KEY_KID, kidWrapper);
                 intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.DELETE);
                 startActivity(intent);
@@ -99,6 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void setUI(Bundle savedInstanceState) {
         final Bundle state = savedInstanceState != null ? savedInstanceState : getIntent().getExtras();
         kidWrapper = state != null ? (KidWrapper) state.getParcelable(Constants.EXTRA_KEY_KID) : null;
+        parent = getIntent().getStringExtra(Constants.EXTRA_KEY_PARENT);
 
         if (kidWrapper == null) {
             setTitle(R.string.title_register);
@@ -113,7 +116,8 @@ public class RegisterActivity extends AppCompatActivity {
                         return;
                     }
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent();
+                    intent.setClassName(getApplicationContext(), parent);
                     intent.putExtra(Constants.EXTRA_KEY_KID, kid);
                     intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.INSERT);
                     startActivity(intent);
@@ -135,7 +139,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                     kid.setUid(kidWrapper.getUid());
 
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent intent = new Intent();
+                    intent.setClassName(getApplicationContext(), parent);
                     intent.putExtra(Constants.EXTRA_KEY_KID, kid);
                     intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.UPDATE);
                     startActivity(intent);
