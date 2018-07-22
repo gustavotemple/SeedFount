@@ -39,7 +39,7 @@ public abstract class KidsActivity extends AppCompatActivity
     protected FloatingActionButton fab;
     protected KidsListAdapter mKidsListAdapter;
     protected ClassDateListAdapter mClassDateListAdapter;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,7 +79,6 @@ public abstract class KidsActivity extends AppCompatActivity
                 recyclerView.smoothScrollToPosition(mKidsListAdapter.getItemCount());
             }
         });
-
 
     }
 
@@ -200,8 +199,6 @@ public abstract class KidsActivity extends AppCompatActivity
             Log.e(TAG, "onCancelled: " + databaseError);
         }
     };
-
-
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull final Menu menu) {

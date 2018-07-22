@@ -2,6 +2,7 @@ package com.fount.seed;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -35,15 +36,14 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioButton mGirl;
     private MaskedEditText mBirthDate;
     private TextInputEditText mClassRoom;
-    private TextInputEditText mDadName;
-    private TextInputEditText mMomName;
-    private TextInputEditText mDadEmail;
-    private TextInputEditText mMomEmail;
-    private TextInputEditText mCityName;
-    private TextInputEditText mKidAddress;
+    private TextInputEditText mSponsorName;
+    private TextInputEditText mSponsorEmail;
+    private TextInputEditText mCity;
+    private TextInputEditText mAddress;
     private MaskedEditText mCellPhone;
     private Switch mChurch;
     private TextInputEditText mChurchName;
+    private TextInputEditText mAllergy;
     private Switch mWillReturn;
     private Switch mCanLeave;
     private Button button;
@@ -65,13 +65,12 @@ public class RegisterActivity extends AppCompatActivity {
         mGirl = findViewById(R.id.girl);
         mBirthDate = findViewById(R.id.birth_date);
         mClassRoom = findViewById(R.id.class_room);
-        mDadName = findViewById(R.id.dad_name);
-        mMomName = findViewById(R.id.mom_name);
-        mDadEmail = findViewById(R.id.dad_email);
-        mMomEmail = findViewById(R.id.mom_email);
-        mCityName = findViewById(R.id.city_name);
-        mKidAddress = findViewById(R.id.kid_address);
+        mSponsorName = findViewById(R.id.sponsor_name);
+        mSponsorEmail = findViewById(R.id.sponsor_email);
+        mCity = findViewById(R.id.city);
+        mAddress = findViewById(R.id.address);
         mCellPhone = findViewById(R.id.cell_phone);
+        mAllergy = findViewById(R.id.allergy);
         mChurch = findViewById(R.id.church);
         mChurchName = findViewById(R.id.church_name);
         mWillReturn = findViewById(R.id.will_return);
@@ -153,12 +152,11 @@ public class RegisterActivity extends AppCompatActivity {
         mKidName.setText(kidWrapper.getKidName());
         mBirthDate.setText(kidWrapper.getBirthDate());
         mClassRoom.setText(kidWrapper.getClassRoom());
-        mDadName.setText(kidWrapper.getDadName());
-        mMomName.setText(kidWrapper.getMomName());
-        mDadEmail.setText(kidWrapper.getDadEmail());
-        mMomEmail.setText(kidWrapper.getMomEmail());
-        mCityName.setText(kidWrapper.getCityName());
-        mKidAddress.setText(kidWrapper.getKidAddress());
+        mSponsorName.setText(kidWrapper.getSponsorName());
+        mSponsorEmail.setText(kidWrapper.getSponsorEmail());
+        mCity.setText(kidWrapper.getCityName());
+        mAddress.setText(kidWrapper.getKidAddress());
+        mAllergy.setText(kidWrapper.getAllergy());
         mCellPhone.setText(kidWrapper.getCellPhone());
 
         if (kidWrapper.getChurchName() != null) {
@@ -186,24 +184,18 @@ public class RegisterActivity extends AppCompatActivity {
         TextInputLayout mClassRoomLayout = findViewById(R.id.class_room_layout);
         mClassRoomLayout.setTypeface(type);
         mClassRoom.setTypeface(type);
-        TextInputLayout mDadNameLayout = findViewById(R.id.dad_name_layout);
-        mDadNameLayout.setTypeface(type);
-        mDadName.setTypeface(type);
-        TextInputLayout mMomNameLayout = findViewById(R.id.mom_name_layout);
-        mMomNameLayout.setTypeface(type);
-        mMomName.setTypeface(type);
-        TextInputLayout mDadEmailLayout = findViewById(R.id.dad_email_layout);
-        mDadEmailLayout.setTypeface(type);
-        mDadEmail.setTypeface(type);
-        TextInputLayout mMomEmailLayout = findViewById(R.id.mom_email_layout);
-        mMomEmailLayout.setTypeface(type);
-        mMomEmail.setTypeface(type);
-        TextInputLayout mCityNameLayout = findViewById(R.id.city_name_layout);
+        TextInputLayout mSponsorNameLayout = findViewById(R.id.sponsor_name_layout);
+        mSponsorNameLayout.setTypeface(type);
+        mSponsorName.setTypeface(type);
+        TextInputLayout mSponsorEmailLayout = findViewById(R.id.sponsor_email_layout);
+        mSponsorEmailLayout.setTypeface(type);
+        mSponsorEmail.setTypeface(type);
+        TextInputLayout mCityNameLayout = findViewById(R.id.city_layout);
         mCityNameLayout.setTypeface(type);
-        mCityName.setTypeface(type);
-        TextInputLayout mKidAddressLayout = findViewById(R.id.kid_address_layout);
+        mCity.setTypeface(type);
+        TextInputLayout mKidAddressLayout = findViewById(R.id.address_layout);
         mKidAddressLayout.setTypeface(type);
-        mKidAddress.setTypeface(type);
+        mAddress.setTypeface(type);
         TextInputLayout mCellPhoneLayout = findViewById(R.id.cell_phone_layout);
         mCellPhoneLayout.setTypeface(type);
         mCellPhone.setTypeface(type);
@@ -223,25 +215,23 @@ public class RegisterActivity extends AppCompatActivity {
         mKidName.setError(null);
         mBirthDate.setError(null);
         mClassRoom.setError(null);
-        mDadName.setError(null);
-        mMomName.setError(null);
-        mDadEmail.setError(null);
-        mMomEmail.setError(null);
-        mCityName.setError(null);
-        mKidAddress.setError(null);
+        mSponsorName.setError(null);
+        mSponsorEmail.setError(null);
+        mCity.setError(null);
+        mAddress.setError(null);
         mCellPhone.setError(null);
+        mAllergy.setError(null);
 
         // Store values at the time of the register attempt.
         String kidName = mKidName.getText().toString();
         String birthDate = mBirthDate.getText().toString();
         String classRoom = mClassRoom.getText().toString();
-        String dadName = mDadName.getText().toString();
-        String momName = mMomName.getText().toString();
-        String dadEmail = mDadEmail.getText().toString();
-        String momEmail = mMomEmail.getText().toString();
-        String cityName = mCityName.getText().toString();
-        String kidAddress = mKidAddress.getText().toString();
+        String sponsorName = mSponsorName.getText().toString();
+        String sponsorEmail = mSponsorEmail.getText().toString();
+        String city = mCity.getText().toString();
+        String address = mAddress.getText().toString();
         String cellPhone = mCellPhone.getText().toString();
+        String allergy = mAllergy.getText().toString();
         String churchName = mChurchName.getText().toString();
         int kidGender = mKidGender.getCheckedRadioButtonId();
 
@@ -253,16 +243,44 @@ public class RegisterActivity extends AppCompatActivity {
             mKidName.setError(getString(R.string.error_field_required));
             focusView = mKidName;
             cancel = true;
-        } else if (!isFieldValid(kidName)) {
+        } else if (isFieldInvalid(kidName)) {
             mKidName.setError(getString(R.string.error_field_invalid));
             focusView = mKidName;
             cancel = true;
         }
 
-        // Check for a valid kid birthDate.
-        if (TextUtils.isEmpty(birthDate)) {
-            mBirthDate.setError(getString(R.string.error_field_required));
-            focusView = mBirthDate;
+        // Check for a valid sponsorName.
+        if (!TextUtils.isEmpty(sponsorName) && isFieldInvalid(sponsorName)) {
+            mSponsorName.setError(getString(R.string.error_field_invalid));
+            focusView = mSponsorName;
+            cancel = true;
+        }
+
+        // Check for a valid sponsorEmail.
+        if (!TextUtils.isEmpty(sponsorEmail) && isEmailInvalid(sponsorEmail)) {
+            mSponsorEmail.setError(getString(R.string.error_field_invalid));
+            focusView = mSponsorEmail;
+            cancel = true;
+        }
+
+        // Check for a valid allergy.
+        if (!TextUtils.isEmpty(allergy) && isFieldInvalid(allergy)) {
+            mAllergy.setError(getString(R.string.error_field_invalid));
+            focusView = mAllergy;
+            cancel = true;
+        }
+
+        // Check for a valid city.
+        if (!TextUtils.isEmpty(city) && isFieldInvalid(city)) {
+            mCity.setError(getString(R.string.error_field_invalid));
+            focusView = mCity;
+            cancel = true;
+        }
+
+        // Check for a valid address.
+        if (!TextUtils.isEmpty(address) && isFieldInvalid(address)) {
+            mAddress.setError(getString(R.string.error_field_invalid));
+            focusView = mAddress;
             cancel = true;
         }
 
@@ -271,86 +289,9 @@ public class RegisterActivity extends AppCompatActivity {
             mClassRoom.setError(getString(R.string.error_field_required));
             focusView = mClassRoom;
             cancel = true;
-        } else if (!isFieldValid(classRoom)) {
+        } else if (isFieldInvalid(classRoom)) {
             mClassRoom.setError(getString(R.string.error_field_invalid));
             focusView = mClassRoom;
-            cancel = true;
-        }
-
-        // Check for a valid kid dadName.
-        if (TextUtils.isEmpty(dadName)) {
-            mDadName.setError(getString(R.string.error_field_required));
-            focusView = mDadName;
-            cancel = true;
-        } else if (!isFieldValid(dadName)) {
-            mDadName.setError(getString(R.string.error_field_invalid));
-            focusView = mDadName;
-            cancel = true;
-        }
-
-        // Check for a valid kid momName.
-        if (TextUtils.isEmpty(momName)) {
-            mMomName.setError(getString(R.string.error_field_required));
-            focusView = mMomName;
-            cancel = true;
-        } else if (!isFieldValid(momName)) {
-            mMomName.setError(getString(R.string.error_field_invalid));
-            focusView = mMomName;
-            cancel = true;
-        }
-
-        // Check for a valid dadEmail.
-        if (TextUtils.isEmpty(dadEmail)) {
-            mDadEmail.setError(getString(R.string.error_field_required));
-            focusView = mDadEmail;
-            cancel = true;
-        } else if (!isEmailValid(dadEmail)) {
-            mDadEmail.setError(getString(R.string.error_field_invalid));
-            focusView = mDadEmail;
-            cancel = true;
-        }
-
-        // Check for a valid momEmail.
-        if (TextUtils.isEmpty(momEmail)) {
-            mMomEmail.setError(getString(R.string.error_field_required));
-            focusView = mMomEmail;
-            cancel = true;
-        } else if (!isEmailValid(momEmail)) {
-            mMomEmail.setError(getString(R.string.error_field_invalid));
-            focusView = mMomEmail;
-            cancel = true;
-        }
-
-        // Check for a valid cityName.
-        if (TextUtils.isEmpty(cityName)) {
-            mCityName.setError(getString(R.string.error_field_required));
-            focusView = mCityName;
-            cancel = true;
-        } else if (!isFieldValid(cityName)) {
-            mCityName.setError(getString(R.string.error_field_invalid));
-            focusView = mCityName;
-            cancel = true;
-        }
-
-        // Check for a valid kidAddress.
-        if (TextUtils.isEmpty(kidAddress)) {
-            mKidAddress.setError(getString(R.string.error_field_required));
-            focusView = mKidAddress;
-            cancel = true;
-        } else if (!isFieldValid(kidAddress)) {
-            mKidAddress.setError(getString(R.string.error_field_invalid));
-            focusView = mKidAddress;
-            cancel = true;
-        }
-
-        // Check for a valid cellPhone.
-        if (TextUtils.isEmpty(cellPhone)) {
-            mCellPhone.setError(getString(R.string.error_field_required));
-            focusView = mCellPhone;
-            cancel = true;
-        } else if (!isFieldValid(cellPhone)) {
-            mCellPhone.setError(getString(R.string.error_field_invalid));
-            focusView = mCellPhone;
             cancel = true;
         }
 
@@ -373,22 +314,21 @@ public class RegisterActivity extends AppCompatActivity {
             return null;
         }
 
-        return new KidWrapper(kidName, dadName,
-                momName, dadEmail,
-                momEmail, cityName,
-                kidAddress, classRoom,
+        return new KidWrapper(kidName, sponsorName,
+                sponsorEmail, city,
+                address, classRoom,
                 churchName, cellPhone,
                 gender, mCanLeave.isChecked(),
                 mChurch.isChecked(), mWillReturn.isChecked(),
-                birthDate);
+                birthDate, allergy);
     }
 
-    private boolean isFieldValid(String name) {
-        return name.length() > 2;
+    private boolean isFieldInvalid(@NonNull String field) {
+        return field.length() < 1;
     }
 
-    private boolean isEmailValid(String email) {
-        return email.contains("@");
+    private boolean isEmailInvalid(@NonNull String email) {
+        return !email.contains("@");
     }
 
 }

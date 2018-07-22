@@ -50,7 +50,6 @@ public class StartActivity extends AppCompatActivity {
         buttonManagement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //startActivity(new Intent(StartActivity.this.getApplicationContext(), RegisterActivity.class));
             }
         });
 
@@ -59,7 +58,13 @@ public class StartActivity extends AppCompatActivity {
         }
 
         putAlarm(getApplicationContext());
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        FirebaseUtils.getInstance().clean();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -84,7 +89,6 @@ public class StartActivity extends AppCompatActivity {
                     displayIntent);
         }
     }
-
 }
 
 

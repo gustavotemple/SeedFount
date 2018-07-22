@@ -23,15 +23,14 @@ public class KidWrapper implements Parcelable {
 
     public String uid;
     public String kidName;
-    public String dadName;
-    public String momName;
-    public String dadEmail;
-    public String momEmail;
+    public String sponsorName;
+    public String sponsorEmail;
     public String cityName;
     public String kidAddress;
     public String classRoom;
     public String churchName;
     public String cellPhone;
+    public String allergy;
     public Long gender;
     public Boolean canLeave;
     public Boolean church;
@@ -42,19 +41,16 @@ public class KidWrapper implements Parcelable {
     public KidWrapper() {
     }
 
-    public KidWrapper(String kidName, String dadName,
-                      String momName, String dadEmail,
-                      String momEmail, String cityName,
+    public KidWrapper(String kidName, String sponsorName,
+                      String sponsorEmail, String cityName,
                       String kidAddress, String classRoom,
                       String churchName, String cellPhone,
                       Long gender, Boolean canLeave,
                       Boolean church, Boolean willReturn,
-                      String birthDate) {
+                      String birthDate, String allergy) {
         this.kidName = kidName;
-        this.dadName = dadName;
-        this.momName = momName;
-        this.dadEmail = dadEmail;
-        this.momEmail = momEmail;
+        this.sponsorName = sponsorName;
+        this.sponsorEmail = sponsorEmail;
         this.cityName = cityName;
         this.kidAddress = kidAddress;
         this.classRoom = classRoom;
@@ -62,6 +58,7 @@ public class KidWrapper implements Parcelable {
         this.cellPhone = cellPhone;
         this.gender = gender;
         this.canLeave = canLeave;
+        this.allergy = allergy;
         this.church = church;
         this.willReturn = willReturn;
         this.birthDate = birthDate;
@@ -70,15 +67,14 @@ public class KidWrapper implements Parcelable {
     protected KidWrapper(Parcel in) {
         uid = in.readString();
         kidName = in.readString();
-        dadName = in.readString();
-        momName = in.readString();
-        dadEmail = in.readString();
-        momEmail = in.readString();
+        sponsorName = in.readString();
+        sponsorEmail = in.readString();
         cityName = in.readString();
         kidAddress = in.readString();
         classRoom = in.readString();
         churchName = in.readString();
         cellPhone = in.readString();
+        allergy = in.readString();
         gender = in.readLong();
         canLeave = in.readByte() != 0;
         church = in.readByte() != 0;
@@ -119,20 +115,12 @@ public class KidWrapper implements Parcelable {
         return gender;
     }
 
-    public String getDadName() {
-        return dadName;
+    public String getSponsorName() {
+        return sponsorName;
     }
 
-    public String getMomName() {
-        return momName;
-    }
-
-    public String getDadEmail() {
-        return dadEmail;
-    }
-
-    public String getMomEmail() {
-        return momEmail;
+    public String getSponsorEmail() {
+        return sponsorEmail;
     }
 
     public String getCityName() {
@@ -149,6 +137,10 @@ public class KidWrapper implements Parcelable {
 
     public String getCellPhone() {
         return cellPhone;
+    }
+
+    public String getAllergy() {
+        return allergy;
     }
 
     public Boolean isCanLeave() {
@@ -181,15 +173,14 @@ public class KidWrapper implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(uid);
         dest.writeString(kidName);
-        dest.writeString(dadName);
-        dest.writeString(momName);
-        dest.writeString(dadEmail);
-        dest.writeString(momEmail);
+        dest.writeString(sponsorName);
+        dest.writeString(sponsorEmail);
         dest.writeString(cityName);
         dest.writeString(kidAddress);
         dest.writeString(classRoom);
         dest.writeString(churchName);
         dest.writeString(cellPhone);
+        dest.writeString(allergy);
         dest.writeLong(gender);
         dest.writeByte((byte) (canLeave ? 1 : 0));
         dest.writeByte((byte) (church ? 1 : 0));

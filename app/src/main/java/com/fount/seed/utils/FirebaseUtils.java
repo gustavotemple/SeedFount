@@ -53,6 +53,11 @@ public final class FirebaseUtils {
         mClassDate.keepSynced(true);
     }
 
+    public void clean() {
+        classDate = null;
+        dateId = null;
+    }
+
     public DatabaseReference getDatabaseKids() {
         return mDatabaseKids;
     }
@@ -191,6 +196,9 @@ public final class FirebaseUtils {
     }
 
     public static final class DateGenerator extends BroadcastReceiver {
+
+        private static final String TAG = DateGenerator.class.getSimpleName();
+
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();

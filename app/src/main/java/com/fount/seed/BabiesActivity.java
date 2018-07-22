@@ -25,18 +25,18 @@ public final class BabiesActivity extends KidsActivity {
     }
 
     @Override
-    protected KidsListAdapter getKidsListAdapter () {
-        return new KidsListAdapter(null, getPackageName() + "."  + TAG);
+    protected KidsListAdapter getKidsListAdapter() {
+        return new KidsListAdapter(null, getPackageName() + "." + TAG);
     }
 
     @Override
-    protected void setView(){
+    protected void setView() {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(BabiesActivity.this.getApplicationContext(),
                         RegisterActivity.class);
-                intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "."  + TAG);
+                intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "." + TAG);
                 startActivity(intent);
             }
         });
@@ -117,7 +117,7 @@ public final class BabiesActivity extends KidsActivity {
                 query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_PM);
             }
 
-            mKidsListAdapter = new KidsListAdapter(query, getPackageName() + "."  + TAG);
+            mKidsListAdapter = new KidsListAdapter(query, getPackageName() + "." + TAG);
             recyclerView.setAdapter(mKidsListAdapter);
 
             // Make sure new events are visible
