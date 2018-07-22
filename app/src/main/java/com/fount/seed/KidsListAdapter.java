@@ -32,20 +32,19 @@ public class KidsListAdapter
     private static final String TAG = KidsListAdapter.class.getSimpleName();
     private final Query query;
     private final String parent;
-    private final String place;
+    private final DatabaseReference databaseReference;
     private Set<String> kids;
 
     KidsListAdapter(final DatabaseReference databaseReference,
                     final Query query,
-                    final String parent,
-                    final String place) {
+                    final String parent) {
         super(KidWrapper.class,
                 R.layout.listitem_kid,
                 ViewHolder.class,
                 databaseReference);
         this.query = query;
         this.parent = parent;
-        this.place = place;
+        this.databaseReference = databaseReference;
 
         if (query != null) {
             kids = new HashSet<>();
@@ -105,8 +104,7 @@ public class KidsListAdapter
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-        } else if (data.classRoom != null
-                && data.classRoom.contains(place)) {
+        } else {
             populateViewHolder(holder, data);
         }
     }
@@ -192,12 +190,7 @@ public class KidsListAdapter
      * @param kid KidWrapper
      */
     void add(@NonNull final KidWrapper kid) {
-        if (place.equals(Constants.ROOM)) {
-            FirebaseUtils.getInstance().saveRoomKid(kid);
-        } else if (place.equals(Constants.CHALET)) {
-            FirebaseUtils.getInstance().saveChaletKid(kid);
-        }
-
+        FirebaseUtils.getInstance().saveKid(kid, databaseReference);
         notifyDataSetChanged();
     }
 
@@ -207,12 +200,7 @@ public class KidsListAdapter
      * @param kid KidWrapper
      */
     void remove(@NonNull final KidWrapper kid) {
-        if (place.equals(Constants.ROOM)) {
-            FirebaseUtils.getInstance().deleteRoomKid(kid);
-        } else if (place.equals(Constants.CHALET)) {
-            FirebaseUtils.getInstance().deleteChaletKid(kid);
-        }
-
+        FirebaseUtils.getInstance().deleteKid(kid, databaseReference);
         notifyDataSetChanged();
     }
 
@@ -222,12 +210,7 @@ public class KidsListAdapter
      * @param kid KidWrapper
      */
     void replace(@NonNull final KidWrapper kid) {
-        if (place.equals(Constants.ROOM)) {
-            FirebaseUtils.getInstance().updateRoomKid(kid);
-        } else if (place.equals(Constants.CHALET)) {
-            FirebaseUtils.getInstance().updateChaletKid(kid);
-        }
-
+        FirebaseUtils.getInstance().updateKid(kid, databaseReference);
         notifyDataSetChanged();
     }
 }

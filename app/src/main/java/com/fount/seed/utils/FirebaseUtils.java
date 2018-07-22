@@ -27,16 +27,17 @@ public final class FirebaseUtils {
     private static final String KIDS_CHALET = "KidsChalet";
     private static final String DATES_ROOM = "DatesRoom";
     private static final String DATES_CHALET = "DatesChalet";
-    private static final String AM = "AM";
-    private static final String PM = "PM";
 
     private DatabaseReference mRoomKids;
     private DatabaseReference mChaletKids;
-    private DatabaseReference mClassDate;
+    private DatabaseReference mDatesRoom;
+    private DatabaseReference mDatesChalet;
 
     private static FirebaseUtils instance = null;
-    private static ClassDate classDate;
-    private static String dateId;
+    private static ClassDate roomClassDate;
+    private static ClassDate chaletClassDate;
+    private static String roomDateId;
+    private static String chaletDateId;
 
     private FirebaseUtils() {
     }
@@ -54,15 +55,17 @@ public final class FirebaseUtils {
         mRoomKids.keepSynced(true);
         mChaletKids = FirebaseDatabase.getInstance().getReference().child(KIDS_CHALET);
         mChaletKids.keepSynced(true);
-        mClassDate = FirebaseDatabase.getInstance().getReference().child(DATES_ROOM);
-        mClassDate.keepSynced(true);
-        mClassDate = FirebaseDatabase.getInstance().getReference().child(DATES_CHALET);
-        mClassDate.keepSynced(true);
+        mDatesRoom = FirebaseDatabase.getInstance().getReference().child(DATES_ROOM);
+        mDatesRoom.keepSynced(true);
+        mDatesChalet = FirebaseDatabase.getInstance().getReference().child(DATES_CHALET);
+        mDatesChalet.keepSynced(true);
     }
 
     public void clean() {
-        classDate = null;
-        dateId = null;
+        roomClassDate = null;
+        chaletClassDate = null;
+        roomDateId = null;
+        chaletDateId = null;
     }
 
     public DatabaseReference getRoomKids() {
@@ -73,43 +76,37 @@ public final class FirebaseUtils {
         return mChaletKids;
     }
 
-    public DatabaseReference getClassDate() {
-        return mClassDate;
+    public DatabaseReference getDatesRoom() {
+        return mDatesRoom;
     }
 
-    public void saveRoomKid(@NonNull final KidWrapper kid) {
-        kid.setUid(mRoomKids.push().getKey());
-        mRoomKids.child(kid.getUid()).setValue(kid);
+    public DatabaseReference getDatesChalet() {
+        return mDatesChalet;
     }
 
-    public void updateRoomKid(@NonNull final KidWrapper kid) {
-        mRoomKids.child(kid.getUid()).setValue(kid);
+    public void saveKid(@NonNull final KidWrapper kid,
+                        @NonNull final DatabaseReference databaseReference) {
+        kid.setUid(databaseReference.push().getKey());
+        databaseReference.child(kid.getUid()).setValue(kid);
     }
 
-    public void deleteRoomKid(@NonNull final KidWrapper kid) {
-        mRoomKids.child(kid.getUid()).removeValue();
+    public void updateKid(@NonNull final KidWrapper kid,
+                          @NonNull final DatabaseReference databaseReference) {
+        databaseReference.child(kid.getUid()).setValue(kid);
     }
 
-    public void saveChaletKid(@NonNull final KidWrapper kid) {
-        kid.setUid(mChaletKids.push().getKey());
-        mChaletKids.child(kid.getUid()).setValue(kid);
+    public void deleteKid(@NonNull final KidWrapper kid,
+                          @NonNull final DatabaseReference databaseReference) {
+        databaseReference.child(kid.getUid()).removeValue();
     }
 
-    public void updateChaletKid(@NonNull final KidWrapper kid) {
-        mChaletKids.child(kid.getUid()).setValue(kid);
-    }
-
-    public void deleteChaletKid(@NonNull final KidWrapper kid) {
-        mChaletKids.child(kid.getUid()).removeValue();
-    }
-
-    private void getDateId() {
-        if (mClassDate == null) {
-            Log.e(TAG, "ClassDate error");
+    private void getDateId(final DatabaseReference databaseReference) {
+        if (databaseReference == null) {
+            Log.e(TAG, "getDateId error");
             return;
         }
 
-        mClassDate.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -119,17 +116,30 @@ public final class FirebaseUtils {
                         for (Map.Entry<String, Object> date : classDate.getValue().entrySet()) {
                             if (date.getValue() instanceof String
                                     && ((String) date.getValue()).equalsIgnoreCase(DateGenerator.getPeriod())) {
-                                FirebaseUtils.dateId = classDate.getKey();
-                                FirebaseUtils.classDate = new ClassDate(DateGenerator.getPeriod());
+
+                                if (databaseReference == getDatesRoom()) {
+                                    FirebaseUtils.roomDateId = classDate.getKey();
+                                    FirebaseUtils.roomClassDate = new ClassDate(DateGenerator.getPeriod());
+                                } else if (databaseReference == getDatesChalet()) {
+                                    FirebaseUtils.chaletDateId = classDate.getKey();
+                                    FirebaseUtils.chaletClassDate = new ClassDate(DateGenerator.getPeriod());
+                                }
+
                                 return;
                             }
                         }
                     }
                 }
 
-                FirebaseUtils.classDate = new ClassDate(DateGenerator.getPeriod());
-                FirebaseUtils.dateId = mClassDate.push().getKey();
-                mClassDate.child(dateId).setValue(FirebaseUtils.classDate);
+                if (databaseReference == getDatesRoom()) {
+                    FirebaseUtils.roomDateId = mDatesRoom.push().getKey();
+                    FirebaseUtils.roomClassDate = new ClassDate(DateGenerator.getPeriod());
+                    databaseReference.child(roomDateId).setValue(FirebaseUtils.roomClassDate);
+                } else if (databaseReference == getDatesChalet()) {
+                    FirebaseUtils.chaletDateId = mDatesChalet.push().getKey();
+                    FirebaseUtils.chaletClassDate = new ClassDate(DateGenerator.getPeriod());
+                    databaseReference.child(chaletDateId).setValue(FirebaseUtils.chaletClassDate);
+                }
             }
 
             @Override
@@ -142,12 +152,30 @@ public final class FirebaseUtils {
     public void setLetter(@NonNull final KidWrapper kid,
                           @NonNull final String letter,
                           @NonNull final CheckBox checkBox) {
-        if (dateId == null) {
-            Log.e(TAG, "dateId error");
+
+        if (kid.classRoom == null
+                || kid.classRoom.isEmpty()) {
+            Log.e(TAG, "setLetter error");
             return;
         }
 
-        mClassDate.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
+        String dateId = null;
+        DatabaseReference databaseReference = null;
+        if (kid.classRoom.contains(Constants.ROOM)) {
+            dateId = roomDateId;
+            databaseReference = mDatesRoom;
+        } else if (kid.classRoom.contains(Constants.CHALET)) {
+            dateId = chaletDateId;
+            databaseReference = mDatesChalet;
+        }
+
+        if (dateId == null
+                || databaseReference == null) {
+            Log.e(TAG, "setLetter error");
+            return;
+        }
+
+        databaseReference.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -174,12 +202,37 @@ public final class FirebaseUtils {
     public void saveStudentAttendance(@NonNull final KidWrapper kid,
                                       @NonNull final String letter,
                                       final boolean value) {
-        if (dateId == null) {
-            Log.e(TAG, "dateId error");
+        if (kid.classRoom == null
+                || kid.classRoom.isEmpty()) {
+            Log.e(TAG, "saveStudentAttendance error");
             return;
         }
 
-        mClassDate.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
+        String dateId = null;
+        DatabaseReference databaseReference = null;
+        if (kid.classRoom.contains(Constants.ROOM)) {
+            dateId = roomDateId;
+            databaseReference = mDatesRoom;
+        } else if (kid.classRoom.contains(Constants.CHALET)) {
+            dateId = chaletDateId;
+            databaseReference = mDatesChalet;
+        }
+
+        if (dateId == null
+                || databaseReference == null) {
+            Log.e(TAG, "saveStudentAttendance error");
+            return;
+        }
+
+        saveStudentAttendance(kid, databaseReference, dateId, letter, value);
+    }
+
+    private void saveStudentAttendance(@NonNull final KidWrapper kid,
+                                       @NonNull final DatabaseReference databaseReference,
+                                       @NonNull final String dateId,
+                                       @NonNull final String letter,
+                                       final boolean value) {
+        databaseReference.child(dateId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -210,7 +263,7 @@ public final class FirebaseUtils {
                     classDate.getStudentAttendance().get(kid.getKidName()).put(letter, value);
                 }
 
-                mClassDate.child(dateId).setValue(classDate);
+                databaseReference.child(dateId).setValue(classDate);
             }
 
             @Override
@@ -240,10 +293,14 @@ public final class FirebaseUtils {
                 return;
             }
 
-            if (dateId == null
-                    || classDate == null
-                    || !classDate.getDate().equalsIgnoreCase(getPeriod())) {
-                FirebaseUtils.getInstance().getDateId();
+            if (roomDateId == null
+                    || chaletDateId == null
+                    || roomClassDate == null
+                    || chaletClassDate == null
+                    || !roomClassDate.getDate().equalsIgnoreCase(getPeriod())
+                    || !chaletClassDate.getDate().equalsIgnoreCase(getPeriod())) {
+                FirebaseUtils.getInstance().getDateId(FirebaseUtils.getInstance().getDatesRoom());
+                FirebaseUtils.getInstance().getDateId(FirebaseUtils.getInstance().getDatesChalet());
             }
         }
 
@@ -253,11 +310,11 @@ public final class FirebaseUtils {
         }
 
         public static String formatDate(String date) {
-            if (date.contains(AM)) {
-                date = date.replaceAll(AM, "");
+            if (date.contains(Constants.AM)) {
+                date = date.replaceAll(Constants.AM, "");
                 date = date.concat("Manhã");
-            } else if (date.contains(PM)) {
-                date = date.replaceAll(PM, "");
+            } else if (date.contains(Constants.PM)) {
+                date = date.replaceAll(Constants.PM, "");
                 date = date.concat("Noite");
             }
 

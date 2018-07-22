@@ -31,7 +31,7 @@ public final class Constants {
 
     public static final String AM = "AM";
 
-    private static final String PM = "PM";
+    public static final String PM = "PM";
 
     public static final String ROOM_1_AM = ROOM + " 1 " + AM;
 

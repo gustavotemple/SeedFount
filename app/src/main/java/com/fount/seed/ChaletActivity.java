@@ -27,7 +27,12 @@ public final class ChaletActivity extends KidsActivity {
     @Override
     protected KidsListAdapter getKidsListAdapter() {
         return new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                null, getPackageName() + "." + TAG, Constants.CHALET);
+                null, getPackageName() + "." + TAG);
+    }
+
+    @Override
+    protected ClassDateListAdapter getClassDateListAdapter() {
+        return new ClassDateListAdapter(FirebaseUtils.getInstance().getDatesChalet());
     }
 
     @Override
@@ -129,7 +134,7 @@ public final class ChaletActivity extends KidsActivity {
             }
 
             mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                    query, getPackageName() + "." + TAG, Constants.CHALET);
+                    query, getPackageName() + "." + TAG);
             recyclerView.setAdapter(mKidsListAdapter);
 
             // Make sure new events are visible

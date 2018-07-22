@@ -120,6 +120,7 @@ public class StudentAttendanceListAdapter
         holder.checkBoxP.setEnabled(false);
         holder.checkBoxP.setTypeface(type);
         if (data.getLetters().containsKey(Constants.P)) {
+            holder.checkBoxP.setVisibility(View.VISIBLE);
             holder.checkBoxP.setChecked(data.getLetters().get(Constants.P));
         }
 
@@ -132,6 +133,7 @@ public class StudentAttendanceListAdapter
         holder.checkBoxL.setEnabled(false);
         holder.checkBoxL.setTypeface(type);
         if (data.getLetters().containsKey(Constants.L)) {
+            holder.checkBoxL.setVisibility(View.VISIBLE);
             holder.checkBoxL.setChecked(data.getLetters().get(Constants.L));
         }
 
@@ -144,6 +146,7 @@ public class StudentAttendanceListAdapter
         holder.checkBoxV.setEnabled(false);
         holder.checkBoxV.setTypeface(type);
         if (data.getLetters().containsKey(Constants.V)) {
+            holder.checkBoxV.setVisibility(View.VISIBLE);
             holder.checkBoxV.setChecked(data.getLetters().get(Constants.V));
         }
 

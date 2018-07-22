@@ -66,7 +66,7 @@ public abstract class KidsActivity extends AppCompatActivity
 
         setView();
 
-        mClassDateListAdapter = new ClassDateListAdapter();
+        mClassDateListAdapter = getClassDateListAdapter();
         mKidsListAdapter = getKidsListAdapter();
         recyclerView.setAdapter(mKidsListAdapter);
 
@@ -85,6 +85,8 @@ public abstract class KidsActivity extends AppCompatActivity
     protected abstract void setView();
 
     protected abstract KidsListAdapter getKidsListAdapter();
+
+    protected abstract ClassDateListAdapter getClassDateListAdapter();
 
     @Override
     protected void onResume() {

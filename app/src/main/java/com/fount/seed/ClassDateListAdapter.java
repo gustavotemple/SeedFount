@@ -2,6 +2,7 @@ package com.fount.seed;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -12,17 +13,18 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
 import com.fount.seed.wrappers.ClassDate;
+import com.google.firebase.database.DatabaseReference;
 
 public class ClassDateListAdapter
         extends FirebaseRecyclerAdapter<ClassDate, ClassDateListAdapter.ViewHolder> {
 
     private static final String TAG = ClassDateListAdapter.class.getSimpleName();
 
-    ClassDateListAdapter() {
+    ClassDateListAdapter(@NonNull final DatabaseReference databaseReference) {
         super(ClassDate.class,
                 R.layout.listitem_date,
                 ViewHolder.class,
-                FirebaseUtils.getInstance().getClassDate());
+                databaseReference);
     }
 
     /**
