@@ -158,10 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAddress.setText(kidWrapper.getKidAddress());
         mAllergy.setText(kidWrapper.getAllergy());
         mCellPhone.setText(kidWrapper.getCellPhone());
-
-        if (kidWrapper.getChurchName() != null) {
-            mChurchName.setText(kidWrapper.getChurchName());
-        }
+        mChurchName.setText(kidWrapper.getChurchName());
 
         if (kidWrapper.getGender() == KidWrapper.BOY) {
             mBoy.setChecked(true);
@@ -199,13 +196,15 @@ public class RegisterActivity extends AppCompatActivity {
         TextInputLayout mCellPhoneLayout = findViewById(R.id.cell_phone_layout);
         mCellPhoneLayout.setTypeface(type);
         mCellPhone.setTypeface(type);
+        TextInputLayout mAllergyLayout = findViewById(R.id.allergy_layout);
+        mAllergyLayout.setTypeface(type);
+        mAllergy.setTypeface(type);
         TextInputLayout mChurchNameLayout = findViewById(R.id.church_name_layout);
         mChurchNameLayout.setTypeface(type);
+        mChurchName.setTypeface(type);
         mChurch.setTypeface(type);
-
         mBoy.setTypeface(type);
         mGirl.setTypeface(type);
-        mChurchName.setTypeface(type);
         mWillReturn.setTypeface(type);
         mCanLeave.setTypeface(type);
     }
@@ -213,14 +212,13 @@ public class RegisterActivity extends AppCompatActivity {
     private KidWrapper attemptRegister() {
         // Reset errors.
         mKidName.setError(null);
-        mBirthDate.setError(null);
         mClassRoom.setError(null);
         mSponsorName.setError(null);
         mSponsorEmail.setError(null);
         mCity.setError(null);
         mAddress.setError(null);
-        mCellPhone.setError(null);
         mAllergy.setError(null);
+        mChurchName.setError(null);
 
         // Store values at the time of the register attempt.
         String kidName = mKidName.getText().toString();
@@ -234,6 +232,7 @@ public class RegisterActivity extends AppCompatActivity {
         String allergy = mAllergy.getText().toString();
         String churchName = mChurchName.getText().toString();
         int kidGender = mKidGender.getCheckedRadioButtonId();
+        boolean church = mChurch.isChecked();
 
         boolean cancel = false;
         View focusView = null;
@@ -246,6 +245,28 @@ public class RegisterActivity extends AppCompatActivity {
         } else if (isFieldInvalid(kidName)) {
             mKidName.setError(getString(R.string.error_field_invalid));
             focusView = mKidName;
+            cancel = true;
+        }
+
+        // Check for a valid kid classRoom.
+        if (TextUtils.isEmpty(classRoom)) {
+            mClassRoom.setError(getString(R.string.error_field_required));
+            focusView = mClassRoom;
+            cancel = true;
+        } else if (isFieldInvalid(classRoom)) {
+            mClassRoom.setError(getString(R.string.error_field_invalid));
+            focusView = mClassRoom;
+            cancel = true;
+        }
+
+        // Check for a valid kid birthDate.
+        if (TextUtils.isEmpty(birthDate)) {
+            mBirthDate.setError(getString(R.string.error_field_required));
+            focusView = mBirthDate;
+            cancel = true;
+        } else if (isFieldInvalid(birthDate)) {
+            mBirthDate.setError(getString(R.string.error_field_invalid));
+            focusView = mBirthDate;
             cancel = true;
         }
 
@@ -284,14 +305,11 @@ public class RegisterActivity extends AppCompatActivity {
             cancel = true;
         }
 
-        // Check for a valid kid classRoom.
-        if (TextUtils.isEmpty(classRoom)) {
-            mClassRoom.setError(getString(R.string.error_field_required));
-            focusView = mClassRoom;
-            cancel = true;
-        } else if (isFieldInvalid(classRoom)) {
-            mClassRoom.setError(getString(R.string.error_field_invalid));
-            focusView = mClassRoom;
+        // Check for a valid churchName.
+        if ((!TextUtils.isEmpty(churchName) && isFieldInvalid(churchName))
+                || (church && (TextUtils.isEmpty(churchName) || isFieldInvalid(churchName)))) {
+            mChurchName.setError(getString(R.string.error_field_invalid));
+            focusView = mChurchName;
             cancel = true;
         }
 
@@ -319,12 +337,12 @@ public class RegisterActivity extends AppCompatActivity {
                 address, classRoom,
                 churchName, cellPhone,
                 gender, mCanLeave.isChecked(),
-                mChurch.isChecked(), mWillReturn.isChecked(),
+                church, mWillReturn.isChecked(),
                 birthDate, allergy);
     }
 
     private boolean isFieldInvalid(@NonNull String field) {
-        return field.length() < 1;
+        return field.length() < 2;
     }
 
     private boolean isEmailInvalid(@NonNull String email) {

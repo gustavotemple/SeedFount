@@ -66,8 +66,6 @@ public abstract class KidsActivity extends AppCompatActivity
 
         setView();
 
-        FirebaseUtils.getInstance().getDatabaseKids().addListenerForSingleValueEvent(initializeKid);
-
         mClassDateListAdapter = new ClassDateListAdapter();
         mKidsListAdapter = getKidsListAdapter();
         recyclerView.setAdapter(mKidsListAdapter);
@@ -186,12 +184,15 @@ public abstract class KidsActivity extends AppCompatActivity
         });
     }
 
-    private final ValueEventListener initializeKid = new ValueEventListener() {
+    protected final ValueEventListener initializeKid = new ValueEventListener() {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
             Log.i(TAG, "onDataChange");
-            noKids.setVisibility(View.GONE);
-            noKidsLayout.setVisibility(View.GONE);
+
+            if (dataSnapshot.getValue() != null) {
+                noKids.setVisibility(View.GONE);
+                noKidsLayout.setVisibility(View.GONE);
+            }
         }
 
         @Override

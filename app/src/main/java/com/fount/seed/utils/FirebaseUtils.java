@@ -23,12 +23,14 @@ import java.util.Map;
 public final class FirebaseUtils {
 
     private static final String TAG = FirebaseUtils.class.getSimpleName();
-    private static final String KIDS = "KidRegister";
+    private static final String KIDS_ROOM = "KidsRoom";
+    private static final String KIDS_CHALET = "KidsChalet";
     private static final String CLASS_DATE = "ClassDate";
     private static final String AM = "AM";
     private static final String PM = "PM";
 
-    private DatabaseReference mDatabaseKids;
+    private DatabaseReference mRoomKids;
+    private DatabaseReference mChaletKids;
     private DatabaseReference mClassDate;
 
     private static FirebaseUtils instance = null;
@@ -47,8 +49,10 @@ public final class FirebaseUtils {
     }
 
     public void initialize() {
-        mDatabaseKids = FirebaseDatabase.getInstance().getReference().child(KIDS);
-        mDatabaseKids.keepSynced(true);
+        mRoomKids = FirebaseDatabase.getInstance().getReference().child(KIDS_ROOM);
+        mRoomKids.keepSynced(true);
+        mChaletKids = FirebaseDatabase.getInstance().getReference().child(KIDS_CHALET);
+        mChaletKids.keepSynced(true);
         mClassDate = FirebaseDatabase.getInstance().getReference().child(CLASS_DATE);
         mClassDate.keepSynced(true);
     }
@@ -58,25 +62,42 @@ public final class FirebaseUtils {
         dateId = null;
     }
 
-    public DatabaseReference getDatabaseKids() {
-        return mDatabaseKids;
+    public DatabaseReference getRoomKids() {
+        return mRoomKids;
+    }
+
+    public DatabaseReference getChaletKids() {
+        return mChaletKids;
     }
 
     public DatabaseReference getClassDate() {
         return mClassDate;
     }
 
-    public void saveKid(@NonNull final KidWrapper kid) {
-        kid.setUid(mDatabaseKids.push().getKey());
-        mDatabaseKids.child(kid.getUid()).setValue(kid);
+    public void saveRoomKid(@NonNull final KidWrapper kid) {
+        kid.setUid(mRoomKids.push().getKey());
+        mRoomKids.child(kid.getUid()).setValue(kid);
     }
 
-    public void updateKid(@NonNull final KidWrapper kid) {
-        mDatabaseKids.child(kid.getUid()).setValue(kid);
+    public void updateRoomKid(@NonNull final KidWrapper kid) {
+        mRoomKids.child(kid.getUid()).setValue(kid);
     }
 
-    public void deleteKid(@NonNull final KidWrapper kid) {
-        mDatabaseKids.child(kid.getUid()).removeValue();
+    public void deleteRoomKid(@NonNull final KidWrapper kid) {
+        mRoomKids.child(kid.getUid()).removeValue();
+    }
+
+    public void saveChaletKid(@NonNull final KidWrapper kid) {
+        kid.setUid(mChaletKids.push().getKey());
+        mChaletKids.child(kid.getUid()).setValue(kid);
+    }
+
+    public void updateChaletKid(@NonNull final KidWrapper kid) {
+        mChaletKids.child(kid.getUid()).setValue(kid);
+    }
+
+    public void deleteChaletKid(@NonNull final KidWrapper kid) {
+        mChaletKids.child(kid.getUid()).removeValue();
     }
 
     private void getDateId() {

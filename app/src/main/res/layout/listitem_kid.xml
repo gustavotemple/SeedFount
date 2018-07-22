@@ -86,6 +86,7 @@
             android:layout_alignBottom="@+id/checkBoxP"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/checkBoxP"
+            android:visibility="invisible"
             android:text="L" />
 
         <CheckBox
@@ -97,6 +98,7 @@
             android:layout_alignBottom="@+id/checkBoxL"
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/checkBoxL"
+            android:visibility="invisible"
             android:text="V" />
 
     </RelativeLayout>

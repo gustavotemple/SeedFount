@@ -26,7 +26,8 @@ public final class ChaletActivity extends KidsActivity {
 
     @Override
     protected KidsListAdapter getKidsListAdapter() {
-        return new KidsListAdapter(null, getPackageName() + "." + TAG);
+        return new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
+                null, getPackageName() + "." + TAG, Constants.CHALET);
     }
 
     @Override
@@ -49,6 +50,8 @@ public final class ChaletActivity extends KidsActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view_chalet);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FirebaseUtils.getInstance().getChaletKids().addListenerForSingleValueEvent(initializeKid);
     }
 
     @Override
@@ -91,33 +94,42 @@ public final class ChaletActivity extends KidsActivity {
             Query query = null;
             if (id == R.id.nav_all) {
                 query = null;
-            } else if (id == R.id.nav_n1_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N1_AM);
-            } else if (id == R.id.nav_n1_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N1_PM);
-            } else if (id == R.id.nav_n2_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N2_AM);
-            } else if (id == R.id.nav_n2_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N2_PM);
-            } else if (id == R.id.nav_n3_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N3_AM);
-            } else if (id == R.id.nav_n3_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N3_PM);
-            } else if (id == R.id.nav_n4_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N4_AM);
-            } else if (id == R.id.nav_n4_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N4_PM);
-            } else if (id == R.id.nav_n5_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N5_AM);
-            } else if (id == R.id.nav_n5_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N5_PM);
-            } else if (id == R.id.nav_n6_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_AM);
-            } else if (id == R.id.nav_n6_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_PM);
+            } else if (id == R.id.nav_chalet3_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_3_AM);
+            } else if (id == R.id.nav_chalet3_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_3_PM);
+            } else if (id == R.id.nav_chalet4_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_4_AM);
+            } else if (id == R.id.nav_chalet4_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_4_PM);
+            } else if (id == R.id.nav_chalet5_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_5_AM);
+            } else if (id == R.id.nav_chalet5_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_5_PM);
+            } else if (id == R.id.nav_chalet6_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_6_AM);
+            } else if (id == R.id.nav_chalet6_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_6_PM);
+            } else if (id == R.id.nav_chalet7_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_7_AM);
+            } else if (id == R.id.nav_chalet7_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_7_PM);
+            } else if (id == R.id.nav_chalet8_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_8_AM);
+            } else if (id == R.id.nav_chalet8_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_8_PM);
+            } else if (id == R.id.nav_chalet9_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_9_AM);
+            } else if (id == R.id.nav_chalet9_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_9_PM);
+            } else if (id == R.id.nav_chalet10_am) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_10_AM);
+            } else if (id == R.id.nav_chalet10_pm) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_10_PM);
             }
 
-            mKidsListAdapter = new KidsListAdapter(query, getPackageName() + "." + TAG);
+            mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
+                    query, getPackageName() + "." + TAG, Constants.CHALET);
             recyclerView.setAdapter(mKidsListAdapter);
 
             // Make sure new events are visible
@@ -133,5 +145,4 @@ public final class ChaletActivity extends KidsActivity {
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 }

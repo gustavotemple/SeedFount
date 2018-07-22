@@ -26,7 +26,8 @@ public final class BabiesActivity extends KidsActivity {
 
     @Override
     protected KidsListAdapter getKidsListAdapter() {
-        return new KidsListAdapter(null, getPackageName() + "." + TAG);
+        return new KidsListAdapter(FirebaseUtils.getInstance().getRoomKids(),
+                null, getPackageName() + "." + TAG, Constants.ROOM);
     }
 
     @Override
@@ -49,6 +50,8 @@ public final class BabiesActivity extends KidsActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view_babies);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FirebaseUtils.getInstance().getRoomKids().addListenerForSingleValueEvent(initializeKid);
     }
 
     @Override
@@ -92,32 +95,33 @@ public final class BabiesActivity extends KidsActivity {
             if (id == R.id.nav_all) {
                 query = null;
             } else if (id == R.id.nav_n1_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N1_AM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_1_AM);
             } else if (id == R.id.nav_n1_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N1_PM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_1_PM);
             } else if (id == R.id.nav_n2_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N2_AM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_2_AM);
             } else if (id == R.id.nav_n2_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N2_PM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_2_PM);
             } else if (id == R.id.nav_n3_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N3_AM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_3_AM);
             } else if (id == R.id.nav_n3_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N3_PM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_3_PM);
             } else if (id == R.id.nav_n4_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N4_AM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_4_AM);
             } else if (id == R.id.nav_n4_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N4_PM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_4_PM);
             } else if (id == R.id.nav_n5_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N5_AM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_5_AM);
             } else if (id == R.id.nav_n5_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N5_PM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_5_PM);
             } else if (id == R.id.nav_n6_am) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_AM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_6_AM);
             } else if (id == R.id.nav_n6_pm) {
-                query = FirebaseUtils.getInstance().getDatabaseKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.N6_PM);
+                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_6_PM);
             }
 
-            mKidsListAdapter = new KidsListAdapter(query, getPackageName() + "." + TAG);
+            mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getRoomKids(),
+                    query, getPackageName() + "." + TAG, Constants.ROOM);
             recyclerView.setAdapter(mKidsListAdapter);
 
             // Make sure new events are visible
