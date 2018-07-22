@@ -25,7 +25,8 @@ public final class FirebaseUtils {
     private static final String TAG = FirebaseUtils.class.getSimpleName();
     private static final String KIDS_ROOM = "KidsRoom";
     private static final String KIDS_CHALET = "KidsChalet";
-    private static final String CLASS_DATE = "ClassDate";
+    private static final String DATES_ROOM = "DatesRoom";
+    private static final String DATES_CHALET = "DatesChalet";
     private static final String AM = "AM";
     private static final String PM = "PM";
 
@@ -53,7 +54,9 @@ public final class FirebaseUtils {
         mRoomKids.keepSynced(true);
         mChaletKids = FirebaseDatabase.getInstance().getReference().child(KIDS_CHALET);
         mChaletKids.keepSynced(true);
-        mClassDate = FirebaseDatabase.getInstance().getReference().child(CLASS_DATE);
+        mClassDate = FirebaseDatabase.getInstance().getReference().child(DATES_ROOM);
+        mClassDate.keepSynced(true);
+        mClassDate = FirebaseDatabase.getInstance().getReference().child(DATES_CHALET);
         mClassDate.keepSynced(true);
     }
 

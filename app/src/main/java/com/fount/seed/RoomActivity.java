@@ -15,9 +15,9 @@ import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
 import com.google.firebase.database.Query;
 
-public final class BabiesActivity extends KidsActivity {
+public final class RoomActivity extends KidsActivity {
 
-    private static final String TAG = BabiesActivity.class.getSimpleName();
+    private static final String TAG = RoomActivity.class.getSimpleName();
 
     @Override
     protected void setContentView() {
@@ -35,7 +35,7 @@ public final class BabiesActivity extends KidsActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(BabiesActivity.this.getApplicationContext(),
+                Intent intent = new Intent(RoomActivity.this.getApplicationContext(),
                         RegisterActivity.class);
                 intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "." + TAG);
                 startActivity(intent);
