@@ -10,7 +10,7 @@
     tools:context="com.fount.seed.RoomActivity">
 
     <include
-        layout="@layout/app_bar_main"
+        layout="@layout/app_bar_kids"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -20,7 +20,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
+        app:headerLayout="@layout/nav_header_kids"
         app:menu="@menu/activity_babies_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

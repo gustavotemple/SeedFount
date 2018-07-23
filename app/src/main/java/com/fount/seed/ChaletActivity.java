@@ -7,7 +7,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -54,6 +57,38 @@ public final class ChaletActivity extends KidsActivity {
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view_chalet);
+        Menu menu = navigationView.getMenu();
+
+        MenuItem chalet3pm = menu.findItem(R.id.nav_chalet3_pm);
+        SpannableString chalet3pmSS = new SpannableString(chalet3pm.getTitle());
+        chalet3pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearancePurple), 0, chalet3pmSS.length(), 0);
+        chalet3pm.setTitle(chalet3pmSS);
+
+        MenuItem chalet4pm = menu.findItem(R.id.nav_chalet4_pm);
+        SpannableString chalet4pmSS = new SpannableString(chalet4pm.getTitle());
+        chalet4pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceFuchsia), 0, chalet4pmSS.length(), 0);
+        chalet4pm.setTitle(chalet4pmSS);
+
+        MenuItem chalet7pm = menu.findItem(R.id.nav_chalet7_pm);
+        SpannableString chalet7pmSS = new SpannableString(chalet7pm.getTitle());
+        chalet7pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceYellow), 0, chalet7pmSS.length(), 0);
+        chalet7pm.setTitle(chalet7pmSS);
+
+        MenuItem chalet8pm = menu.findItem(R.id.nav_chalet8_pm);
+        SpannableString chalet8pmSS = new SpannableString(chalet8pm.getTitle());
+        chalet8pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceBlue), 0, chalet8pmSS.length(), 0);
+        chalet8pm.setTitle(chalet8pmSS);
+
+        MenuItem chalet9pm = menu.findItem(R.id.nav_chalet9_pm);
+        SpannableString chalet9pmSS = new SpannableString(chalet9pm.getTitle());
+        chalet9pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceGreen), 0, chalet9pmSS.length(), 0);
+        chalet9pm.setTitle(chalet9pmSS);
+
+        MenuItem chalet10pm = menu.findItem(R.id.nav_chalet10_pm);
+        SpannableString chalet10pmSS = new SpannableString(chalet10pm.getTitle());
+        chalet10pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceRed), 0, chalet10pmSS.length(), 0);
+        chalet10pm.setTitle(chalet10pmSS);
+
         navigationView.setNavigationItemSelectedListener(this);
 
         FirebaseUtils.getInstance().getChaletKids().addListenerForSingleValueEvent(initializeKid);

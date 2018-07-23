@@ -5,7 +5,6 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,5 +15,29 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextAppearancePurple">
+        <item name="android:textColor">@android:color/holo_purple</item>
+    </style>
+
+    <style name="TextAppearanceFuchsia">
+        <item name="android:textColor">@color/fuchsia</item>
+    </style>
+
+    <style name="TextAppearanceRed">
+        <item name="android:textColor">@android:color/holo_red_light</item>
+    </style>
+
+    <style name="TextAppearanceYellow">
+        <item name="android:textColor">@color/yellow</item>
+    </style>
+
+    <style name="TextAppearanceGreen">
+        <item name="android:textColor">@android:color/holo_green_light</item>
+    </style>
+
+    <style name="TextAppearanceBlue">
+        <item name="android:textColor">@android:color/holo_blue_dark</item>
+    </style>
 
 </resources>
