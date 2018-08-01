@@ -1,4 +1,4 @@
-package com.fount.seed;
+package com.fount.seed.register;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -11,12 +11,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 
+import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.KidWrapper;
@@ -25,29 +25,29 @@ import com.vicmikhailau.maskededittext.MaskedEditText;
 /**
  * A register screen
  */
-public class RegisterActivity extends AppCompatActivity {
+abstract class KidRegisterActivity extends AppCompatActivity implements KidRegisterInterface {
 
-    private KidWrapper kidWrapper;
-    private String parent;
+    public KidWrapper kidWrapper;
+    public String parent;
 
-    private TextInputEditText mKidName;
-    private RadioGroup mKidGender;
-    private RadioButton mBoy;
-    private RadioButton mGirl;
-    private MaskedEditText mBirthDate;
-    private TextInputEditText mClassRoom;
-    private TextInputEditText mSponsorName;
-    private TextInputEditText mSponsorEmail;
-    private TextInputEditText mCity;
-    private TextInputEditText mAddress;
-    private MaskedEditText mCellPhone;
-    private Switch mChurch;
-    private TextInputEditText mChurchName;
-    private TextInputEditText mAllergy;
-    private Switch mWillReturn;
-    private Switch mCanLeave;
-    private Button button;
-    private FloatingActionButton fab;
+    public TextInputEditText mKidName;
+    public RadioGroup mKidGender;
+    public RadioButton mBoy;
+    public RadioButton mGirl;
+    public MaskedEditText mBirthDate;
+    public TextInputEditText mClassRoom;
+    public TextInputEditText mSponsorName;
+    public TextInputEditText mSponsorEmail;
+    public TextInputEditText mCity;
+    public TextInputEditText mAddress;
+    public MaskedEditText mCellPhone;
+    public Switch mChurch;
+    public TextInputEditText mChurchName;
+    public TextInputEditText mAllergy;
+    public Switch mWillReturn;
+    public Switch mCanLeave;
+    public Button button;
+    public FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,81 +97,10 @@ public class RegisterActivity extends AppCompatActivity {
         setUI(savedInstanceState);
     }
 
-    private void setUI(Bundle savedInstanceState) {
-        final Bundle state = savedInstanceState != null ? savedInstanceState : getIntent().getExtras();
-        kidWrapper = state != null ? (KidWrapper) state.getParcelable(Constants.EXTRA_KEY_KID) : null;
-        parent = getIntent().getStringExtra(Constants.EXTRA_KEY_PARENT);
+    protected abstract void setUI(Bundle savedInstanceState);
 
-        if (kidWrapper == null) {
-            setTitle(R.string.title_register);
-            fab.setVisibility(View.GONE);
-            button.setText(R.string.action_register);
-            button.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    KidWrapper kid = attemptRegister();
-
-                    if (kid == null) {
-                        return;
-                    }
-
-                    Intent intent = new Intent();
-                    intent.setClassName(getApplicationContext(), parent);
-                    intent.putExtra(Constants.EXTRA_KEY_KID, kid);
-                    intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.INSERT);
-                    startActivity(intent);
-                }
-            });
-        } else {
-            loadKid();
-            setTitle(R.string.title_update);
-            fab.setVisibility(View.VISIBLE);
-            button.setText(R.string.action_update);
-            button.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    KidWrapper kid = attemptRegister();
-
-                    if (kid == null) {
-                        return;
-                    }
-
-                    kid.setUid(kidWrapper.getUid());
-
-                    Intent intent = new Intent();
-                    intent.setClassName(getApplicationContext(), parent);
-                    intent.putExtra(Constants.EXTRA_KEY_KID, kid);
-                    intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.UPDATE);
-                    startActivity(intent);
-                }
-            });
-        }
-    }
-
-    private void loadKid() {
-        mKidName.setText(kidWrapper.getKidName());
-        mBirthDate.setText(kidWrapper.getBirthDate());
-        mClassRoom.setText(kidWrapper.getClassRoom());
-        mSponsorName.setText(kidWrapper.getSponsorName());
-        mSponsorEmail.setText(kidWrapper.getSponsorEmail());
-        mCity.setText(kidWrapper.getCityName());
-        mAddress.setText(kidWrapper.getKidAddress());
-        mAllergy.setText(kidWrapper.getAllergy());
-        mCellPhone.setText(kidWrapper.getCellPhone());
-        mChurchName.setText(kidWrapper.getChurchName());
-
-        if (kidWrapper.getGender() == KidWrapper.BOY) {
-            mBoy.setChecked(true);
-        } else if (kidWrapper.getGender() == KidWrapper.GIRL) {
-            mGirl.setChecked(true);
-        }
-
-        mChurch.setChecked(kidWrapper.isChurch());
-        mWillReturn.setChecked(kidWrapper.isWillReturn());
-        mCanLeave.setChecked(kidWrapper.isCanLeave());
-    }
-
-    private void setTypeface(final Typeface type) {
+    @Override
+    public void setTypeface(final Typeface type) {
         TextInputLayout mKidNameLayout = findViewById(R.id.kid_name_layout);
         mKidNameLayout.setTypeface(type);
         mKidName.setTypeface(type);
@@ -209,7 +138,8 @@ public class RegisterActivity extends AppCompatActivity {
         mCanLeave.setTypeface(type);
     }
 
-    private KidWrapper attemptRegister() {
+    @Override
+    public KidWrapper submitAttempt() {
         // Reset errors.
         mKidName.setError(null);
         mClassRoom.setError(null);
@@ -341,11 +271,13 @@ public class RegisterActivity extends AppCompatActivity {
                 birthDate, allergy);
     }
 
-    private boolean isFieldInvalid(@NonNull String field) {
+    @Override
+    public boolean isFieldInvalid(@NonNull String field) {
         return field.length() < 2;
     }
 
-    private boolean isEmailInvalid(@NonNull String email) {
+    @Override
+    public boolean isEmailInvalid(@NonNull String email) {
         return !email.contains("@");
     }
 

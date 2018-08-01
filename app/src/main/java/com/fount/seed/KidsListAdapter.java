@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.fount.seed.register.UpdateKidActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
 import com.fount.seed.wrappers.KidWrapper;
@@ -146,7 +147,7 @@ public class KidsListAdapter
             public void onClick(View v) {
                 Log.i(TAG, "Selecting kid: " + data.getKidName());
 
-                Intent intent = new Intent(v.getContext(), RegisterActivity.class);
+                Intent intent = new Intent(v.getContext(), UpdateKidActivity.class);
                 intent.putExtra(Constants.EXTRA_KEY_KID, data);
                 intent.putExtra(Constants.EXTRA_KEY_PARENT, parent);
                 v.getContext().startActivity(intent);

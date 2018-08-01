@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.fount.seed.register.AddKidActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
 import com.google.firebase.database.Query;
@@ -41,7 +42,7 @@ public final class RoomActivity extends KidsActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RoomActivity.this.getApplicationContext(),
-                        RegisterActivity.class);
+                        AddKidActivity.class);
                 intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "." + TAG);
                 startActivity(intent);
             }

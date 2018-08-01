@@ -44,7 +44,12 @@
         </activity>
 
         <activity
-            android:name=".RegisterActivity"
+            android:name=".register.AddKidActivity"
+            android:launchMode="singleTop">
+        </activity>
+
+        <activity
+            android:name=".register.UpdateKidActivity"
             android:launchMode="singleTop">
         </activity>
 
