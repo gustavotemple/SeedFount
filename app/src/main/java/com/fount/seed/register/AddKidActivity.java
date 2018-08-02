@@ -17,21 +17,21 @@ public final class AddKidActivity extends KidRegisterActivity {
         setTitle(R.string.title_register);
         fab.setVisibility(View.GONE);
         button.setText(R.string.action_register);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                KidWrapper kid = submitAttempt();
+        button.setOnClickListener(this);
+    }
 
-                if (kid == null) {
-                    return;
-                }
+    @Override
+    public void onClick(View v) {
+        KidWrapper kid = submitAttempt();
 
-                Intent intent = new Intent();
-                intent.setClassName(getApplicationContext(), parent);
-                intent.putExtra(Constants.EXTRA_KEY_KID, kid);
-                intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.INSERT);
-                startActivity(intent);
-            }
-        });
+        if (kid == null) {
+            return;
+        }
+
+        Intent intent = new Intent();
+        intent.setClassName(getApplicationContext(), parent);
+        intent.putExtra(Constants.EXTRA_KEY_KID, kid);
+        intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.INSERT);
+        startActivity(intent);
     }
 }

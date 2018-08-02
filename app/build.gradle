@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.vicmikhailau:MaskedEditText:2.0.3'
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-database:16.0.1'
-    implementation 'com.firebaseui:firebase-ui-database:0.5.3'
+    implementation 'com.firebaseui:firebase-ui-database:2.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

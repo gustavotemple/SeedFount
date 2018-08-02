@@ -20,25 +20,24 @@ public final class UpdateKidActivity extends KidRegisterActivity {
         setTitle(R.string.title_update);
         fab.setVisibility(View.VISIBLE);
         button.setText(R.string.action_update);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                KidWrapper kid = submitAttempt();
+        button.setOnClickListener(this);
+    }
 
-                if (kid == null) {
-                    return;
-                }
+    @Override
+    public void onClick(View v) {
+        KidWrapper kid = submitAttempt();
 
-                kid.setUid(kidWrapper.getUid());
+        if (kid == null) {
+            return;
+        }
 
-                Intent intent = new Intent();
-                intent.setClassName(getApplicationContext(), parent);
-                intent.putExtra(Constants.EXTRA_KEY_KID, kid);
-                intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.UPDATE);
-                startActivity(intent);
-            }
-        });
+        kid.setUid(kidWrapper.getUid());
 
+        Intent intent = new Intent();
+        intent.setClassName(getApplicationContext(), parent);
+        intent.putExtra(Constants.EXTRA_KEY_KID, kid);
+        intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.UPDATE);
+        startActivity(intent);
     }
 
     private void loadKid() {

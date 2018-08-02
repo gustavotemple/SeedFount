@@ -25,7 +25,9 @@ import com.vicmikhailau.maskededittext.MaskedEditText;
 /**
  * A register screen
  */
-abstract class KidRegisterActivity extends AppCompatActivity implements KidRegisterInterface {
+abstract class KidRegisterActivity
+        extends AppCompatActivity
+        implements KidRegisterInterface, View.OnClickListener {
 
     public KidWrapper kidWrapper;
     public String parent;
@@ -97,7 +99,7 @@ abstract class KidRegisterActivity extends AppCompatActivity implements KidRegis
         setUI(savedInstanceState);
     }
 
-    protected abstract void setUI(Bundle savedInstanceState);
+    abstract void setUI(Bundle savedInstanceState);
 
     @Override
     public void setTypeface(final Typeface type) {
