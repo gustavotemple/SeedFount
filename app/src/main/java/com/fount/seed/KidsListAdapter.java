@@ -18,23 +18,15 @@ import com.fount.seed.register.UpdateKidActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
 import com.fount.seed.wrappers.KidWrapper;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class KidsListAdapter
         extends FirebaseRecyclerAdapter<KidWrapper, KidsListAdapter.ViewHolder> {
 
     private static final String TAG = KidsListAdapter.class.getSimpleName();
-    private final Query query;
     private final String parent;
     private final DatabaseReference databaseReference;
-    private Set<String> kids;
 
     KidsListAdapter(final DatabaseReference databaseReference,
                     final Query query,
@@ -42,14 +34,19 @@ public class KidsListAdapter
         super(KidWrapper.class,
                 R.layout.listitem_kid,
                 ViewHolder.class,
-                databaseReference);
-        this.query = query;
+                query);
         this.parent = parent;
         this.databaseReference = databaseReference;
+    }
 
-        if (query != null) {
-            kids = new HashSet<>();
-        }
+    KidsListAdapter(final DatabaseReference databaseReference,
+                    final String parent) {
+        super(KidWrapper.class,
+                R.layout.listitem_kid,
+                ViewHolder.class,
+                databaseReference);
+        this.parent = parent;
+        this.databaseReference = databaseReference;
     }
 
     /**
@@ -86,32 +83,6 @@ public class KidsListAdapter
                                       final int position) {
         Log.i(TAG, "populateViewHolder");
 
-        if (query != null) {
-            query.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        final KidWrapper kid = snapshot.getValue(KidWrapper.class);
-                        if (kids != null
-                                && kid != null
-                                && !kids.contains(kid.getUid())) {
-                            kids.add(kid.getUid());
-                            populateViewHolder(holder, kid);
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-        } else {
-            populateViewHolder(holder, data);
-        }
-    }
-
-    private void populateViewHolder(final ViewHolder holder,
-                                    final KidWrapper data) {
         final Typeface type = Typeface.createFromAsset(holder.itemView.getContext().getAssets(),
                 Constants.FONT);
 

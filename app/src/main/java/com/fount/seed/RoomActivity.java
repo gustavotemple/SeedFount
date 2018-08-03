@@ -28,7 +28,7 @@ public final class RoomActivity extends KidsActivity {
     @Override
     protected KidsListAdapter getKidsListAdapter() {
         return new KidsListAdapter(FirebaseUtils.getInstance().getRoomKids(),
-                null, getPackageName() + "." + TAG);
+                getPackageName() + "." + TAG);
     }
 
     @Override
@@ -126,8 +126,14 @@ public final class RoomActivity extends KidsActivity {
                 query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_6_PM);
             }
 
-            mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getRoomKids(),
-                    query, getPackageName() + "." + TAG);
+            if (query != null) {
+                mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getRoomKids(),
+                        query, getPackageName() + "." + TAG);
+            } else {
+                mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getRoomKids(),
+                        getPackageName() + "." + TAG);
+            }
+
             recyclerView.setAdapter(mKidsListAdapter);
 
             // Make sure new events are visible

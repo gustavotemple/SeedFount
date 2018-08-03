@@ -31,7 +31,7 @@ public final class ChaletActivity extends KidsActivity {
     @Override
     protected KidsListAdapter getKidsListAdapter() {
         return new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                null, getPackageName() + "." + TAG);
+                getPackageName() + "." + TAG);
     }
 
     @Override
@@ -169,8 +169,14 @@ public final class ChaletActivity extends KidsActivity {
                 query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_10_PM);
             }
 
-            mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                    query, getPackageName() + "." + TAG);
+            if (query != null) {
+                mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
+                        query, getPackageName() + "." + TAG);
+            } else {
+                mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
+                        getPackageName() + "." + TAG);
+            }
+
             recyclerView.setAdapter(mKidsListAdapter);
 
             // Make sure new events are visible
