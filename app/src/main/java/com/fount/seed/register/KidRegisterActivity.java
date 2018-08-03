@@ -22,6 +22,10 @@ import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.KidWrapper;
 import com.vicmikhailau.maskededittext.MaskedEditText;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 /**
  * A register screen
  */
@@ -32,71 +36,69 @@ abstract class KidRegisterActivity
     public KidWrapper kidWrapper;
     public String parent;
 
+    @BindView(R.id.kid_name)
     public TextInputEditText mKidName;
+    @BindView(R.id.kid_gender)
     public RadioGroup mKidGender;
+    @BindView(R.id.boy)
     public RadioButton mBoy;
+    @BindView(R.id.girl)
     public RadioButton mGirl;
+    @BindView(R.id.birth_date)
     public MaskedEditText mBirthDate;
+    @BindView(R.id.class_room)
     public TextInputEditText mClassRoom;
+    @BindView(R.id.sponsor_name)
     public TextInputEditText mSponsorName;
+    @BindView(R.id.sponsor_email)
     public TextInputEditText mSponsorEmail;
+    @BindView(R.id.city)
     public TextInputEditText mCity;
+    @BindView(R.id.address)
     public TextInputEditText mAddress;
+    @BindView(R.id.cell_phone)
     public MaskedEditText mCellPhone;
+    @BindView(R.id.church)
     public Switch mChurch;
+    @BindView(R.id.church_name)
     public TextInputEditText mChurchName;
+    @BindView(R.id.allergy)
     public TextInputEditText mAllergy;
+    @BindView(R.id.will_return)
     public Switch mWillReturn;
+    @BindView(R.id.can_leave)
     public Switch mCanLeave;
+    @BindView(R.id.form_button)
     public Button button;
+    @BindView(R.id.delete_kid)
     public FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        ButterKnife.bind(this);
 
         if (!(Thread.getDefaultUncaughtExceptionHandler() instanceof CustomExceptionHandler)) {
             Thread.setDefaultUncaughtExceptionHandler(new CustomExceptionHandler(this));
         }
 
-        // Set up the register form.
-        mKidName = findViewById(R.id.kid_name);
-        mKidGender = findViewById(R.id.kid_gender);
-        mBoy = findViewById(R.id.boy);
-        mGirl = findViewById(R.id.girl);
-        mBirthDate = findViewById(R.id.birth_date);
-        mClassRoom = findViewById(R.id.class_room);
-        mSponsorName = findViewById(R.id.sponsor_name);
-        mSponsorEmail = findViewById(R.id.sponsor_email);
-        mCity = findViewById(R.id.city);
-        mAddress = findViewById(R.id.address);
-        mCellPhone = findViewById(R.id.cell_phone);
-        mAllergy = findViewById(R.id.allergy);
-        mChurch = findViewById(R.id.church);
-        mChurchName = findViewById(R.id.church_name);
-        mWillReturn = findViewById(R.id.will_return);
-        mCanLeave = findViewById(R.id.can_leave);
-
         final Typeface typeface = Typeface.createFromAsset(getApplicationContext().getAssets(), Constants.FONT);
         setTypeface(typeface);
 
-        button = findViewById(R.id.form_button);
         button.setTypeface(typeface);
 
-        fab = findViewById(R.id.delete_kid);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClassName(getApplicationContext(), parent);
-                intent.putExtra(Constants.EXTRA_KEY_KID, kidWrapper);
-                intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.DELETE);
-                startActivity(intent);
-            }
-        });
-
         setUI(savedInstanceState);
+    }
+
+    @Override
+    @OnClick(R.id.delete_kid)
+    public void deleteKid() {
+        Intent intent = new Intent();
+        intent.setClassName(getApplicationContext(), parent);
+        intent.putExtra(Constants.EXTRA_KEY_KID, kidWrapper);
+        intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.DELETE);
+        startActivity(intent);
     }
 
     abstract void setUI(Bundle savedInstanceState);
