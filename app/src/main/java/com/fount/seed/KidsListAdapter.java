@@ -86,8 +86,6 @@ public class KidsListAdapter
         final Typeface type = Typeface.createFromAsset(holder.itemView.getContext().getAssets(),
                 Constants.FONT);
 
-        holder.cardView.setVisibility(View.VISIBLE);
-
         holder.kidName.setText(data.getKidName());
         holder.kidName.setTypeface(type);
 

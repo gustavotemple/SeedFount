@@ -1,6 +1,7 @@
 package com.fount.seed.register;
 
 import android.graphics.Typeface;
+import android.view.View;
 
 import com.fount.seed.wrappers.KidWrapper;
 
@@ -9,4 +10,5 @@ interface KidRegisterInterface {
     KidWrapper submitAttempt();
     boolean isFieldInvalid(String field);
     boolean isEmailInvalid(String email);
+    void onClick(View v);
 }
