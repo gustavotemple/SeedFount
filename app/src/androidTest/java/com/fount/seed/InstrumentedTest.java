@@ -12,11 +12,15 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.clearText;
+import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isChecked;
+import static android.support.test.espresso.matcher.ViewMatchers.isNotChecked;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 @RunWith(AndroidJUnit4.class)
@@ -38,7 +42,7 @@ public class InstrumentedTest {
     }
 
     @Test
-    public void TestSubmitAttempt() {
+    public void submitAttemptFail1() {
         onView(withId(R.id.kid_name))
                 .perform(clearText(), typeText(kidName), closeSoftKeyboard())
                 .check(matches(withText(kidName)));
@@ -47,6 +51,45 @@ public class InstrumentedTest {
             @Override
             public void run() {
                 assertNull(addKidActivity.submitAttempt());
+            }
+        });
+    }
+
+    @Test
+    public void submitAttemptFail2() {
+        onView(withId(R.id.boy))
+                .perform(click())
+                .check(matches(isChecked()));
+
+        onView(withId(R.id.girl))
+                .check(matches(isNotChecked()));
+
+        addKidActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                assertNull(addKidActivity.submitAttempt());
+            }
+        });
+    }
+
+    @Test
+    public void submitAttemptOK() {
+        onView(withId(R.id.kid_name))
+                .perform(clearText(), typeText(kidName));
+
+        onView(withId(R.id.birth_date))
+                .perform(clearText(), typeText("01/01/2001"));
+
+        onView(withId(R.id.class_room))
+                .perform(clearText(), typeText("Chalet 3 AM"), closeSoftKeyboard());
+
+        onView(withId(R.id.girl))
+                .perform(click());
+
+        addKidActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                assertNotNull(addKidActivity.submitAttempt());
             }
         });
     }
