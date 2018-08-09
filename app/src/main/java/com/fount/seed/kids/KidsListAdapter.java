@@ -1,4 +1,4 @@
-package com.fount.seed;
+package com.fount.seed.kids;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.fount.seed.R;
 import com.fount.seed.register.UpdateKidActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;

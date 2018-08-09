@@ -22,7 +22,7 @@
         </activity>
 
         <activity
-            android:name=".RoomActivity"
+            android:name=".kids.RoomActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize"
@@ -33,7 +33,7 @@
         </activity>
 
         <activity
-            android:name=".ChaletActivity"
+            android:name=".kids.ChaletActivity"
             android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize"
@@ -55,7 +55,7 @@
         </activity>
 
         <activity
-            android:name=".StudentAttendanceActivity"
+            android:name=".attendance.StudentAttendanceActivity"
             android:launchMode="singleTop">
         </activity>
 

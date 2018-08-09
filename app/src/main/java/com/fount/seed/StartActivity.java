@@ -13,6 +13,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.fount.seed.kids.ChaletActivity;
+import com.fount.seed.kids.RoomActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.utils.FirebaseUtils;

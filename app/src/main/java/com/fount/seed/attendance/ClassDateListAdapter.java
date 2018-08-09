@@ -1,4 +1,4 @@
-package com.fount.seed;
+package com.fount.seed.attendance;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
 import com.fount.seed.wrappers.ClassDate;
@@ -20,7 +21,7 @@ public class ClassDateListAdapter
 
     private static final String TAG = ClassDateListAdapter.class.getSimpleName();
 
-    ClassDateListAdapter(@NonNull final DatabaseReference databaseReference) {
+    public ClassDateListAdapter(@NonNull final DatabaseReference databaseReference) {
         super(ClassDate.class,
                 R.layout.listitem_date,
                 ViewHolder.class,

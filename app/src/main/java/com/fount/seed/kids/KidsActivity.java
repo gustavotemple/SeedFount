@@ -1,4 +1,4 @@
-package com.fount.seed;
+package com.fount.seed.kids;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -18,6 +18,8 @@ import android.view.MenuItem;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.fount.seed.attendance.ClassDateListAdapter;
+import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.utils.FirebaseUtils;

@@ -1,4 +1,4 @@
-package com.fount.seed;
+package com.fount.seed.attendance;
 
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.wrappers.StudentAttendance;
 

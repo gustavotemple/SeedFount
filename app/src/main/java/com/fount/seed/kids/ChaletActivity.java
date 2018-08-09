@@ -1,4 +1,4 @@
-package com.fount.seed;
+package com.fount.seed.kids;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -14,6 +14,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.fount.seed.attendance.ClassDateListAdapter;
+import com.fount.seed.R;
 import com.fount.seed.register.AddKidActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.FirebaseUtils;
