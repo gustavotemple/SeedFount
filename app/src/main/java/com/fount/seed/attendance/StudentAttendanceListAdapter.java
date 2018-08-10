@@ -91,14 +91,14 @@ public class StudentAttendanceListAdapter
                 parent,
                 false);
         return new ViewHolder(v,
-                (ImageView) v.findViewById(R.id.kid_picture),
-                (ImageView) v.findViewById(R.id.arrow_picture),
-                (TextView) v.findViewById(R.id.kid_name),
-                (TextView) v.findViewById(R.id.class_room),
-                (CheckBox) v.findViewById(R.id.checkBoxP),
-                (CheckBox) v.findViewById(R.id.checkBoxL),
-                (CheckBox) v.findViewById(R.id.checkBoxV),
-                (CardView) v.findViewById(R.id.card_view));
+                v.findViewById(R.id.kid_picture),
+                v.findViewById(R.id.arrow_picture),
+                v.findViewById(R.id.kid_name),
+                v.findViewById(R.id.class_room),
+                v.findViewById(R.id.checkBoxP),
+                v.findViewById(R.id.checkBoxL),
+                v.findViewById(R.id.checkBoxV),
+                v.findViewById(R.id.card_view));
     }
 
     @Override
@@ -228,13 +228,7 @@ public class StudentAttendanceListAdapter
      * @return Comparator
      */
     private Comparator<StudentAttendance> getComparator() {
-        return new Comparator<StudentAttendance>() {
-            @Override
-            public int compare(StudentAttendance kid1,
-                               StudentAttendance kid2) {
-                return kid1.toString().compareTo(kid2.toString());
-            }
-        };
+        return (kid1, kid2) -> kid1.toString().compareTo(kid2.toString());
     }
 }
 

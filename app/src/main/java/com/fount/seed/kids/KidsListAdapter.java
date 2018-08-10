@@ -8,8 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -112,46 +110,31 @@ public class KidsListAdapter
             holder.kidPicture.setImageResource(R.mipmap.ic_girl);
         }
 
-        holder.arrowPicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Selecting kid: " + data.getKidName());
+        holder.arrowPicture.setOnClickListener(v -> {
+            Log.i(TAG, "Selecting kid: " + data.getKidName());
 
-                Intent intent = new Intent(v.getContext(), UpdateKidActivity.class);
-                intent.putExtra(Constants.EXTRA_KEY_KID, data);
-                intent.putExtra(Constants.EXTRA_KEY_PARENT, parent);
-                v.getContext().startActivity(intent);
-            }
+            Intent intent = new Intent(v.getContext(), UpdateKidActivity.class);
+            intent.putExtra(Constants.EXTRA_KEY_KID, data);
+            intent.putExtra(Constants.EXTRA_KEY_PARENT, parent);
+            v.getContext().startActivity(intent);
         });
 
-        holder.checkBoxP.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                Log.i(TAG, "Selecting kid: " + data.getKidName());
+        holder.checkBoxP.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Log.i(TAG, "Selecting kid: " + data.getKidName());
 
-                FirebaseUtils.getInstance().saveStudentAttendance(data, Constants.P, isChecked);
-            }
+            FirebaseUtils.getInstance().saveStudentAttendance(data, Constants.P, isChecked);
         });
 
-        holder.checkBoxL.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                Log.i(TAG, "Selecting kid: " + data.getKidName());
+        holder.checkBoxL.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Log.i(TAG, "Selecting kid: " + data.getKidName());
 
-                FirebaseUtils.getInstance().saveStudentAttendance(data, Constants.L, isChecked);
-            }
+            FirebaseUtils.getInstance().saveStudentAttendance(data, Constants.L, isChecked);
         });
 
-        holder.checkBoxV.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView,
-                                         boolean isChecked) {
-                Log.i(TAG, "Selecting kid: " + data.getKidName());
+        holder.checkBoxV.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Log.i(TAG, "Selecting kid: " + data.getKidName());
 
-                FirebaseUtils.getInstance().saveStudentAttendance(data, Constants.V, isChecked);
-            }
+            FirebaseUtils.getInstance().saveStudentAttendance(data, Constants.V, isChecked);
         });
     }
 

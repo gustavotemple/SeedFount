@@ -10,7 +10,6 @@ import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import com.fount.seed.kids.ChaletActivity;
@@ -19,12 +18,25 @@ import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.utils.FirebaseUtils;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StartActivity extends AppCompatActivity {
+
+    @BindView(R.id.buttonBabies)
+    public Button buttonBabies;
+
+    @BindView(R.id.buttonChalet)
+    public Button buttonChalet;
+
+    @BindView(R.id.buttonManagement)
+    public Button buttonManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+        ButterKnife.bind(this);
 
         if (!(Thread.getDefaultUncaughtExceptionHandler() instanceof CustomExceptionHandler)) {
             Thread.setDefaultUncaughtExceptionHandler(new CustomExceptionHandler(this));
@@ -32,27 +44,9 @@ public class StartActivity extends AppCompatActivity {
 
         FirebaseUtils.getInstance().initialize();
 
-        Button buttonBabies = findViewById(R.id.buttonBabies);
-        buttonBabies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this.getApplicationContext(), RoomActivity.class));
-            }
-        });
-
-        Button buttonChalet = findViewById(R.id.buttonChalet);
-        buttonChalet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this.getApplicationContext(), ChaletActivity.class));
-            }
-        });
-
-        Button buttonManagement = findViewById(R.id.buttonManagement);
-        buttonManagement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
+        buttonBabies.setOnClickListener(view -> startActivity(new Intent(StartActivity.this.getApplicationContext(), RoomActivity.class)));
+        buttonChalet.setOnClickListener(view -> startActivity(new Intent(StartActivity.this.getApplicationContext(), ChaletActivity.class)));
+        buttonManagement.setOnClickListener(view -> {
         });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

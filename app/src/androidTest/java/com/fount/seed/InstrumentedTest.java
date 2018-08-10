@@ -47,12 +47,7 @@ public class InstrumentedTest {
                 .perform(clearText(), typeText(kidName), closeSoftKeyboard())
                 .check(matches(withText(kidName)));
 
-        addKidActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                assertNull(addKidActivity.submitAttempt());
-            }
-        });
+        addKidActivity.runOnUiThread(() -> assertNull(addKidActivity.submitAttempt()));
     }
 
     @Test
@@ -64,12 +59,7 @@ public class InstrumentedTest {
         onView(withId(R.id.girl))
                 .check(matches(isNotChecked()));
 
-        addKidActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                assertNull(addKidActivity.submitAttempt());
-            }
-        });
+        addKidActivity.runOnUiThread(() -> assertNull(addKidActivity.submitAttempt()));
     }
 
     @Test
@@ -86,11 +76,6 @@ public class InstrumentedTest {
         onView(withId(R.id.girl))
                 .perform(click());
 
-        addKidActivity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                assertNotNull(addKidActivity.submitAttempt());
-            }
-        });
+        addKidActivity.runOnUiThread(() -> assertNotNull(addKidActivity.submitAttempt()));
     }
 }

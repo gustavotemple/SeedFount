@@ -155,19 +155,17 @@ public abstract class KidsActivity extends AppCompatActivity
     private void showMsg(final int msgId) {
         Log.i(TAG, "msgId: " + msgId);
 
-        runOnUiThread(new Runnable() {
-            public void run() {
-                if (snackbar != null
-                        && snackbar.isShown()) {
-                    return;
-                }
+        runOnUiThread(() -> {
+            if (snackbar != null
+                    && snackbar.isShown()) {
+                return;
+            }
 
-                if (recyclerView != null) {
-                    snackbar = Snackbar.make(recyclerView,
-                            msgId,
-                            Snackbar.LENGTH_LONG);
-                    snackbar.show();
-                }
+            if (recyclerView != null) {
+                snackbar = Snackbar.make(recyclerView,
+                        msgId,
+                        Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
         });
     }
@@ -178,13 +176,11 @@ public abstract class KidsActivity extends AppCompatActivity
      * @param kid KidWrapper
      */
     private void addKid(final KidWrapper kid) {
-        runOnUiThread(new Runnable() {
-            public void run() {
-                noKids.setVisibility(View.GONE);
-                noKidsLayout.setVisibility(View.GONE);
+        runOnUiThread(() -> {
+            noKids.setVisibility(View.GONE);
+            noKidsLayout.setVisibility(View.GONE);
 
-                mKidsListAdapter.add(kid);
-            }
+            mKidsListAdapter.add(kid);
         });
     }
 

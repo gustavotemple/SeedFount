@@ -14,7 +14,13 @@ import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.ClassDate;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class StudentAttendanceActivity extends AppCompatActivity {
+
+    @BindView(R.id.recycler_view)
+    public RecyclerView recyclerView;
 
     private StudentAttendanceListAdapter mStudentAttendanceListAdapter;
 
@@ -22,6 +28,7 @@ public class StudentAttendanceActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_attendance);
+        ButterKnife.bind(this);
 
         // add back arrow to toolbar
         if (getSupportActionBar() != null){
@@ -33,7 +40,6 @@ public class StudentAttendanceActivity extends AppCompatActivity {
             Thread.setDefaultUncaughtExceptionHandler(new CustomExceptionHandler(this));
         }
 
-        final RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

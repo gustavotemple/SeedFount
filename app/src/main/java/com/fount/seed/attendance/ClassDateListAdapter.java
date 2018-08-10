@@ -56,16 +56,13 @@ public class ClassDateListAdapter
         holder.date.setText(FirebaseUtils.DateGenerator.formatDate(data.getDate()));
         holder.date.setTypeface(type);
 
-        holder.arrowPicture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Date: " + data.getDate());
+        holder.arrowPicture.setOnClickListener(v -> {
+            Log.i(TAG, "Date: " + data.getDate());
 
-                Intent intent = new Intent(v.getContext(), StudentAttendanceActivity.class);
-                intent.putExtra(Constants.EXTRA_KEY_DATE, data);
+            Intent intent = new Intent(v.getContext(), StudentAttendanceActivity.class);
+            intent.putExtra(Constants.EXTRA_KEY_DATE, data);
 
-                v.getContext().startActivity(intent);
-            }
+            v.getContext().startActivity(intent);
         });
     }
 }

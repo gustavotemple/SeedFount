@@ -43,14 +43,11 @@ public final class ChaletActivity extends KidsActivity {
 
     @Override
     protected void setView() {
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChaletActivity.this.getApplicationContext(),
-                        AddKidActivity.class);
-                intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "." + TAG);
-                startActivity(intent);
-            }
+        fab.setOnClickListener(view -> {
+            Intent intent = new Intent(ChaletActivity.this.getApplicationContext(),
+                    AddKidActivity.class);
+            intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "." + TAG);
+            startActivity(intent);
         });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_chalet);
