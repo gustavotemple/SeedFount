@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.fount.seed.kids.ChaletActivity;
 import com.fount.seed.kids.RoomActivity;
+import com.fount.seed.management.ManagementActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.utils.FirebaseUtils;
@@ -44,10 +45,15 @@ public class StartActivity extends AppCompatActivity {
 
         FirebaseUtils.getInstance().initialize();
 
-        buttonBabies.setOnClickListener(view -> startActivity(new Intent(StartActivity.this.getApplicationContext(), RoomActivity.class)));
-        buttonChalet.setOnClickListener(view -> startActivity(new Intent(StartActivity.this.getApplicationContext(), ChaletActivity.class)));
-        buttonManagement.setOnClickListener(view -> {
-        });
+        buttonBabies.setOnClickListener(view ->
+                startActivity(new Intent(StartActivity.this.getApplicationContext(),
+                        RoomActivity.class)));
+        buttonChalet.setOnClickListener(view ->
+                startActivity(new Intent(StartActivity.this.getApplicationContext(),
+                        ChaletActivity.class)));
+        buttonManagement.setOnClickListener(view ->
+                startActivity(new Intent(StartActivity.this.getApplicationContext(),
+                        ManagementActivity.class)));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermission();

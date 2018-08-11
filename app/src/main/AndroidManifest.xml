@@ -45,6 +45,7 @@
 
         <activity
             android:name=".register.AddKidActivity"
+            android:configChanges="orientation|screenSize"
             android:launchMode="singleTop">
         </activity>
 
@@ -58,6 +59,13 @@
             android:name=".attendance.StudentAttendanceActivity"
             android:launchMode="singleTop">
         </activity>
+
+        <activity
+            android:name=".management.ManagementActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/management"
+            android:launchMode="singleTop"
+            android:screenOrientation="landscape" />
 
         <receiver
             android:name=".utils.FirebaseUtils$DateGenerator"

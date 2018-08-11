@@ -50,9 +50,19 @@
     <string name="kid_updated">Registro atualizado.</string>
     <string name="kid_deleted">Registro removido.</string>
 
+    <!-- Strings related to start -->
     <string name="babies">Semear Bebês</string>
     <string name="ebi_ci">EBI/CI</string>
     <string name="management">Gestão</string>
+
+    <!-- Strings related to management -->
+    <string name="from">De:</string>
+    <string name="to">Até:</string>
+    <string name="birth">Nascimento:</string>
+    <string name="room">Sala:</string>
+    <string name="chalet">Chalé:</string>
+    <string name="seed_baby">Semear Bebês</string>
+    <string name="seed_kid">Crianças de 4 a 11 anos</string>
 
     <!-- Strings related to register -->
     <string name="title_register">Novo Registro</string>

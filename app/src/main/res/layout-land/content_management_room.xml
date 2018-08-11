@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".management.ManagementActivity"
+    tools:showIn="@layout/activity_management">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_span="3"
+            android:text="@string/seed_baby"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_span="3"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_span="2"
+            android:text="@string/birth"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_span="1"
+            android:text="@string/room"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/from"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/to"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="N#" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/from"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/to"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="N#" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/from"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/to"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="N#" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/from"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/to"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="N#" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText04"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/from"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout41"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText41"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/to"
+                android:inputType="date"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="##/##/####" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInputLayout42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
+                android:id="@+id/maskedEditText42"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="2"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true"
+                app:mask="N#" />
+
+        </android.support.design.widget.TextInputLayout>
+
+    </TableRow>
+
+    <TableRow>
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_span="3"
+            android:layout_weight="1"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </TableRow>
+
+</TableLayout>
+
+
