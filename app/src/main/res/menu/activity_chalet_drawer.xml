@@ -10,7 +10,7 @@
             android:title="@string/all_chalets" />
         <item
             android:id="@+id/nav_chalet3_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet3_am" />
         <item
             android:id="@+id/nav_chalet3_pm"
@@ -18,7 +18,7 @@
             android:title="@string/chalet3_pm" />
         <item
             android:id="@+id/nav_chalet4_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet4_am" />
         <item
             android:id="@+id/nav_chalet4_pm"
@@ -26,7 +26,7 @@
             android:title="@string/chalet4_pm" />
         <item
             android:id="@+id/nav_chalet5_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet5_am" />
         <item
             android:id="@+id/nav_chalet5_pm"
@@ -34,7 +34,7 @@
             android:title="@string/chalet5_pm" />
         <item
             android:id="@+id/nav_chalet6_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet6_am" />
         <item
             android:id="@+id/nav_chalet6_pm"
@@ -42,7 +42,7 @@
             android:title="@string/chalet6_pm" />
         <item
             android:id="@+id/nav_chalet7_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet7_am" />
         <item
             android:id="@+id/nav_chalet7_pm"
@@ -50,15 +50,15 @@
             android:title="@string/chalet7_pm" />
         <item
             android:id="@+id/nav_chalet8_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet8_am" />
         <item
             android:id="@+id/nav_chalet8_pm"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@android:drawable/btn_star_big_off"
             android:title="@string/chalet8_pm" />
         <item
             android:id="@+id/nav_chalet9_am"
-            android:icon="@android:drawable/btn_star_big_off"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet9_am" />
         <item
             android:id="@+id/nav_chalet9_pm"
@@ -66,7 +66,7 @@
             android:title="@string/chalet9_pm" />
         <item
             android:id="@+id/nav_chalet10_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/chalet10_am" />
         <item
             android:id="@+id/nav_chalet10_pm"

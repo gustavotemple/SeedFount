@@ -51,9 +51,9 @@
     <string name="kid_deleted">Registro removido.</string>
 
     <!-- Strings related to start -->
-    <string name="babies">Semear Bebês</string>
-    <string name="ebi_ci">EBI/CI</string>
-    <string name="management">Gestão</string>
+    <string name="babies"> Semear Bebês</string>
+    <string name="ebi_ci"> EBI/CI</string>
+    <string name="management"> Gestão</string>
 
     <!-- Strings related to management -->
     <string name="from">De:</string>

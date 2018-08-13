@@ -10,7 +10,7 @@
             android:title="@string/all_rooms" />
         <item
             android:id="@+id/nav_n1_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/n1_am" />
         <item
             android:id="@+id/nav_n1_pm"
@@ -18,7 +18,7 @@
             android:title="@string/n1_pm" />
         <item
             android:id="@+id/nav_n2_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/n2_am" />
         <item
             android:id="@+id/nav_n2_pm"
@@ -26,7 +26,7 @@
             android:title="@string/n2_pm" />
         <item
             android:id="@+id/nav_n3_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/n3_am" />
         <item
             android:id="@+id/nav_n3_pm"
@@ -34,7 +34,7 @@
             android:title="@string/n3_pm" />
         <item
             android:id="@+id/nav_n4_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/n4_am" />
         <item
             android:id="@+id/nav_n4_pm"
@@ -42,7 +42,7 @@
             android:title="@string/n4_pm" />
         <item
             android:id="@+id/nav_n5_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/n5_am" />
         <item
             android:id="@+id/nav_n5_pm"
@@ -50,7 +50,7 @@
             android:title="@string/n5_pm" />
         <item
             android:id="@+id/nav_n6_am"
-            android:icon="@android:drawable/ic_menu_compass"
+            android:icon="@drawable/ic_sunny"
             android:title="@string/n6_am" />
         <item
             android:id="@+id/nav_n6_pm"
