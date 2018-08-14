@@ -34,7 +34,6 @@ abstract class KidRegisterActivity
         implements KidRegisterInterface, View.OnClickListener {
 
     public KidWrapper kidWrapper;
-    public String parent;
 
     @BindView(R.id.kid_name)
     public TextInputEditText mKidName;
@@ -95,10 +94,9 @@ abstract class KidRegisterActivity
     @OnClick(R.id.delete_kid)
     public void deleteKid() {
         Intent intent = new Intent();
-        intent.setClassName(getApplicationContext(), parent);
         intent.putExtra(Constants.EXTRA_KEY_KID, kidWrapper);
-        intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.DELETE);
-        startActivity(intent);
+        setResult(Constants.DELETE, intent);
+        finish();
     }
 
     abstract void setUI(Bundle savedInstanceState);

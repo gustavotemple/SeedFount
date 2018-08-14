@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
-import com.fount.seed.utils.FirebaseUtils;
+import com.fount.seed.database.firebase.FirebaseUtils;
 import com.fount.seed.wrappers.ClassDate;
 import com.google.firebase.database.DatabaseReference;
 

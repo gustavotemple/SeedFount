@@ -68,7 +68,7 @@
             android:screenOrientation="landscape" />
 
         <receiver
-            android:name=".utils.FirebaseUtils$DateGenerator"
+            android:name=".database.firebase.FirebaseUtils$DateGenerator"
             android:enabled="true"
             android:exported="false">
             <intent-filter>

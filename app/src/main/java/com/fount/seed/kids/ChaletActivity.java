@@ -18,7 +18,7 @@ import com.fount.seed.attendance.ClassDateListAdapter;
 import com.fount.seed.R;
 import com.fount.seed.register.AddKidActivity;
 import com.fount.seed.utils.Constants;
-import com.fount.seed.utils.FirebaseUtils;
+import com.fount.seed.database.firebase.FirebaseUtils;
 import com.google.firebase.database.Query;
 
 public final class ChaletActivity extends KidsActivity {
@@ -32,8 +32,7 @@ public final class ChaletActivity extends KidsActivity {
 
     @Override
     protected KidsListAdapter getKidsListAdapter() {
-        return new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                getPackageName() + "." + TAG);
+        return new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids());
     }
 
     @Override
@@ -46,8 +45,7 @@ public final class ChaletActivity extends KidsActivity {
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(ChaletActivity.this.getApplicationContext(),
                     AddKidActivity.class);
-            intent.putExtra(Constants.EXTRA_KEY_PARENT, getPackageName() + "." + TAG);
-            startActivity(intent);
+            startActivityForResult(intent, Constants.INSERT);
         });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout_chalet);
@@ -170,10 +168,9 @@ public final class ChaletActivity extends KidsActivity {
 
             if (query != null) {
                 mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                        query, getPackageName() + "." + TAG);
+                        query);
             } else {
-                mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids(),
-                        getPackageName() + "." + TAG);
+                mKidsListAdapter = new KidsListAdapter(FirebaseUtils.getInstance().getChaletKids());
             }
 
             recyclerView.setAdapter(mKidsListAdapter);

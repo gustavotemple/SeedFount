@@ -14,7 +14,6 @@ public final class UpdateKidActivity extends KidRegisterActivity {
     protected void setUI(Bundle savedInstanceState) {
         final Bundle state = savedInstanceState != null ? savedInstanceState : getIntent().getExtras();
         kidWrapper = state != null ? (KidWrapper) state.getParcelable(Constants.EXTRA_KEY_KID) : null;
-        parent = getIntent().getStringExtra(Constants.EXTRA_KEY_PARENT);
 
         loadKid();
         setTitle(R.string.title_update);
@@ -34,10 +33,9 @@ public final class UpdateKidActivity extends KidRegisterActivity {
         kid.setUid(kidWrapper.getUid());
 
         Intent intent = new Intent();
-        intent.setClassName(getApplicationContext(), parent);
         intent.putExtra(Constants.EXTRA_KEY_KID, kid);
-        intent.putExtra(Constants.EXTRA_KEY_OPERATION, Constants.UPDATE);
-        startActivity(intent);
+        setResult(Constants.UPDATE, intent);
+        finish();
     }
 
     private void loadKid() {

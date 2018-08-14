@@ -17,7 +17,7 @@ import com.fount.seed.kids.RoomActivity;
 import com.fount.seed.management.ManagementActivity;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
-import com.fount.seed.utils.FirebaseUtils;
+import com.fount.seed.database.firebase.FirebaseUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

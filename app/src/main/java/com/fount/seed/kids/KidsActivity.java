@@ -22,7 +22,7 @@ import com.fount.seed.attendance.ClassDateListAdapter;
 import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
-import com.fount.seed.utils.FirebaseUtils;
+import com.fount.seed.database.firebase.FirebaseUtils;
 import com.fount.seed.wrappers.KidWrapper;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -112,12 +112,12 @@ public abstract class KidsActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Log.i(TAG, "onNewIntent");
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, "onActivityResult");
 
-        final KidWrapper kid = intent != null ? (KidWrapper) intent.getParcelableExtra(Constants.EXTRA_KEY_KID) : null;
-        if (intent == null
+        final KidWrapper kid = data != null ? (KidWrapper) data.getParcelableExtra(Constants.EXTRA_KEY_KID) : null;
+        if (data == null
                 || kid == null) {
             Log.i(TAG, "No kid set in intent extra: " +
                     Constants.EXTRA_KEY_KID);
@@ -126,10 +126,7 @@ public abstract class KidsActivity extends AppCompatActivity
             Log.i(TAG, "Kid: " + kid.getKidName());
         }
 
-        int operation = intent.getIntExtra(Constants.EXTRA_KEY_OPERATION, Constants.NO_OP);
-        Log.i(TAG, "Operation: " + operation);
-
-        switch (operation) {
+        switch (resultCode) {
             case Constants.INSERT:
                 addKid(kid);
                 showMsg(R.string.kid_added);

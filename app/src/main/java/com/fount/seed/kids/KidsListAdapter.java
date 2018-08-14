@@ -1,5 +1,6 @@
 package com.fount.seed.kids;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
@@ -15,7 +16,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.fount.seed.R;
 import com.fount.seed.register.UpdateKidActivity;
 import com.fount.seed.utils.Constants;
-import com.fount.seed.utils.FirebaseUtils;
+import com.fount.seed.database.firebase.FirebaseUtils;
 import com.fount.seed.wrappers.KidWrapper;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.Query;
@@ -24,27 +25,22 @@ public class KidsListAdapter
         extends FirebaseRecyclerAdapter<KidWrapper, KidsListAdapter.ViewHolder> {
 
     private static final String TAG = KidsListAdapter.class.getSimpleName();
-    private final String parent;
     private final DatabaseReference databaseReference;
 
     KidsListAdapter(final DatabaseReference databaseReference,
-                    final Query query,
-                    final String parent) {
+                    final Query query) {
         super(KidWrapper.class,
                 R.layout.listitem_kid,
                 ViewHolder.class,
                 query);
-        this.parent = parent;
         this.databaseReference = databaseReference;
     }
 
-    KidsListAdapter(final DatabaseReference databaseReference,
-                    final String parent) {
+    KidsListAdapter(final DatabaseReference databaseReference) {
         super(KidWrapper.class,
                 R.layout.listitem_kid,
                 ViewHolder.class,
                 databaseReference);
-        this.parent = parent;
         this.databaseReference = databaseReference;
     }
 
@@ -110,13 +106,12 @@ public class KidsListAdapter
             holder.kidPicture.setImageResource(R.mipmap.ic_girl);
         }
 
-        holder.arrowPicture.setOnClickListener(v -> {
+        holder.arrowPicture.setOnClickListener(view -> {
             Log.i(TAG, "Selecting kid: " + data.getKidName());
 
-            Intent intent = new Intent(v.getContext(), UpdateKidActivity.class);
+            Intent intent = new Intent(view.getContext(), UpdateKidActivity.class);
             intent.putExtra(Constants.EXTRA_KEY_KID, data);
-            intent.putExtra(Constants.EXTRA_KEY_PARENT, parent);
-            v.getContext().startActivity(intent);
+            ((Activity) view.getContext()).startActivityForResult(intent, Constants.UPDATE);
         });
 
         holder.checkBoxP.setOnCheckedChangeListener((buttonView, isChecked) -> {

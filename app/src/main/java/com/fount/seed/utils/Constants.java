@@ -11,10 +11,6 @@ public final class Constants {
 
     public static final String EXTRA_KEY_DATE = BuildConfig.APPLICATION_ID + ".date";
 
-    public static final String EXTRA_KEY_OPERATION = BuildConfig.APPLICATION_ID + ".op";
-
-    public static final String EXTRA_KEY_PARENT = BuildConfig.APPLICATION_ID + ".parent";
-
     public static final String CLASS_ROOM = "classRoom";
 
     public static final String P = "P";
@@ -88,8 +84,6 @@ public final class Constants {
     public static final String CHALET_10_AM = CHALET + " 10 " + AM;
 
     public static final String CHALET_10_PM = CHALET + " 10 " + PM;
-
-    public static final int NO_OP = 0;
 
     public static final int INSERT = 1;
 

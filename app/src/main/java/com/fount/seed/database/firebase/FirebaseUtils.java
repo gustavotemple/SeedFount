@@ -1,4 +1,4 @@
-package com.fount.seed.utils;
+package com.fount.seed.database.firebase;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -8,6 +8,7 @@ import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.CheckBox;
 
+import com.fount.seed.utils.Constants;
 import com.fount.seed.wrappers.ClassDate;
 import com.fount.seed.wrappers.KidWrapper;
 import com.google.firebase.database.DataSnapshot;
