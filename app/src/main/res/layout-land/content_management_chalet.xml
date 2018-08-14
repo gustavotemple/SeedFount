@@ -65,12 +65,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout00"
+            android:id="@+id/chaletFromLayout0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText00"
+                android:id="@+id/chaletFromText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -83,12 +83,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout01"
+            android:id="@+id/chaletToLayout0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText01"
+                android:id="@+id/chaletToText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -101,12 +101,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout02"
+            android:id="@+id/chaletNumberLayout0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText02"
+                android:id="@+id/chaletNumberText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"
@@ -124,12 +124,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout10"
+            android:id="@+id/chaletFromLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText10"
+                android:id="@+id/chaletFromText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -142,12 +142,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout11"
+            android:id="@+id/chaletToLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText11"
+                android:id="@+id/chaletToText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -160,12 +160,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout12"
+            android:id="@+id/chaletNumberLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText12"
+                android:id="@+id/chaletNumberText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"
@@ -183,12 +183,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout20"
+            android:id="@+id/chaletFromLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText20"
+                android:id="@+id/chaletFromText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -201,12 +201,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout21"
+            android:id="@+id/chaletToLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText21"
+                android:id="@+id/chaletToText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -219,12 +219,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout22"
+            android:id="@+id/chaletNumberLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText22"
+                android:id="@+id/chaletNumberText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"
@@ -242,12 +242,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout30"
+            android:id="@+id/chaletFromLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText30"
+                android:id="@+id/chaletFromText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -260,12 +260,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout31"
+            android:id="@+id/chaletToLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText31"
+                android:id="@+id/chaletToText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -278,12 +278,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout32"
+            android:id="@+id/chaletNumberLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText32"
+                android:id="@+id/chaletNumberText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"
@@ -301,12 +301,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout40"
+            android:id="@+id/chaletFromLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText04"
+                android:id="@+id/chaletFromText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -319,12 +319,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout41"
+            android:id="@+id/chaletToLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText41"
+                android:id="@+id/chaletToText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -337,12 +337,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout42"
+            android:id="@+id/chaletNumberLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText42"
+                android:id="@+id/chaletNumberText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="8"

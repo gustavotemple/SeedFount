@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/roomTitle0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -41,6 +42,7 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/roomTitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -50,6 +52,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/roomTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -65,12 +68,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout00"
+            android:id="@+id/roomFromLayout0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText00"
+                android:id="@+id/roomFromText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -83,12 +86,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout01"
+            android:id="@+id/roomToLayout0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText01"
+                android:id="@+id/roomToText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -101,12 +104,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout02"
+            android:id="@+id/roomNumberLayout0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText02"
+                android:id="@+id/roomNumberText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="2"
@@ -124,12 +127,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout10"
+            android:id="@+id/roomFromLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText10"
+                android:id="@+id/roomFromText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -142,12 +145,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout11"
+            android:id="@+id/roomToLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText11"
+                android:id="@+id/roomToText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -160,12 +163,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout12"
+            android:id="@+id/roomNumberLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText12"
+                android:id="@+id/roomNumberText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="2"
@@ -183,12 +186,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout20"
+            android:id="@+id/roomFromLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText20"
+                android:id="@+id/roomFromText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -201,12 +204,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout21"
+            android:id="@+id/roomToLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText21"
+                android:id="@+id/roomToText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -219,12 +222,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout22"
+            android:id="@+id/roomNumberLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText22"
+                android:id="@+id/roomNumberText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="2"
@@ -242,12 +245,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout30"
+            android:id="@+id/roomFromLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText30"
+                android:id="@+id/roomFromText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -260,12 +263,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout31"
+            android:id="@+id/roomToLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText31"
+                android:id="@+id/roomToText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -278,12 +281,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout32"
+            android:id="@+id/roomNumberLayout3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText32"
+                android:id="@+id/roomNumberText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="2"
@@ -301,12 +304,12 @@
         android:layout_height="wrap_content">
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout40"
+            android:id="@+id/roomFromLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText04"
+                android:id="@+id/roomFromText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -319,12 +322,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout41"
+            android:id="@+id/roomToLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText41"
+                android:id="@+id/roomToText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -337,12 +340,12 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/textInputLayout42"
+            android:id="@+id/roomNumberLayout4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.vicmikhailau.maskededittext.MaskedEditText
-                android:id="@+id/maskedEditText42"
+                android:id="@+id/roomNumberText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="2"

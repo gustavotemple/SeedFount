@@ -13,23 +13,31 @@ import java.util.List;
 
 class SchoolViewModel extends AndroidViewModel {
 
-    private SchoolRepository schoolRepo;
-    private LiveData<List<RoomEntity>> rooms;
-    private LiveData<List<ChaletEntity>> chalets;
+    private final SchoolRepository schoolRepo;
+    private final LiveData<List<RoomEntity>> rooms;
+    private final LiveData<List<ChaletEntity>> chalets;
 
-    SchoolViewModel(@NonNull Application application) {
+    SchoolViewModel(@NonNull final Application application) {
         super(application);
         schoolRepo = new SchoolRepository(application);
         rooms = schoolRepo.getAllRooms();
         chalets = schoolRepo.getAllChalets();
     }
 
-    public void insert(RoomEntity roomEntity) {
+    public void insert(final RoomEntity roomEntity) {
         schoolRepo.insert(roomEntity);
     }
 
-    public void insert(ChaletEntity chaletEntity) {
+    public void insert(final ChaletEntity chaletEntity) {
         schoolRepo.insert(chaletEntity);
+    }
+
+    public void deleteAllRooms() {
+        schoolRepo.deleteAllRooms();
+    }
+
+    public void deleteAllChalets() {
+        schoolRepo.deleteAllChalets();
     }
 
     public LiveData<List<RoomEntity>> getAllRooms() {
