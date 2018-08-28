@@ -57,32 +57,32 @@ public final class ChaletActivity extends KidsActivity {
         NavigationView navigationView = findViewById(R.id.nav_view_chalet);
         Menu menu = navigationView.getMenu();
 
-        MenuItem chalet3pm = menu.findItem(R.id.nav_chalet3_pm);
+        MenuItem chalet3pm = menu.findItem(R.id.nav_chalet3);
         SpannableString chalet3pmSS = new SpannableString(chalet3pm.getTitle());
         chalet3pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearancePurple), 0, chalet3pmSS.length(), 0);
         chalet3pm.setTitle(chalet3pmSS);
 
-        MenuItem chalet4pm = menu.findItem(R.id.nav_chalet4_pm);
+        MenuItem chalet4pm = menu.findItem(R.id.nav_chalet4);
         SpannableString chalet4pmSS = new SpannableString(chalet4pm.getTitle());
         chalet4pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceFuchsia), 0, chalet4pmSS.length(), 0);
         chalet4pm.setTitle(chalet4pmSS);
 
-        MenuItem chalet7pm = menu.findItem(R.id.nav_chalet7_pm);
+        MenuItem chalet7pm = menu.findItem(R.id.nav_chalet7);
         SpannableString chalet7pmSS = new SpannableString(chalet7pm.getTitle());
         chalet7pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceYellow), 0, chalet7pmSS.length(), 0);
         chalet7pm.setTitle(chalet7pmSS);
 
-        MenuItem chalet8pm = menu.findItem(R.id.nav_chalet8_pm);
+        MenuItem chalet8pm = menu.findItem(R.id.nav_chalet8);
         SpannableString chalet8pmSS = new SpannableString(chalet8pm.getTitle());
         chalet8pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceBlue), 0, chalet8pmSS.length(), 0);
         chalet8pm.setTitle(chalet8pmSS);
 
-        MenuItem chalet9pm = menu.findItem(R.id.nav_chalet9_pm);
+        MenuItem chalet9pm = menu.findItem(R.id.nav_chalet9);
         SpannableString chalet9pmSS = new SpannableString(chalet9pm.getTitle());
         chalet9pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceGreen), 0, chalet9pmSS.length(), 0);
         chalet9pm.setTitle(chalet9pmSS);
 
-        MenuItem chalet10pm = menu.findItem(R.id.nav_chalet10_pm);
+        MenuItem chalet10pm = menu.findItem(R.id.nav_chalet10);
         SpannableString chalet10pmSS = new SpannableString(chalet10pm.getTitle());
         chalet10pmSS.setSpan(new TextAppearanceSpan(this, R.style.TextAppearanceRed), 0, chalet10pmSS.length(), 0);
         chalet10pm.setTitle(chalet10pmSS);
@@ -132,38 +132,22 @@ public final class ChaletActivity extends KidsActivity {
             Query query = null;
             if (id == R.id.nav_all) {
                 query = null;
-            } else if (id == R.id.nav_chalet3_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_3_AM);
-            } else if (id == R.id.nav_chalet3_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_3_PM);
-            } else if (id == R.id.nav_chalet4_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_4_AM);
-            } else if (id == R.id.nav_chalet4_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_4_PM);
-            } else if (id == R.id.nav_chalet5_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_5_AM);
-            } else if (id == R.id.nav_chalet5_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_5_PM);
-            } else if (id == R.id.nav_chalet6_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_6_AM);
-            } else if (id == R.id.nav_chalet6_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_6_PM);
-            } else if (id == R.id.nav_chalet7_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_7_AM);
-            } else if (id == R.id.nav_chalet7_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_7_PM);
-            } else if (id == R.id.nav_chalet8_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_8_AM);
-            } else if (id == R.id.nav_chalet8_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_8_PM);
-            } else if (id == R.id.nav_chalet9_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_9_AM);
-            } else if (id == R.id.nav_chalet9_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_9_PM);
-            } else if (id == R.id.nav_chalet10_am) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_10_AM);
-            } else if (id == R.id.nav_chalet10_pm) {
-                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_10_PM);
+            } else if (id == R.id.nav_chalet3) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_3);
+            } else if (id == R.id.nav_chalet4) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_4);
+            } else if (id == R.id.nav_chalet5) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_5);
+            } else if (id == R.id.nav_chalet6) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_6);
+            } else if (id == R.id.nav_chalet7) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_7);
+            } else if (id == R.id.nav_chalet8) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_8);
+            } else if (id == R.id.nav_chalet9) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_9);
+            } else if (id == R.id.nav_chalet10) {
+                query = FirebaseUtils.getInstance().getChaletKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.CHALET_10);
             }
 
             if (query != null) {

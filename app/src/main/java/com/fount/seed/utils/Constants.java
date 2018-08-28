@@ -29,61 +29,33 @@ public final class Constants {
 
     public static final String PM = "PM";
 
-    public static final String ROOM_1_AM = ROOM + " 1 " + AM;
+    public static final String ROOM_1 = ROOM + " 1";
 
-    public static final String ROOM_1_PM = ROOM + " 1 " + PM;
+    public static final String ROOM_2 = ROOM + " 2";
 
-    public static final String ROOM_2_AM = ROOM + " 2 " + AM;
+    public static final String ROOM_3 = ROOM + " 3";
 
-    public static final String ROOM_2_PM = ROOM + " 2 " + PM;
+    public static final String ROOM_4 = ROOM + " 4";
 
-    public static final String ROOM_3_AM = ROOM + " 3 " + AM;
+    public static final String ROOM_5 = ROOM + " 5";
 
-    public static final String ROOM_3_PM = ROOM + " 3 " + PM;
+    public static final String ROOM_6 = ROOM + " 6";
 
-    public static final String ROOM_4_AM = ROOM + " 4 " + AM;
+    public static final String CHALET_3 = CHALET + " 3";
 
-    public static final String ROOM_4_PM = ROOM + " 4 " + PM;
+    public static final String CHALET_4 = CHALET + " 4";
 
-    public static final String ROOM_5_AM = ROOM + " 5 " + AM;
+    public static final String CHALET_5 = CHALET + " 5";
 
-    public static final String ROOM_5_PM = ROOM + " 5 " + PM;
+    public static final String CHALET_6 = CHALET + " 6";
 
-    public static final String ROOM_6_AM = ROOM + " 6 " + AM;
+    public static final String CHALET_7 = CHALET + " 7";
 
-    public static final String ROOM_6_PM = ROOM + " 6 " + PM;
+    public static final String CHALET_8 = CHALET + " 8";
 
-    public static final String CHALET_3_AM = CHALET + " 3 " + AM;
+    public static final String CHALET_9 = CHALET + " 9";
 
-    public static final String CHALET_3_PM = CHALET + " 3 " + PM;
-
-    public static final String CHALET_4_AM = CHALET + " 4 " + AM;
-
-    public static final String CHALET_4_PM = CHALET + " 4 " + PM;
-
-    public static final String CHALET_5_AM = CHALET + " 5 " + AM;
-
-    public static final String CHALET_5_PM = CHALET + " 5 " + PM;
-
-    public static final String CHALET_6_AM = CHALET + " 6 " + AM;
-
-    public static final String CHALET_6_PM = CHALET + " 6 " + PM;
-
-    public static final String CHALET_7_AM = CHALET + " 7 " + AM;
-
-    public static final String CHALET_7_PM = CHALET + " 7 " + PM;
-
-    public static final String CHALET_8_AM = CHALET + " 8 " + AM;
-
-    public static final String CHALET_8_PM = CHALET + " 8 " + PM;
-
-    public static final String CHALET_9_AM = CHALET + " 9 " + AM;
-
-    public static final String CHALET_9_PM = CHALET + " 9 " + PM;
-
-    public static final String CHALET_10_AM = CHALET + " 10 " + AM;
-
-    public static final String CHALET_10_PM = CHALET + " 10 " + PM;
+    public static final String CHALET_10 = CHALET + " 10";
 
     public static final int INSERT = 1;
 

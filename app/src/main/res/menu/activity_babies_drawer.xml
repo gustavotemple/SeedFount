@@ -9,53 +9,29 @@
             android:icon="@android:drawable/ic_dialog_dialer"
             android:title="@string/all_rooms" />
         <item
-            android:id="@+id/nav_n1_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/n1_am" />
+            android:id="@+id/nav_n1"
+            android:icon="@drawable/ic_room"
+            android:title="@string/n1" />
         <item
-            android:id="@+id/nav_n1_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/n1_pm" />
+            android:id="@+id/nav_n2"
+            android:icon="@drawable/ic_room"
+            android:title="@string/n2" />
         <item
-            android:id="@+id/nav_n2_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/n2_am" />
+            android:id="@+id/nav_n3"
+            android:icon="@drawable/ic_room"
+            android:title="@string/n3" />
         <item
-            android:id="@+id/nav_n2_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/n2_pm" />
+            android:id="@+id/nav_n4"
+            android:icon="@drawable/ic_room"
+            android:title="@string/n4" />
         <item
-            android:id="@+id/nav_n3_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/n3_am" />
+            android:id="@+id/nav_n5"
+            android:icon="@drawable/ic_room"
+            android:title="@string/n5" />
         <item
-            android:id="@+id/nav_n3_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/n3_pm" />
-        <item
-            android:id="@+id/nav_n4_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/n4_am" />
-        <item
-            android:id="@+id/nav_n4_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/n4_pm" />
-        <item
-            android:id="@+id/nav_n5_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/n5_am" />
-        <item
-            android:id="@+id/nav_n5_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/n5_pm" />
-        <item
-            android:id="@+id/nav_n6_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/n6_am" />
-        <item
-            android:id="@+id/nav_n6_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/n6_pm" />
+            android:id="@+id/nav_n6"
+            android:icon="@drawable/ic_room"
+            android:title="@string/n6" />
 
     </group>
 

@@ -9,69 +9,37 @@
             android:icon="@android:drawable/ic_dialog_dialer"
             android:title="@string/all_chalets" />
         <item
-            android:id="@+id/nav_chalet3_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet3_am" />
+            android:id="@+id/nav_chalet3"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet3" />
         <item
-            android:id="@+id/nav_chalet3_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet3_pm" />
+            android:id="@+id/nav_chalet4"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet4" />
         <item
-            android:id="@+id/nav_chalet4_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet4_am" />
+            android:id="@+id/nav_chalet5"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet5" />
         <item
-            android:id="@+id/nav_chalet4_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet4_pm" />
+            android:id="@+id/nav_chalet6"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet6" />
         <item
-            android:id="@+id/nav_chalet5_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet5_am" />
+            android:id="@+id/nav_chalet7"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet7" />
         <item
-            android:id="@+id/nav_chalet5_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet5_pm" />
+            android:id="@+id/nav_chalet8"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet8" />
         <item
-            android:id="@+id/nav_chalet6_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet6_am" />
+            android:id="@+id/nav_chalet9"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet9" />
         <item
-            android:id="@+id/nav_chalet6_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet6_pm" />
-        <item
-            android:id="@+id/nav_chalet7_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet7_am" />
-        <item
-            android:id="@+id/nav_chalet7_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet7_pm" />
-        <item
-            android:id="@+id/nav_chalet8_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet8_am" />
-        <item
-            android:id="@+id/nav_chalet8_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet8_pm" />
-        <item
-            android:id="@+id/nav_chalet9_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet9_am" />
-        <item
-            android:id="@+id/nav_chalet9_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet9_pm" />
-        <item
-            android:id="@+id/nav_chalet10_am"
-            android:icon="@drawable/ic_sunny"
-            android:title="@string/chalet10_am" />
-        <item
-            android:id="@+id/nav_chalet10_pm"
-            android:icon="@android:drawable/btn_star_big_off"
-            android:title="@string/chalet10_pm" />
+            android:id="@+id/nav_chalet10"
+            android:icon="@drawable/ic_chalet"
+            android:title="@string/chalet10" />
     </group>
 
     <item android:title="@string/reports">

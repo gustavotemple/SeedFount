@@ -22,6 +22,10 @@ import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.KidWrapper;
 import com.vicmikhailau.maskededittext.MaskedEditText;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -196,7 +200,7 @@ abstract class KidRegisterActivity
             mBirthDate.setError(getString(R.string.error_field_required));
             focusView = mBirthDate;
             cancel = true;
-        } else if (isFieldInvalid(birthDate)) {
+        } else if (isBirthDateInvalid(birthDate)) {
             mBirthDate.setError(getString(R.string.error_field_invalid));
             focusView = mBirthDate;
             cancel = true;
@@ -281,6 +285,23 @@ abstract class KidRegisterActivity
     @Override
     public boolean isEmailInvalid(@NonNull String email) {
         return !email.contains("@");
+    }
+
+    @Override
+    public boolean isBirthDateInvalid(@NonNull String field) {
+        if (field.length() < 10) {
+            return true;
+        }
+
+        final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy",
+                Locale.getDefault());
+        format.setLenient(false);
+        try {
+            format.parse(field);
+            return false;
+        } catch (ParseException e) {
+            return true;
+        }
     }
 
 }

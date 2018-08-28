@@ -102,6 +102,24 @@ public class ManagementActivity extends AppCompatActivity {
     public MaskedEditText roomNumberText4;
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +143,29 @@ public class ManagementActivity extends AppCompatActivity {
         schoolViewModel = ViewModelProviders.of(this).get(SchoolViewModel.class);
         schoolViewModel.getAllRooms().observe(this, rooms -> {
             if (rooms != null && !rooms.isEmpty()) {
-                Log.i(TAG, rooms.size() + "");
+                for (final RoomEntity room : rooms) {
+                    if (room.getRow() == 0) {
+                        roomFromText0.setText(room.getFrom());
+                        roomToText0.setText(room.getTo());
+                        roomNumberText0.setText(room.getNumber());
+                    } else if (room.getRow() == 1) {
+                        roomFromText1.setText(room.getFrom());
+                        roomToText1.setText(room.getTo());
+                        roomNumberText1.setText(room.getNumber());
+                    } else if (room.getRow() == 2) {
+                        roomFromText2.setText(room.getFrom());
+                        roomToText2.setText(room.getTo());
+                        roomNumberText2.setText(room.getNumber());
+                    } else if (room.getRow() == 3) {
+                        roomFromText3.setText(room.getFrom());
+                        roomToText3.setText(room.getTo());
+                        roomNumberText3.setText(room.getNumber());
+                    } else if (room.getRow() == 4) {
+                        roomFromText4.setText(room.getFrom());
+                        roomToText4.setText(room.getTo());
+                        roomNumberText4.setText(room.getNumber());
+                    }
+                }
             }
         });
         schoolViewModel.getAllChalets().observe(this, chalets ->
@@ -137,7 +177,7 @@ public class ManagementActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> Snackbar.make(view,
-                "Replace with your own action", Snackbar.LENGTH_LONG)
+                "Clicked", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
     }
 
@@ -391,11 +431,27 @@ public class ManagementActivity extends AppCompatActivity {
             return;
         }
 
-        RoomEntity roomEntity0 = new RoomEntity("", "", "");
-        RoomEntity roomEntity1 = new RoomEntity("", "", "");
-        RoomEntity roomEntity2 = new RoomEntity("", "", "");
-        RoomEntity roomEntity3 = new RoomEntity("", "", "");
-        RoomEntity roomEntity4 = new RoomEntity("", "", "");
+        String roomFromText0s = roomFromText0.getText().toString();
+        String roomToText0s = roomToText0.getText().toString();
+        String roomNumberText0s = roomNumberText0.getText().toString();
+        String roomFromText1s = roomFromText1.getText().toString();
+        String roomToText1s = roomToText1.getText().toString();
+        String roomNumberText1s = roomNumberText1.getText().toString();
+        String roomFromText2s = roomFromText2.getText().toString();
+        String roomToText2s = roomToText2.getText().toString();
+        String roomNumberText2s = roomNumberText2.getText().toString();
+        String roomFromText3s = roomFromText3.getText().toString();
+        String roomToText3s = roomToText3.getText().toString();
+        String roomNumberText3s = roomNumberText3.getText().toString();
+        String roomFromText4s = roomFromText4.getText().toString();
+        String roomToText4s = roomToText4.getText().toString();
+        String roomNumberText4s = roomNumberText4.getText().toString();
+
+        RoomEntity roomEntity0 = new RoomEntity(0,roomNumberText0s, roomFromText0s, roomToText0s);
+        RoomEntity roomEntity1 = new RoomEntity(1,roomNumberText1s, roomFromText1s, roomToText1s);
+        RoomEntity roomEntity2 = new RoomEntity(2,roomNumberText2s, roomFromText2s, roomToText2s);
+        RoomEntity roomEntity3 = new RoomEntity(3,roomNumberText3s, roomFromText3s, roomToText3s);
+        RoomEntity roomEntity4 = new RoomEntity(4,roomNumberText4s, roomFromText4s, roomToText4s);
 
         schoolViewModel.deleteAllRooms();
         schoolViewModel.insert(roomEntity0);

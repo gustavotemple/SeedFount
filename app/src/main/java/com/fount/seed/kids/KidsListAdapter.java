@@ -88,7 +88,7 @@ public class KidsListAdapter
         holder.classRoom.setTypeface(type);
 
         if (data.getClassRoom().contains(Constants.CHALET)
-                && data.getClassRoom().contains(Constants.AM)) {
+                && FirebaseUtils.DateGenerator.getPeriod().contains(Constants.AM)) {
             FirebaseUtils.getInstance().setLetter(data, Constants.L, holder.checkBoxL);
             FirebaseUtils.getInstance().setLetter(data, Constants.V, holder.checkBoxV);
             holder.checkBoxL.setVisibility(View.VISIBLE);

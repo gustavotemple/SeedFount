@@ -11,9 +11,12 @@ public class RoomEntity {
     @PrimaryKey(autoGenerate = true)
     private int uid;
 
+    @ColumnInfo(name = "row")
+    private int row;
+
     @NonNull
-    @ColumnInfo(name = "room")
-    private String room;
+    @ColumnInfo(name = "number")
+    private String number;
 
     @NonNull
     @ColumnInfo(name = "from")
@@ -23,8 +26,12 @@ public class RoomEntity {
     @ColumnInfo(name = "to")
     private String to;
 
-    public RoomEntity(@NonNull String room, @NonNull String from, @NonNull String to) {
-        this.room = room;
+    public RoomEntity(int row,
+                      @NonNull String number,
+                      @NonNull String from,
+                      @NonNull String to) {
+        this.row = row;
+        this.number = number;
         this.from = from;
         this.to = to;
     }
@@ -37,13 +44,21 @@ public class RoomEntity {
         this.uid = uid;
     }
 
-    @NonNull
-    public String getRoom() {
-        return room;
+    public int getRow() {
+        return row;
     }
 
-    public void setRoom(@NonNull String room) {
-        this.room = room;
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    @NonNull
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(@NonNull String number) {
+        this.number = number;
     }
 
     @NonNull
