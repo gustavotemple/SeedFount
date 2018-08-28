@@ -13,7 +13,6 @@ public final class AddKidActivity extends KidRegisterActivity {
     @Override
     public void setUI(Bundle savedInstanceState) {
         setTitle(R.string.title_register);
-        fab.setVisibility(View.GONE);
         button.setText(R.string.action_register);
         button.setOnClickListener(this);
     }

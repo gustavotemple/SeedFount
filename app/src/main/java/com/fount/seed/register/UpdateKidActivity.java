@@ -2,13 +2,20 @@ package com.fount.seed.register;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.view.View;
 
 import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.wrappers.KidWrapper;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 public final class UpdateKidActivity extends KidRegisterActivity {
+
+    @BindView(R.id.delete_kid)
+    public FloatingActionButton fab;
 
     @Override
     protected void setUI(Bundle savedInstanceState) {
@@ -20,6 +27,15 @@ public final class UpdateKidActivity extends KidRegisterActivity {
         fab.setVisibility(View.VISIBLE);
         button.setText(R.string.action_update);
         button.setOnClickListener(this);
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.delete_kid)
+    public void deleteKid() {
+        Intent intent = new Intent();
+        intent.putExtra(Constants.EXTRA_KEY_KID, kidWrapper);
+        setResult(Constants.DELETE, intent);
+        finish();
     }
 
     @Override

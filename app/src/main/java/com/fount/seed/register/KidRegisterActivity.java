@@ -1,9 +1,7 @@
 package com.fount.seed.register;
 
-import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +26,6 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * A register screen
@@ -73,8 +70,6 @@ abstract class KidRegisterActivity
     public Switch mCanLeave;
     @BindView(R.id.form_button)
     public Button button;
-    @BindView(R.id.delete_kid)
-    public FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,15 +87,6 @@ abstract class KidRegisterActivity
         button.setTypeface(typeface);
 
         setUI(savedInstanceState);
-    }
-
-    @Override
-    @OnClick(R.id.delete_kid)
-    public void deleteKid() {
-        Intent intent = new Intent();
-        intent.putExtra(Constants.EXTRA_KEY_KID, kidWrapper);
-        setResult(Constants.DELETE, intent);
-        finish();
     }
 
     abstract void setUI(Bundle savedInstanceState);
@@ -204,6 +190,8 @@ abstract class KidRegisterActivity
             mBirthDate.setError(getString(R.string.error_field_invalid));
             focusView = mBirthDate;
             cancel = true;
+        } else {
+            fillClassRoom();
         }
 
         // Check for a valid sponsorName.
@@ -275,6 +263,20 @@ abstract class KidRegisterActivity
                 gender, mCanLeave.isChecked(),
                 church, mWillReturn.isChecked(),
                 birthDate, allergy);
+    }
+
+    private void fillClassRoom() {
+
+
+
+
+
+
+
+
+
+
+
     }
 
     @Override

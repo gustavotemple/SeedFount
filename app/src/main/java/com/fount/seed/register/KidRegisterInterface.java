@@ -11,6 +11,5 @@ interface KidRegisterInterface {
     boolean isFieldInvalid(String field);
     boolean isEmailInvalid(String email);
     boolean isBirthDateInvalid(String email);
-    void deleteKid();
     void onClick(View v);
 }
