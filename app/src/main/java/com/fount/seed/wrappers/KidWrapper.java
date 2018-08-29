@@ -23,6 +23,7 @@ public class KidWrapper implements Parcelable {
 
     public String uid;
     public String kidName;
+    public String identification;
     public String sponsorName;
     public String sponsorEmail;
     public String cityName;
@@ -41,14 +42,12 @@ public class KidWrapper implements Parcelable {
     public KidWrapper() {
     }
 
-    public KidWrapper(String kidName, String sponsorName,
-                      String sponsorEmail, String cityName,
-                      String kidAddress, String classRoom,
-                      String churchName, String cellPhone,
-                      Long gender, Boolean canLeave,
-                      Boolean church, Boolean willReturn,
-                      String birthDate, String allergy) {
+    public KidWrapper(String kidName, String identification, String sponsorName,
+                      String sponsorEmail, String cityName, String kidAddress, String classRoom,
+                      String churchName, String cellPhone, Long gender, Boolean canLeave,
+                      Boolean church, Boolean willReturn, String birthDate, String allergy) {
         this.kidName = kidName;
+        this.identification = identification;
         this.sponsorName = sponsorName;
         this.sponsorEmail = sponsorEmail;
         this.cityName = cityName;
@@ -67,6 +66,7 @@ public class KidWrapper implements Parcelable {
     protected KidWrapper(Parcel in) {
         uid = in.readString();
         kidName = in.readString();
+        identification = in.readString();
         sponsorName = in.readString();
         sponsorEmail = in.readString();
         cityName = in.readString();
@@ -104,6 +104,10 @@ public class KidWrapper implements Parcelable {
 
     public String getKidName() {
         return kidName;
+    }
+
+    public String getIdentification() {
+        return identification;
     }
 
     @PropertyName(Constants.CLASS_ROOM)
@@ -173,6 +177,7 @@ public class KidWrapper implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(uid);
         dest.writeString(kidName);
+        dest.writeString(identification);
         dest.writeString(sponsorName);
         dest.writeString(sponsorEmail);
         dest.writeString(cityName);

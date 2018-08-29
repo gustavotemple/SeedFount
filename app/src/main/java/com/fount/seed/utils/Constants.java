@@ -21,25 +21,31 @@ public final class Constants {
 
     public static final String INTERVAL = "INTERVAL";
 
-    public static final String ROOM = "Sala";
+    public static final String ROOM = "N";
 
     public static final String CHALET = "Chalet";
+
+    public static final String CHALEH = "Chalé";
+
+    public static final String BIRTH_DATE_FORMAT = "dd/MM/yyyy";
+
+    public static final String ROOM_DATE_FORMAT = "MM/yyyy";
 
     public static final String AM = "AM";
 
     public static final String PM = "PM";
 
-    public static final String ROOM_1 = ROOM + " 1";
+    public static final String ROOM_1 = ROOM + "1";
 
-    public static final String ROOM_2 = ROOM + " 2";
+    public static final String ROOM_2 = ROOM + "2";
 
-    public static final String ROOM_3 = ROOM + " 3";
+    public static final String ROOM_3 = ROOM + "3";
 
-    public static final String ROOM_4 = ROOM + " 4";
+    public static final String ROOM_4 = ROOM + "4";
 
-    public static final String ROOM_5 = ROOM + " 5";
+    public static final String ROOM_5 = ROOM + "5";
 
-    public static final String ROOM_6 = ROOM + " 6";
+    public static final String ROOM_6 = ROOM + "6";
 
     public static final String CHALET_3 = CHALET + " 3";
 

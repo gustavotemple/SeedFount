@@ -5,11 +5,9 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {RoomEntity.class, ChaletEntity.class}, version = 1, exportSchema = false)
+@Database(entities = RoomEntity.class, version = 1, exportSchema = false)
 public abstract class SchoolDatabase extends RoomDatabase {
     public abstract RoomDao roomDao();
-
-    public abstract ChaletDao chaletDao();
 
     private static SchoolDatabase INSTANCE;
 

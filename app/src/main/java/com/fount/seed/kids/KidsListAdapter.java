@@ -84,7 +84,7 @@ public class KidsListAdapter
         holder.kidName.setText(data.getKidName());
         holder.kidName.setTypeface(type);
 
-        holder.classRoom.setText(FirebaseUtils.DateGenerator.formatDate(data.getClassRoom()));
+        holder.classRoom.setText(data.getClassRoom().replaceAll(Constants.CHALET, Constants.CHALEH));
         holder.classRoom.setTypeface(type);
 
         if (data.getClassRoom().contains(Constants.CHALET)

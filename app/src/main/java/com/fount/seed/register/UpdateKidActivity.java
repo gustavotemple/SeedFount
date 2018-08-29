@@ -56,6 +56,7 @@ public final class UpdateKidActivity extends KidRegisterActivity {
 
     private void loadKid() {
         mKidName.setText(kidWrapper.getKidName());
+        mKidId.setText(kidWrapper.getIdentification());
         mBirthDate.setText(kidWrapper.getBirthDate());
         mClassRoom.setText(kidWrapper.getClassRoom());
         mSponsorName.setText(kidWrapper.getSponsorName());

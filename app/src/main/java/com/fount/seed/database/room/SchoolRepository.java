@@ -10,24 +10,36 @@ import java.util.List;
 public class SchoolRepository {
 
     private final RoomDao roomDao;
-    private final ChaletDao chaletDao;
+
+    private final LiveData<List<RoomEntity>> all;
     private final LiveData<List<RoomEntity>> rooms;
-    private final LiveData<List<ChaletEntity>> chalets;
+    private final LiveData<List<RoomEntity>> chalets;
+    private final LiveData<Integer> count;
+
+    private static final int ROOM = 1;
+    private static final int CHALET = 2;
 
     public SchoolRepository(@NonNull final Application application) {
         SchoolDatabase db = SchoolDatabase.getDatabase(application);
         roomDao = db.roomDao();
-        chaletDao = db.chaletDao();
-        rooms = roomDao.getAll();
-        chalets = chaletDao.getAll();
+        all = roomDao.getAll();
+        rooms = roomDao.getAllRooms();
+        chalets = roomDao.getAllChalets();
+        count = roomDao.getCount();
     }
 
-    public void insert(final RoomEntity roomEntity) {
+    public void insertRoom(final RoomEntity roomEntity) {
+        roomEntity.setType(ROOM);
         new InsertRoomAsyncTask(roomDao).execute(roomEntity);
     }
 
-    public void insert(final ChaletEntity chaletEntity) {
-        new InsertChaletAsyncTask(chaletDao).execute(chaletEntity);
+    public void insertChalet(final RoomEntity roomEntity) {
+        roomEntity.setType(CHALET);
+        new InsertRoomAsyncTask(roomDao).execute(roomEntity);
+    }
+
+    public void deleteAll() {
+        new DeleteAllAsyncTask(roomDao).execute();
     }
 
     public void deleteAllRooms() {
@@ -35,15 +47,23 @@ public class SchoolRepository {
     }
 
     public void deleteAllChalets() {
-        new DeleteAllChaletsAsyncTask(chaletDao).execute();
+        new DeleteAllChaletsAsyncTask(roomDao).execute();
+    }
+
+    public LiveData<List<RoomEntity>> getAll() {
+        return all;
     }
 
     public LiveData<List<RoomEntity>> getAllRooms() {
         return rooms;
     }
 
-    public LiveData<List<ChaletEntity>> getAllChalets() {
+    public LiveData<List<RoomEntity>> getAllChalets() {
         return chalets;
+    }
+
+    public LiveData<Integer> getCount() {
+        return count;
     }
 
     private static class InsertRoomAsyncTask extends AsyncTask<RoomEntity, Void, Void> {
@@ -61,17 +81,17 @@ public class SchoolRepository {
         }
     }
 
-    private static class InsertChaletAsyncTask extends AsyncTask<ChaletEntity, Void, Void> {
+    private static class DeleteAllAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        private final ChaletDao chaletDao;
+        private final RoomDao roomDao;
 
-        InsertChaletAsyncTask(final ChaletDao chaletDao) {
-            this.chaletDao = chaletDao;
+        DeleteAllAsyncTask(final RoomDao roomDao) {
+            this.roomDao = roomDao;
         }
 
         @Override
-        protected Void doInBackground(final ChaletEntity... params) {
-            chaletDao.insertAll(params[0]);
+        protected Void doInBackground(final Void... params) {
+            roomDao.deleteAll();
             return null;
         }
     }
@@ -86,22 +106,22 @@ public class SchoolRepository {
 
         @Override
         protected Void doInBackground(final Void... params) {
-            roomDao.deleteAll();
+            roomDao.deleteAllRooms();
             return null;
         }
     }
 
     private static class DeleteAllChaletsAsyncTask extends AsyncTask<Void, Void, Void> {
 
-        private final ChaletDao chaletDao;
+        private final RoomDao roomDao;
 
-        DeleteAllChaletsAsyncTask(final ChaletDao chaletDao) {
-            this.chaletDao = chaletDao;
+        DeleteAllChaletsAsyncTask(final RoomDao roomDao) {
+            this.roomDao = roomDao;
         }
 
         @Override
         protected Void doInBackground(final Void... params) {
-            chaletDao.deleteAll();
+            roomDao.deleteAllChalets();
             return null;
         }
     }

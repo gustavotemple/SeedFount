@@ -55,6 +55,7 @@
     <string name="title_register">Novo Registro</string>
     <string name="title_update">Atualizar Registro</string>
     <string name="kid_name">Nome da criança</string>
+    <string name="kid_id">ID/Senha</string>
     <string name="sponsor_name">Nome do responsável</string>
     <string name="sponsor_email">Email do responsável</string>
     <string name="city">Cidade</string>

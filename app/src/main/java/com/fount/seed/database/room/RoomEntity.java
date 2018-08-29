@@ -26,6 +26,9 @@ public class RoomEntity {
     @ColumnInfo(name = "to")
     private String to;
 
+    @ColumnInfo(name = "type")
+    private int type;
+
     public RoomEntity(int row,
                       @NonNull String number,
                       @NonNull String from,
@@ -48,6 +51,7 @@ public class RoomEntity {
         return row;
     }
 
+    @SuppressWarnings("unused")
     public void setRow(int row) {
         this.row = row;
     }
@@ -77,5 +81,13 @@ public class RoomEntity {
 
     public void setTo(@NonNull String to) {
         this.to = to;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

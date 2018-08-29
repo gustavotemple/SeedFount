@@ -21,6 +21,23 @@
             android:orientation="vertical">
 
             <android.support.design.widget.TextInputLayout
+                android:id="@+id/birth_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.vicmikhailau.maskededittext.MaskedEditText
+                    android:id="@+id/birth_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/birth_date"
+                    android:inputType="date"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    app:mask="##/##/####" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/kid_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -60,23 +77,6 @@
             </RadioGroup>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/birth_date_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.vicmikhailau.maskededittext.MaskedEditText
-                    android:id="@+id/birth_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/birth_date"
-                    android:inputType="date"
-                    android:maxLines="1"
-                    android:singleLine="true"
-                    app:mask="##/##/####" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
                 android:id="@+id/class_room_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -85,7 +85,23 @@
                     android:id="@+id/class_room"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:hint="@string/class_room"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/kid_id_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/kid_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/kid_id"
                     android:maxLines="1"
                     android:singleLine="true" />
 

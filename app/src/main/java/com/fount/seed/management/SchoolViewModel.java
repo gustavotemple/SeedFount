@@ -5,31 +5,38 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 
-import com.fount.seed.database.room.ChaletEntity;
 import com.fount.seed.database.room.RoomEntity;
 import com.fount.seed.database.room.SchoolRepository;
 
 import java.util.List;
 
-class SchoolViewModel extends AndroidViewModel {
+public class SchoolViewModel extends AndroidViewModel {
 
     private final SchoolRepository schoolRepo;
+    private final LiveData<List<RoomEntity>> all;
     private final LiveData<List<RoomEntity>> rooms;
-    private final LiveData<List<ChaletEntity>> chalets;
+    private final LiveData<List<RoomEntity>> chalets;
+    private final LiveData<Integer> count;
 
     SchoolViewModel(@NonNull final Application application) {
         super(application);
         schoolRepo = new SchoolRepository(application);
+        all = schoolRepo.getAll();
         rooms = schoolRepo.getAllRooms();
         chalets = schoolRepo.getAllChalets();
+        count = schoolRepo.getCount();
     }
 
-    public void insert(final RoomEntity roomEntity) {
-        schoolRepo.insert(roomEntity);
+    public void insertRoom(final RoomEntity roomEntity) {
+        schoolRepo.insertRoom(roomEntity);
     }
 
-    public void insert(final ChaletEntity chaletEntity) {
-        schoolRepo.insert(chaletEntity);
+    public void insertChalet(final RoomEntity chaletEntity) {
+        schoolRepo.insertChalet(chaletEntity);
+    }
+
+    public void deleteAll() {
+        schoolRepo.deleteAll();
     }
 
     public void deleteAllRooms() {
@@ -40,12 +47,20 @@ class SchoolViewModel extends AndroidViewModel {
         schoolRepo.deleteAllChalets();
     }
 
+    public LiveData<List<RoomEntity>> getAll() {
+        return all;
+    }
+
     public LiveData<List<RoomEntity>> getAllRooms() {
         return rooms;
     }
 
-    public LiveData<List<ChaletEntity>> getAllChalets() {
+    public LiveData<List<RoomEntity>> getAllChalets() {
         return chalets;
+    }
+
+    public LiveData<Integer> getCount() {
+        return count;
     }
 
 }

@@ -76,12 +76,12 @@
                 android:id="@+id/roomFromText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/from"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -94,12 +94,12 @@
                 android:id="@+id/roomToText0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/to"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -135,12 +135,12 @@
                 android:id="@+id/roomFromText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/from"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -153,12 +153,12 @@
                 android:id="@+id/roomToText1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/to"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -194,12 +194,12 @@
                 android:id="@+id/roomFromText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/from"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -212,12 +212,12 @@
                 android:id="@+id/roomToText2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/to"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -253,12 +253,12 @@
                 android:id="@+id/roomFromText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/from"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -271,12 +271,12 @@
                 android:id="@+id/roomToText3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/to"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -312,12 +312,12 @@
                 android:id="@+id/roomFromText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/from"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -330,12 +330,12 @@
                 android:id="@+id/roomToText4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10"
+                android:ems="7"
                 android:hint="@string/to"
                 android:inputType="date"
                 android:maxLines="1"
                 android:singleLine="true"
-                app:mask="##/##/####" />
+                app:mask="##/####" />
 
         </android.support.design.widget.TextInputLayout>
 
@@ -373,5 +373,3 @@
     </TableRow>
 
 </TableLayout>
-
-

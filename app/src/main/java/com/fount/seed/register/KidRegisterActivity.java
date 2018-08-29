@@ -1,5 +1,6 @@
 package com.fount.seed.register;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -15,13 +17,21 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 
 import com.fount.seed.R;
+import com.fount.seed.database.room.RoomEntity;
+import com.fount.seed.management.SchoolViewModel;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.KidWrapper;
 import com.vicmikhailau.maskededittext.MaskedEditText;
 
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -34,10 +44,14 @@ abstract class KidRegisterActivity
         extends AppCompatActivity
         implements KidRegisterInterface, View.OnClickListener {
 
+    private static final String TAG = KidRegisterActivity.class.getSimpleName();
     public KidWrapper kidWrapper;
+    private SchoolViewModel schoolViewModel;
 
     @BindView(R.id.kid_name)
     public TextInputEditText mKidName;
+    @BindView(R.id.kid_id)
+    public TextInputEditText mKidId;
     @BindView(R.id.kid_gender)
     public RadioGroup mKidGender;
     @BindView(R.id.boy)
@@ -87,6 +101,61 @@ abstract class KidRegisterActivity
         button.setTypeface(typeface);
 
         setUI(savedInstanceState);
+
+        mBirthDate.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!hasFocus) {
+                mBirthDate.setError(null);
+
+                String birthDate = mBirthDate.getText().toString();
+
+                if (TextUtils.isEmpty(birthDate)) {
+                    mBirthDate.setError(getString(R.string.error_field_required));
+                } else if (isBirthDateInvalid(birthDate)) {
+                    mBirthDate.setError(getString(R.string.error_field_invalid));
+                } else {
+                    fillClassRoom(birthDate);
+                }
+            }
+        });
+
+        schoolViewModel = ViewModelProviders.of(this).get(SchoolViewModel.class);
+    }
+
+    /**
+     * fillClassRoom
+     *
+     * @param birthday String
+     */
+    private void fillClassRoom(String birthday) {
+        try {
+            SimpleDateFormat spf = new SimpleDateFormat(Constants.BIRTH_DATE_FORMAT,
+                    Locale.getDefault());
+            Date date = spf.parse(birthday);
+            spf = new SimpleDateFormat(Constants.ROOM_DATE_FORMAT, Locale.getDefault());
+            birthday = spf.format(date);
+        } catch (ParseException e) {
+            Log.i(TAG, e.toString());
+        }
+
+        final DateTimeFormatter roomDateFormatter = DateTimeFormat.forPattern(Constants.ROOM_DATE_FORMAT);
+        final DateTime birthDate = roomDateFormatter.parseDateTime(birthday);
+
+        schoolViewModel.getAll().observe(this, rooms -> {
+            if (rooms == null || rooms.isEmpty()) {
+                return;
+            }
+
+            for (final RoomEntity room : rooms) {
+                DateTime from = roomDateFormatter.parseDateTime(room.getFrom());
+                DateTime to = roomDateFormatter.parseDateTime(room.getTo());
+                Interval interval = new Interval(from, to);
+
+                if (interval.contains(birthDate)) {
+                    mClassRoom.setText(room.getNumber());
+                    break;
+                }
+            }
+        });
     }
 
     abstract void setUI(Bundle savedInstanceState);
@@ -96,6 +165,9 @@ abstract class KidRegisterActivity
         TextInputLayout mKidNameLayout = findViewById(R.id.kid_name_layout);
         mKidNameLayout.setTypeface(type);
         mKidName.setTypeface(type);
+        TextInputLayout mKidIdLayout = findViewById(R.id.kid_id_layout);
+        mKidIdLayout.setTypeface(type);
+        mKidId.setTypeface(type);
         TextInputLayout mBirthDateLayout = findViewById(R.id.birth_date_layout);
         mBirthDateLayout.setTypeface(type);
         mBirthDate.setTypeface(type);
@@ -134,6 +206,8 @@ abstract class KidRegisterActivity
     public KidWrapper submitAttempt() {
         // Reset errors.
         mKidName.setError(null);
+        mKidId.setError(null);
+        mBirthDate.setError(null);
         mClassRoom.setError(null);
         mSponsorName.setError(null);
         mSponsorEmail.setError(null);
@@ -144,6 +218,7 @@ abstract class KidRegisterActivity
 
         // Store values at the time of the register attempt.
         String kidName = mKidName.getText().toString();
+        String kidId = mKidId.getText().toString();
         String birthDate = mBirthDate.getText().toString();
         String classRoom = mClassRoom.getText().toString();
         String sponsorName = mSponsorName.getText().toString();
@@ -159,6 +234,17 @@ abstract class KidRegisterActivity
         boolean cancel = false;
         View focusView = null;
 
+        // Check for a valid kid birthDate.
+        if (TextUtils.isEmpty(birthDate)) {
+            mBirthDate.setError(getString(R.string.error_field_required));
+            focusView = mBirthDate;
+            cancel = true;
+        } else if (isBirthDateInvalid(birthDate)) {
+            mBirthDate.setError(getString(R.string.error_field_invalid));
+            focusView = mBirthDate;
+            cancel = true;
+        }
+
         // Check for a valid kidName.
         if (TextUtils.isEmpty(kidName)) {
             mKidName.setError(getString(R.string.error_field_required));
@@ -170,28 +256,34 @@ abstract class KidRegisterActivity
             cancel = true;
         }
 
+        long gender = 0;
+        if (kidGender <= 0) {
+            mBoy.setError(getString(R.string.error_field_invalid));
+            mGirl.setError(getString(R.string.error_field_invalid));
+            focusView = mKidGender;
+            cancel = true;
+        } else if (kidGender == R.id.boy) {
+            gender = KidWrapper.BOY;
+        } else if (kidGender == R.id.girl) {
+            gender = KidWrapper.GIRL;
+        }
+
         // Check for a valid kid classRoom.
         if (TextUtils.isEmpty(classRoom)) {
             mClassRoom.setError(getString(R.string.error_field_required));
-            focusView = mClassRoom;
+            focusView = mBirthDate;
             cancel = true;
         } else if (isFieldInvalid(classRoom)) {
             mClassRoom.setError(getString(R.string.error_field_invalid));
-            focusView = mClassRoom;
+            focusView = mBirthDate;
             cancel = true;
         }
 
-        // Check for a valid kid birthDate.
-        if (TextUtils.isEmpty(birthDate)) {
-            mBirthDate.setError(getString(R.string.error_field_required));
-            focusView = mBirthDate;
+        // Check for a valid kidId.
+        if (!TextUtils.isEmpty(kidId) && isFieldInvalid(kidId)) {
+            mKidId.setError(getString(R.string.error_field_invalid));
+            focusView = mKidId;
             cancel = true;
-        } else if (isBirthDateInvalid(birthDate)) {
-            mBirthDate.setError(getString(R.string.error_field_invalid));
-            focusView = mBirthDate;
-            cancel = true;
-        } else {
-            fillClassRoom();
         }
 
         // Check for a valid sponsorName.
@@ -237,18 +329,6 @@ abstract class KidRegisterActivity
             cancel = true;
         }
 
-        long gender = 0;
-        if (kidGender <= 0) {
-            mBoy.setError(getString(R.string.error_field_invalid));
-            mGirl.setError(getString(R.string.error_field_invalid));
-            focusView = mKidGender;
-            cancel = true;
-        } else if (kidGender == R.id.boy) {
-            gender = KidWrapper.BOY;
-        } else if (kidGender == R.id.girl) {
-            gender = KidWrapper.GIRL;
-        }
-
         if (cancel) {
             // There was an error; don't attempt register and focus the first
             // form field with an error.
@@ -256,27 +336,10 @@ abstract class KidRegisterActivity
             return null;
         }
 
-        return new KidWrapper(kidName, sponsorName,
-                sponsorEmail, city,
-                address, classRoom,
-                churchName, cellPhone,
-                gender, mCanLeave.isChecked(),
-                church, mWillReturn.isChecked(),
-                birthDate, allergy);
-    }
-
-    private void fillClassRoom() {
-
-
-
-
-
-
-
-
-
-
-
+        return new KidWrapper(kidName, kidId, sponsorName,
+                sponsorEmail, city, address, mClassRoom.getText().toString(),
+                churchName, cellPhone, gender, mCanLeave.isChecked(), church,
+                mWillReturn.isChecked(), birthDate, allergy);
     }
 
     @Override
@@ -295,7 +358,7 @@ abstract class KidRegisterActivity
             return true;
         }
 
-        final SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy",
+        final SimpleDateFormat format = new SimpleDateFormat(Constants.BIRTH_DATE_FORMAT,
                 Locale.getDefault());
         format.setLenient(false);
         try {
