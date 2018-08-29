@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class ClassDate implements Serializable {
 
     public String date;
+    public String comment;
     public HashMap<String, HashMap<String, Boolean>> studentAttendance;
 
     @SuppressWarnings("unused")

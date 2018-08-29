@@ -3,6 +3,7 @@ package com.fount.seed.register;
 import android.arch.lifecycle.ViewModelProviders;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 
 import com.fount.seed.R;
@@ -31,7 +33,6 @@ import org.joda.time.format.DateTimeFormatter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
@@ -48,6 +49,8 @@ abstract class KidRegisterActivity
     public KidWrapper kidWrapper;
     private SchoolViewModel schoolViewModel;
 
+    @BindView(R.id.activity_register_layout)
+    public RelativeLayout activityRegisterLayout;
     @BindView(R.id.kid_name)
     public TextInputEditText mKidName;
     @BindView(R.id.kid_id)
@@ -126,34 +129,35 @@ abstract class KidRegisterActivity
      *
      * @param birthday String
      */
-    private void fillClassRoom(String birthday) {
-        try {
-            SimpleDateFormat spf = new SimpleDateFormat(Constants.BIRTH_DATE_FORMAT,
-                    Locale.getDefault());
-            Date date = spf.parse(birthday);
-            spf = new SimpleDateFormat(Constants.ROOM_DATE_FORMAT, Locale.getDefault());
-            birthday = spf.format(date);
-        } catch (ParseException e) {
-            Log.i(TAG, e.toString());
-        }
-
-        final DateTimeFormatter roomDateFormatter = DateTimeFormat.forPattern(Constants.ROOM_DATE_FORMAT);
-        final DateTime birthDate = roomDateFormatter.parseDateTime(birthday);
-
+    private void fillClassRoom(final String birthday) {
         schoolViewModel.getAll().observe(this, rooms -> {
             if (rooms == null || rooms.isEmpty()) {
                 return;
             }
 
-            for (final RoomEntity room : rooms) {
-                DateTime from = roomDateFormatter.parseDateTime(room.getFrom());
-                DateTime to = roomDateFormatter.parseDateTime(room.getTo());
-                Interval interval = new Interval(from, to);
+            try {
+                final DateTimeFormatter roomDateFormatter = DateTimeFormat
+                        .forPattern(Constants.ROOM_DATE_FORMAT);
+                final DateTime dt = DateTime.parse(birthday,
+                        DateTimeFormat.forPattern(Constants.BIRTH_DATE_FORMAT));
+                final DateTime birthDate = roomDateFormatter
+                        .parseDateTime(dt.toString(roomDateFormatter));
 
-                if (interval.contains(birthDate)) {
-                    mClassRoom.setText(room.getNumber());
-                    break;
+                for (final RoomEntity room : rooms) {
+                    DateTime from = roomDateFormatter.parseDateTime(room.getFrom());
+                    DateTime to = roomDateFormatter.parseDateTime(room.getTo());
+                    Interval interval = new Interval(from, to);
+
+                    if (interval.contains(birthDate)) {
+                        mClassRoom.setText(room.getNumber());
+                        break;
+                    }
                 }
+            } catch (IllegalArgumentException e) {
+                Log.e(TAG, e.toString());
+                Snackbar.make(activityRegisterLayout,
+                        "Date error", Snackbar.LENGTH_LONG).show();
+
             }
         });
     }
