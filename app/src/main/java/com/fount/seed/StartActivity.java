@@ -12,6 +12,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.view.View;
 import android.widget.Button;
 
 import com.fount.seed.database.room.RoomEntity;
@@ -27,6 +28,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -51,16 +53,6 @@ public class StartActivity extends AppCompatActivity {
 
         FirebaseUtils.getInstance().initialize();
 
-        buttonBabies.setOnClickListener(view ->
-                startActivity(new Intent(StartActivity.this.getApplicationContext(),
-                        RoomActivity.class)));
-        buttonChalet.setOnClickListener(view ->
-                startActivity(new Intent(StartActivity.this.getApplicationContext(),
-                        ChaletActivity.class)));
-        buttonManagement.setOnClickListener(view ->
-                startActivity(new Intent(StartActivity.this.getApplicationContext(),
-                        ManagementActivity.class)));
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkPermission();
         }
@@ -69,6 +61,27 @@ public class StartActivity extends AppCompatActivity {
 
         initializeRoom();
 
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.buttonBabies)
+    public void roomActivity(View view) {
+        startActivity(new Intent(StartActivity.this.getApplicationContext(),
+                RoomActivity.class));
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.buttonChalet)
+    public void chaletActivity(View view) {
+        startActivity(new Intent(StartActivity.this.getApplicationContext(),
+                ChaletActivity.class));
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.buttonManagement)
+    public void managementActivity(View view) {
+        startActivity(new Intent(StartActivity.this.getApplicationContext(),
+                ManagementActivity.class));
     }
 
     private void initializeRoom() {

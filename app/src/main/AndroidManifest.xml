@@ -10,7 +10,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".StartActivity"
             android:launchMode="singleTop">
@@ -20,52 +19,57 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".kids.RoomActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName=".StartActivity">
+            android:launchMode="singleTask"
+            android:parentActivityName=".StartActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartActivity" />
         </activity>
-
         <activity
             android:name=".kids.ChaletActivity"
-            android:launchMode="singleTask"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|screenSize"
-            android:parentActivityName=".StartActivity">
+            android:launchMode="singleTask"
+            android:parentActivityName=".StartActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".StartActivity" />
         </activity>
-
         <activity
             android:name=".register.AddKidActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="singleTop">
-        </activity>
-
+            android:launchMode="singleTop" />
         <activity
             android:name=".register.UpdateKidActivity"
             android:configChanges="orientation|screenSize"
-            android:launchMode="singleTop">
-        </activity>
-
+            android:launchMode="singleTop" />
         <activity
             android:name=".attendance.StudentAttendanceActivity"
-            android:launchMode="singleTop">
-        </activity>
-
+            android:launchMode="singleTop" />
         <activity
             android:name=".management.ManagementActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/management"
             android:launchMode="singleTop"
-            android:screenOrientation="landscape" />
+            android:parentActivityName=".StartActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".StartActivity" />
+        </activity>
+        <activity
+            android:name=".attendance.CommentActivity"
+            android:label="@string/comment"
+            android:launchMode="singleTop"
+            android:parentActivityName=".attendance.StudentAttendanceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".attendance.StudentAttendanceActivity" />
+        </activity>
 
         <receiver
             android:name=".database.firebase.FirebaseUtils$DateGenerator"

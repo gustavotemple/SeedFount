@@ -28,17 +28,26 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public abstract class KidsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = KidsActivity.class.getSimpleName();
     private Snackbar snackbar;
-    private RelativeLayout noKidsLayout;
-    private TextView noKids;
 
-    protected RecyclerView recyclerView;
-    protected Toolbar toolbar;
-    protected FloatingActionButton fab;
+    @BindView(R.id.no_kids_layout)
+    public RelativeLayout noKidsLayout;
+    @BindView(R.id.no_kids)
+    public TextView noKids;
+    @BindView(R.id.recycler_view)
+    public RecyclerView recyclerView;
+    @BindView(R.id.toolbar)
+    public Toolbar toolbar;
+    @BindView(R.id.add)
+    public FloatingActionButton add;
+
     protected KidsListAdapter mKidsListAdapter;
     protected ClassDateListAdapter mClassDateListAdapter;
 
@@ -46,24 +55,16 @@ public abstract class KidsActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView();
+        ButterKnife.bind(this);
 
         if (!(Thread.getDefaultUncaughtExceptionHandler() instanceof CustomExceptionHandler)) {
             Thread.setDefaultUncaughtExceptionHandler(new CustomExceptionHandler(this));
         }
 
         final Typeface type = Typeface.createFromAsset(getAssets(), Constants.FONT);
-
-        noKidsLayout = findViewById(R.id.no_kids_layout);
-        noKids = findViewById(R.id.no_kids);
         noKids.setTypeface(type);
-
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        fab = findViewById(R.id.fab);
-        fab.setVisibility(View.VISIBLE);
-
-        recyclerView = findViewById(R.id.recycler_view);
+        add.setVisibility(View.VISIBLE);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         setView();

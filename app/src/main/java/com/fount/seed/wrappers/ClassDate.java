@@ -19,6 +19,7 @@ public class ClassDate implements Serializable {
 
     public ClassDate(String date) {
         this.date = date;
+        this.comment = "";
         this.studentAttendance = new HashMap<>();
     }
 

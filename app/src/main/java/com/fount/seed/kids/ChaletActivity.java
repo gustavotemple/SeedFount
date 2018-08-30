@@ -42,7 +42,7 @@ public final class ChaletActivity extends KidsActivity {
 
     @Override
     protected void setView() {
-        fab.setOnClickListener(view -> {
+        add.setOnClickListener(view -> {
             Intent intent = new Intent(ChaletActivity.this.getApplicationContext(),
                     AddKidActivity.class);
             startActivityForResult(intent, Constants.INSERT);
@@ -110,7 +110,7 @@ public final class ChaletActivity extends KidsActivity {
         if (id == R.id.nav_about) {
             Log.i(TAG, "nav_about");
         } else if (id == R.id.nav_dates) {
-            fab.setVisibility(View.GONE);
+            add.setVisibility(View.GONE);
             setTitle(R.string.class_dates);
 
             mKidsListAdapter.cleanup();
@@ -124,7 +124,7 @@ public final class ChaletActivity extends KidsActivity {
                 }
             });
         } else {
-            fab.setVisibility(View.VISIBLE);
+            add.setVisibility(View.VISIBLE);
             setTitle(FirebaseUtils.DateGenerator.formatDate(FirebaseUtils.DateGenerator.getPeriod()));
 
             mClassDateListAdapter.cleanup();

@@ -1,6 +1,7 @@
 package com.fount.seed.attendance;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
@@ -16,11 +18,15 @@ import com.fount.seed.wrappers.ClassDate;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class StudentAttendanceActivity extends AppCompatActivity {
 
     @BindView(R.id.recycler_view)
     public RecyclerView recyclerView;
+
+    @BindView(R.id.event_note)
+    public FloatingActionButton eventNote;
 
     private StudentAttendanceListAdapter mStudentAttendanceListAdapter;
 
@@ -56,6 +62,13 @@ public class StudentAttendanceActivity extends AppCompatActivity {
 
         setTitle(classDate.getDate());
         mStudentAttendanceListAdapter.init(classDate.getStudentAttendance());
+    }
+
+    @SuppressWarnings("unused")
+    @OnClick(R.id.event_note)
+    public void roomActivity(View view) {
+        startActivity(new Intent(StudentAttendanceActivity.this.getApplicationContext(),
+                CommentActivity.class));
     }
 
     @Override
