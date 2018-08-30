@@ -306,8 +306,8 @@ public class ManagementActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(view -> Snackbar.make(view,
+        FloatingActionButton cloud = findViewById(R.id.cloud);
+        cloud.setOnClickListener(view -> Snackbar.make(view,
                 "Clicked", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show());
     }
