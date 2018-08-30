@@ -1,4 +1,5 @@
 # SeedFount
+App for a kindergarten.
 
 ## Screenshots
-![Primeira tela](screenshots/screenshot_1.png "Primeira tela")
+![First screen](screenshots/screenshot_1.png "First screen")
