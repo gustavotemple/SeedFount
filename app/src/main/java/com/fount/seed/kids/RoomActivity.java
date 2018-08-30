@@ -34,7 +34,8 @@ public final class RoomActivity extends KidsActivity {
 
     @Override
     protected ClassDateListAdapter getClassDateListAdapter() {
-        return new ClassDateListAdapter(FirebaseUtils.getInstance().getDatesRoom());
+        return new ClassDateListAdapter(FirebaseUtils.getInstance().getDatesRoom(),
+                Constants.ROOM);
     }
 
     @Override

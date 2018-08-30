@@ -51,7 +51,9 @@
     <string name="seed_kid">Crianças de 4 a 11 anos</string>
     <string name="save">Salvar</string>
 
+    <!-- Strings related to comment -->
     <string name="comment">Comentário</string>
+    <string name="comment_added">Comentário adicionado.</string>
 
     <!-- Strings related to register -->
     <string name="title_register">Novo Registro</string>

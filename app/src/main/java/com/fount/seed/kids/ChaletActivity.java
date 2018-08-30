@@ -37,7 +37,8 @@ public final class ChaletActivity extends KidsActivity {
 
     @Override
     protected ClassDateListAdapter getClassDateListAdapter() {
-        return new ClassDateListAdapter(FirebaseUtils.getInstance().getDatesChalet());
+        return new ClassDateListAdapter(FirebaseUtils.getInstance().getDatesChalet(),
+                Constants.CHALET);
     }
 
     @Override

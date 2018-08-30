@@ -2,14 +2,15 @@ package com.fount.seed.attendance;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.fount.seed.R;
 import com.fount.seed.utils.Constants;
@@ -18,9 +19,10 @@ import com.fount.seed.wrappers.ClassDate;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class StudentAttendanceActivity extends AppCompatActivity {
+
+    private static final String TAG = StudentAttendanceActivity.class.getSimpleName();
 
     @BindView(R.id.recycler_view)
     public RecyclerView recyclerView;
@@ -29,6 +31,9 @@ public class StudentAttendanceActivity extends AppCompatActivity {
     public FloatingActionButton eventNote;
 
     private StudentAttendanceListAdapter mStudentAttendanceListAdapter;
+    private Snackbar snackbar;
+    private ClassDate classDate;
+    private String database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +42,7 @@ public class StudentAttendanceActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         // add back arrow to toolbar
-        if (getSupportActionBar() != null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
@@ -53,22 +58,78 @@ public class StudentAttendanceActivity extends AppCompatActivity {
         recyclerView.setAdapter(mStudentAttendanceListAdapter);
 
         final Intent intent = getIntent();
-        final ClassDate classDate = intent != null ? (ClassDate) intent.getSerializableExtra(Constants.EXTRA_KEY_DATE) : null;
+        classDate = intent != null ? (ClassDate) intent.getSerializableExtra(Constants.EXTRA_KEY_DATE) : null;
+        database = intent != null ? intent.getStringExtra(Constants.EXTRA_KEY_DATABASE) : null;
 
         if (classDate == null
-                || classDate.getStudentAttendance() == null) {
+                || database == null) {
             return;
         }
 
         setTitle(classDate.getDate());
+
+        eventNote.setOnClickListener(view -> {
+            final Intent i = new Intent(StudentAttendanceActivity.this.getApplicationContext(),
+                    CommentActivity.class);
+            i.putExtra(Constants.EXTRA_KEY_DATE, classDate);
+            i.putExtra(Constants.EXTRA_KEY_DATABASE, database);
+            startActivityForResult(i, Constants.INSERT);
+        });
+
+        if (classDate.getStudentAttendance() == null) {
+            return;
+        }
+
         mStudentAttendanceListAdapter.init(classDate.getStudentAttendance());
     }
 
-    @SuppressWarnings("unused")
-    @OnClick(R.id.event_note)
-    public void roomActivity(View view) {
-        startActivity(new Intent(StudentAttendanceActivity.this.getApplicationContext(),
-                CommentActivity.class));
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, "onActivityResult");
+
+        final ClassDate classDate = data != null ? (ClassDate) data
+                .getSerializableExtra(Constants.EXTRA_KEY_DATE) : null;
+        if (data == null
+                || classDate == null) {
+            Log.i(TAG, "No classDate set in intent extra: " +
+                    Constants.EXTRA_KEY_DATE);
+            return;
+        } else {
+            this.classDate.setComment(classDate.getComment());
+            Log.i(TAG, "Comment: " + this.classDate.getComment());
+        }
+
+        switch (resultCode) {
+            case Constants.INSERT:
+                showMsg(R.string.comment_added);
+                break;
+            default:
+                Log.e(TAG, "No op");
+        }
+    }
+
+    /**
+     * showMsg
+     *
+     * @param msgId int
+     */
+    private void showMsg(final int msgId) {
+        Log.i(TAG, "msgId: " + msgId);
+
+        runOnUiThread(() -> {
+            if (snackbar != null
+                    && snackbar.isShown()) {
+                return;
+            }
+
+            if (recyclerView != null) {
+                snackbar = Snackbar.make(recyclerView,
+                        msgId,
+                        Snackbar.LENGTH_LONG);
+                snackbar.show();
+            }
+        });
     }
 
     @Override

@@ -20,12 +20,15 @@ public class ClassDateListAdapter
         extends FirebaseRecyclerAdapter<ClassDate, ClassDateListAdapter.ViewHolder> {
 
     private static final String TAG = ClassDateListAdapter.class.getSimpleName();
+    private final String database;
 
-    public ClassDateListAdapter(@NonNull final DatabaseReference databaseReference) {
+    public ClassDateListAdapter(@NonNull final DatabaseReference databaseReference,
+                                @NonNull final String database) {
         super(ClassDate.class,
                 R.layout.listitem_date,
                 ViewHolder.class,
                 databaseReference);
+        this.database = database;
     }
 
     /**
@@ -61,6 +64,8 @@ public class ClassDateListAdapter
 
             Intent intent = new Intent(v.getContext(), StudentAttendanceActivity.class);
             intent.putExtra(Constants.EXTRA_KEY_DATE, data);
+            intent.putExtra(Constants.EXTRA_KEY_DATABASE, database);
+
 
             v.getContext().startActivity(intent);
         });

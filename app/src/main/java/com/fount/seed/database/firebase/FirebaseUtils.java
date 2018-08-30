@@ -101,6 +101,20 @@ public final class FirebaseUtils {
         databaseReference.child(kid.getUid()).removeValue();
     }
 
+    public void saveComment(@NonNull final ClassDate classDate,
+                            @NonNull final String database) {
+        if (classDate.getUid() == null
+                || classDate.getUid().isEmpty()) {
+            return;
+        }
+
+        if (database.equals(Constants.ROOM)) {
+            mDatesRoom.child(classDate.getUid()).setValue(classDate);
+        } else if (database.equals(Constants.CHALET)) {
+            mDatesChalet.child(classDate.getUid()).setValue(classDate);
+        }
+    }
+
     private void getDateId(final DatabaseReference databaseReference) {
         if (databaseReference == null) {
             Log.e(TAG, "getDateId error");
@@ -120,10 +134,10 @@ public final class FirebaseUtils {
 
                                 if (databaseReference == getDatesRoom()) {
                                     FirebaseUtils.roomDateId = classDate.getKey();
-                                    FirebaseUtils.roomClassDate = new ClassDate(DateGenerator.getPeriod());
+                                    FirebaseUtils.roomClassDate = new ClassDate(roomDateId, DateGenerator.getPeriod());
                                 } else if (databaseReference == getDatesChalet()) {
                                     FirebaseUtils.chaletDateId = classDate.getKey();
-                                    FirebaseUtils.chaletClassDate = new ClassDate(DateGenerator.getPeriod());
+                                    FirebaseUtils.chaletClassDate = new ClassDate(chaletDateId, DateGenerator.getPeriod());
                                 }
 
                                 return;
@@ -134,11 +148,11 @@ public final class FirebaseUtils {
 
                 if (databaseReference == getDatesRoom()) {
                     FirebaseUtils.roomDateId = mDatesRoom.push().getKey();
-                    FirebaseUtils.roomClassDate = new ClassDate(DateGenerator.getPeriod());
+                    FirebaseUtils.roomClassDate = new ClassDate(roomDateId, DateGenerator.getPeriod());
                     databaseReference.child(roomDateId).setValue(FirebaseUtils.roomClassDate);
                 } else if (databaseReference == getDatesChalet()) {
                     FirebaseUtils.chaletDateId = mDatesChalet.push().getKey();
-                    FirebaseUtils.chaletClassDate = new ClassDate(DateGenerator.getPeriod());
+                    FirebaseUtils.chaletClassDate = new ClassDate(chaletDateId, DateGenerator.getPeriod());
                     databaseReference.child(chaletDateId).setValue(FirebaseUtils.chaletClassDate);
                 }
             }

@@ -11,6 +11,8 @@ public final class Constants {
 
     public static final String EXTRA_KEY_DATE = BuildConfig.APPLICATION_ID + ".date";
 
+    public static final String EXTRA_KEY_DATABASE = BuildConfig.APPLICATION_ID + ".database";
+
     public static final String CLASS_ROOM = "classRoom";
 
     public static final String P = "P";
