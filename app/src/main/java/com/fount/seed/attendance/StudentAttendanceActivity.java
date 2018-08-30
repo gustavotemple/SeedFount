@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.fount.seed.R;
+import com.fount.seed.database.firebase.FirebaseUtils;
 import com.fount.seed.utils.Constants;
 import com.fount.seed.utils.CustomExceptionHandler;
 import com.fount.seed.wrappers.ClassDate;
@@ -66,7 +67,7 @@ public class StudentAttendanceActivity extends AppCompatActivity {
             return;
         }
 
-        setTitle(classDate.getDate());
+        setTitle(FirebaseUtils.DateGenerator.formatDate(classDate.getDate()));
 
         eventNote.setOnClickListener(view -> {
             final Intent i = new Intent(StudentAttendanceActivity.this.getApplicationContext(),
