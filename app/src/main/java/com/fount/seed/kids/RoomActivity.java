@@ -108,8 +108,6 @@ public final class RoomActivity extends KidsActivity {
                 query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_4);
             } else if (id == R.id.nav_n5) {
                 query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_5);
-            } else if (id == R.id.nav_n6) {
-                query = FirebaseUtils.getInstance().getRoomKids().orderByChild(Constants.CLASS_ROOM).equalTo(Constants.ROOM_6);
             }
 
             if (query != null) {

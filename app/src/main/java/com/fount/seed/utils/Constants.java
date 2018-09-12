@@ -47,8 +47,6 @@ public final class Constants {
 
     public static final String ROOM_5 = ROOM + "5";
 
-    public static final String ROOM_6 = ROOM + "6";
-
     public static final String CHALET_3 = CHALET + " 3";
 
     public static final String CHALET_4 = CHALET + " 4";
